@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_calculate">
+
+    <fragment
+        android:id="@+id/nav_calculate"
+        android:name="com.example.nutritionapp.ui.calculate.CalculateFragment"
+        android:label="@string/menu_calculate"
+        tools:layout="@layout/fragment_calculate" />
+
+    <fragment
+        android:id="@+id/nav_blog"
+        android:name="com.example.nutritionapp.ui.blog.BlogFragment"
+        android:label="@string/menu_blog"
+        tools:layout="@layout/fragment_blog" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.nutritionapp.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.nutritionapp.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.nutritionapp.Settings$SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/settings_activity" />
+
+</navigation>
