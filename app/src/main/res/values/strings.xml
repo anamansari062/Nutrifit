@@ -6,6 +6,8 @@
     <string name="nav_header_subtitle">user@email.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 
     <string name="menu_calculate">Calculate</string>
     <string name="menu_blog">Read Blogs</string>
