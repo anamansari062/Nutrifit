@@ -10,8 +10,11 @@
         <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/ic_menu_profile.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.36875" />
+        <entry key="app/src/main/res/layout/activity_blog_adapter.xml" value="0.32472826086956524" />
+        <entry key="app/src/main/res/layout/activity_blog_prototype.xml" value="0.32472826086956524" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.34148550724637683" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/blog_prototype.xml" value="0.32472826086956524" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.34148550724637683" />
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.3374094202898551" />
         <entry key="app/src/main/res/layout/fragment_blog.xml" value="0.3374094202898551" />

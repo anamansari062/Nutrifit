@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutritionApp">
         <activity
+            android:name=".blogAdapter"
+            android:exported="true" />
+        <activity
             android:name=".Settings"
             android:exported="true"
             android:label="@string/title_activity_settings" />
