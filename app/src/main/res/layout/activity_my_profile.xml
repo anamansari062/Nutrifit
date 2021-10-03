@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".MyProfile">
 
     <TextView
         android:id="@+id/txtUserEmail"
@@ -39,30 +39,17 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnUploadImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_blue_shape"
-        android:text="Upload photo"
-        android:padding="15dp"
-        android:layout_marginTop="30dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-    <Button
         android:id="@+id/btnLogOut"
-        android:layout_marginTop="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
         android:background="@drawable/round_blue_shape"
         android:text="Log out"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/btnUploadImage"
-        app:layout_constraintStart_toStartOf="@+id/btnUploadImage"
-        app:layout_constraintTop_toBottomOf="@+id/btnUploadImage" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
