@@ -14,6 +14,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/blogPrototype"
+        
         android:foregroundGravity="center"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"

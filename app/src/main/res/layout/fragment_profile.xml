@@ -7,62 +7,16 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
-        android:id="@+id/txtUserEmail"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_profile"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:cardCornerRadius="90dp"
-        app:layout_constraintVertical_bias="0.4"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageView
-            android:id="@+id/profile_picture"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_profile_photo" />
-
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btnUploadImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_blue_shape"
-        android:text="Upload photo"
-        android:padding="15dp"
-        android:layout_marginTop="30dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-    <Button
-        android:id="@+id/btnLogOut"
-        android:layout_marginTop="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_blue_shape"
-        android:text="Log out"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/btnUploadImage"
-        app:layout_constraintStart_toStartOf="@+id/btnUploadImage"
-        app:layout_constraintTop_toBottomOf="@+id/btnUploadImage" />
-
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
