@@ -13,7 +13,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
     @Override
     public blogAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
-        View view= layoutInflater.inflate(R.layout.blog_prototype, parent, false);
+        View view= layoutInflater.inflate(R.layout.blog_prototype_button, parent, false);
         ViewHolder viewHolder=  new ViewHolder(view);
         return viewHolder;
     }
