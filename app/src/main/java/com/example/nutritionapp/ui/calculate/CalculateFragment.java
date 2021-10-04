@@ -31,6 +31,7 @@ public class CalculateFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         calculateViewModel =
                 new ViewModelProvider(this).get(CalculateViewModel.class);
+
 //        View v = inflater.inflate(R.layout.fragment_calculate, container, false); //don't forget the third argument here
         binding = FragmentCalculateBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
