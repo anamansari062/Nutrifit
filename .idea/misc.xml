@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/drawable/circle.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_login.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_main_bmi.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_register1.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_register2.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/bmi_main.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/fragment_calculate.xml" value="0.22969187675070027" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_profile_foreground.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.36875" />
