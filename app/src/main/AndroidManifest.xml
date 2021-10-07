@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nutritionapp">
 
     <application
@@ -13,13 +14,13 @@
             android:name=".ui.calculate.MainBMI"
             android:exported="true" />
         <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
             android:name=".Register2"
             android:exported="true" />
         <activity
             android:name=".Register1"
-            android:exported="true" />
-        <activity
-            android:name=".Login"
             android:exported="true" />
         <activity
             android:name=".Settings"
@@ -29,7 +30,10 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.NutritionApp.NoActionBar">
+            android:theme="@style/Theme.NutritionApp.NoActionBar" />
+        <activity
+            android:name=".Login"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
