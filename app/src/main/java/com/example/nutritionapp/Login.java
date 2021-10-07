@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.nutritionapp.ui.profile.ProfileFragment;
@@ -21,12 +22,22 @@ public class Login extends AppCompatActivity {
     com.google.android.gms.common.SignInButton SignIn;
     GoogleSignInClient googleSignInClient;
     GoogleSignInAccount googleSignInAccount;
+    Button register2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         SignIn = findViewById(R.id.google_sign_in);
+        register2=findViewById(R.id.register2);
+        register2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(Login.this,Register1.class);
+                startActivity(intent);
+            }
+        });
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
