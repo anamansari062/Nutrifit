@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/drawable/ic_profile_photo.xml" value="0.25092592592592594" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/drawable/round_blog_prototype.xml" value="0.25092592592592594" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_main.xml" value="0.35" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_profile.xml" value="0.33" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_register1.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_register2.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/blog_prototype.xml" value="0.3255208333333333" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/bmi_main.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/content_main.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/fragment_about.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/fragment_blog.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/fragment_calculate.xml" value="0.35" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/nav_header_main.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/settings_activity.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/menu/main.xml" value="0.3625" />
         <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/drawable/circle.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_login.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
