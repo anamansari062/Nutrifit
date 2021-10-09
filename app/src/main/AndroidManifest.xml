@@ -14,7 +14,7 @@
             android:name=".ui.calculate.MainBMI"
             android:exported="true" />
         <activity
-            android:name=".Profile"
+            android:name=".MyProfile"
             android:exported="true" />
         <activity
             android:name=".Register2"
