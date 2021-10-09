@@ -5,6 +5,7 @@ import static android.view.View.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -103,6 +104,8 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     }
                                 }
                             });
+                            Intent intent = new Intent(Register1.this,MainActivity.class);
+                            startActivity(intent);
 
                         } else {
                             Toast.makeText(Register1.this, "failed to register", Toast.LENGTH_SHORT).show();
