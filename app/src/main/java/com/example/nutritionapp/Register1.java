@@ -16,13 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskExecutors;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.concurrent.TimeUnit;
+
 public class Register1 extends AppCompatActivity implements OnClickListener {
-    private TextView register1;
+    private Button register1;
     private EditText name, email, mobile, passwd, cmpasswd;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
@@ -39,6 +48,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         mobile = (EditText) findViewById(R.id.mobile);
         passwd = (EditText) findViewById(R.id.Password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+        cmpasswd=findViewById(R.id.cmpasswd);
 
 
     }
@@ -57,6 +67,8 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         String Name = name.getText().toString().trim();
         String Mobile = mobile.getText().toString().trim();
         String Password = passwd.getText().toString().trim();
+        String cPassword = cmpasswd.getText().toString().trim();
+
 
         if (Name.isEmpty()) {
             name.setError("Name is required");
@@ -78,16 +90,37 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
             return;
         }
         if (Password.length() < 6) {
-            passwd.setError("Mobile number is required");
+            passwd.setError("Enter the Password");
             passwd.requestFocus();
             return;
         }
+        int value=cPassword.compareTo(Password);
+        if (value==1) {
+            cmpasswd.setError("Password not match");
+            cmpasswd.requestFocus();
+            return;
+        }
+
+
 
         mAuth.createUserWithEmailAndPassword(Email, Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseUser use=mAuth.getCurrentUser();
+                            use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(Register1.this,"verification link sent",Toast.LENGTH_SHORT).show();
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Register1.this,"failed",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             User user=new User(Name, Email, Mobile);
 
                             FirebaseDatabase.getInstance().getReference("USERS")
@@ -96,16 +129,27 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        register1.setVisibility(VISIBLE);
+                                        progressBar.setVisibility(INVISIBLE);
                                         Toast.makeText(Register1.this, "user has been registerd", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(VISIBLE);
+
+
+
                                     } else {
                                         Toast.makeText(Register1.this, "failed to register", Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(GONE);
+
                                     }
                                 }
                             });
-                            Intent intent = new Intent(Register1.this,MainActivity.class);
+                            Intent intent=new Intent(Register1.this,MainActivity.class);
+
+                            intent.putExtra("Mobile",Mobile);
                             startActivity(intent);
+                            finish();
+
+
+
 
                         } else {
                             Toast.makeText(Register1.this, "failed to register", Toast.LENGTH_SHORT).show();
