@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nutritionapp.ui.profile.ProfileFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -148,7 +147,10 @@ public class Login extends AppCompatActivity {
             dm.setEmail(googleSignInAccount1.getEmail());
             dm.setImageUrl(googleSignInAccount1.getPhotoUrl());
             dm.setName2(googleSignInAccount1.getGivenName());
+
             Intent intent=new Intent(Login.this, MainActivity.class);
+
+           
             intent.putExtra("obj",dm);
             startActivity(intent);
             finish();
