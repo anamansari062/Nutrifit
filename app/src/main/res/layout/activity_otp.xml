@@ -65,7 +65,7 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -80,7 +80,7 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -95,7 +95,7 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -110,7 +110,7 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -125,7 +125,7 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -140,7 +140,7 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:maxLength="1"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />

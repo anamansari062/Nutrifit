@@ -16,14 +16,15 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/login_icon"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="WELCOME"
-        android:textColor="#E8D559"
-        android:textSize="34sp"
-        android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="WELCOME"
+            android:textColor="#CDDC39"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailid"
@@ -38,7 +39,7 @@
             android:imeOptions="actionNext"
 
 
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
         <EditText
@@ -54,7 +55,7 @@
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
 
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
 
