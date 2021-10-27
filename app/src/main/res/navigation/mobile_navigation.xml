@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_search">
+    app:startDestination="@id/nav_home">
 
 
 
@@ -41,10 +41,5 @@
         android:name="com.example.nutritionapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/nav_search"
-        android:name="com.example.nutritionapp.SearchFragment"
-        android:label="@string/menu_search"
-        tools:layout="@layout/fragment_search" />
 
 </navigation>

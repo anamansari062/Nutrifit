@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.nutritionapp.R;
 
 public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
     @NonNull
