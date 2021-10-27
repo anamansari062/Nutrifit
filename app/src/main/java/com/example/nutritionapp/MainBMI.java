@@ -1,4 +1,4 @@
-package com.example.nutritionapp.ui.calculate;
+package com.example.nutritionapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 

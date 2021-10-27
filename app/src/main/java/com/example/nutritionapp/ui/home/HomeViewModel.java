@@ -1,18 +1,16 @@
-package com.example.nutritionapp.ui.blog;
+package com.example.nutritionapp.ui.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class BlogViewModel extends ViewModel {
+public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-
-    public BlogViewModel() {
-         mText = new MutableLiveData<>();
-         mText.setValue("Blogs Available");
-
+    public HomeViewModel() {
+        mText = new MutableLiveData<>();
+        mText.setValue("This is Home fragment");
     }
 
     public LiveData<String> getText() {

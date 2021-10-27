@@ -39,7 +39,7 @@
 
             android:gravity="center"
             android:imeOptions="actionNext"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
         <EditText
@@ -53,7 +53,7 @@
             android:hint="Email"
             android:gravity="center"
             android:imeOptions="actionNext"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
         <EditText
@@ -68,7 +68,7 @@
             android:inputType="number"
             android:gravity="center"
             android:imeOptions="actionNext"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
         <EditText
@@ -83,7 +83,7 @@
             android:inputType="textPassword"
             android:gravity="center"
             android:imeOptions="actionNext"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
         <EditText
@@ -98,7 +98,7 @@
             android:inputType="textPassword"
             android:gravity="center"
             android:imeOptions="actionNext"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="24sp"/>
 
 

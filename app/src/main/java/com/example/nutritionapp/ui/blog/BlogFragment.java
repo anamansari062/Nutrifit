@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutritionapp.R;
-import com.example.nutritionapp.blogAdapter;
+import com.example.nutritionapp.adapters.blogAdapter;
 import com.example.nutritionapp.databinding.FragmentBlogBinding;
 
 

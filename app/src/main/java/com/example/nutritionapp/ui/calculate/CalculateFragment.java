@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.nutritionapp.MainBMI;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentCalculateBinding;
 import com.google.android.material.textfield.TextInputLayout;
@@ -55,8 +56,7 @@ public class CalculateFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        calculateViewModel =
-                new ViewModelProvider(this).get(CalculateViewModel.class);
+        calculateViewModel = new ViewModelProvider(this).get(CalculateViewModel.class);
 
         binding = FragmentCalculateBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -193,7 +193,7 @@ public class CalculateFragment extends Fragment {
                 }
                 else
                 {
-                    Intent intent = new Intent(CalculateFragment.this.getActivity(),MainBMI.class);
+                    Intent intent = new Intent(CalculateFragment.this.getActivity(), MainBMI.class);
                     intent.putExtra("Gender",typeOfUser);
                     intent.putExtra("Height",mintProgress);
                     intent.putExtra("Weight",weight2);
