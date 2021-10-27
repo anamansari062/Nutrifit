@@ -3,7 +3,9 @@ package com.example.nutritionapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 
@@ -30,28 +32,36 @@ public class Login extends AppCompatActivity {
     com.google.android.gms.common.SignInButton SignIn;
     GoogleSignInClient googleSignInClient;
     GoogleSignInAccount googleSignInAccount;
-    TextView register2;
+    TextView register;
     Button login;
     TextView forgot;
     EditText Passwd,emailid;
     FirebaseAuth mAuth;
+    SharedPreferences sharedPreferences;
+    int autosave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         SignIn = findViewById(R.id.google_sign_in);
-        register2=findViewById(R.id.register2);
+        register=findViewById(R.id.register);
         login=findViewById(R.id.login);
         forgot=findViewById(R.id.textView2);
         Passwd=findViewById(R.id.Password1);
         emailid=findViewById(R.id.emailid);
         mAuth=FirebaseAuth.getInstance();
-        register2.setOnClickListener(new View.OnClickListener() {
+        sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
+        int j=sharedPreferences.getInt("key",0);
+        if(j>0){
+            Intent activity= new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(activity);
+        }
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(Login.this,Register1.class);
+                intent = new Intent(Login.this,Register2.class);
                 startActivity(intent);
                 finish();
             }
@@ -97,6 +107,10 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(Login.this, "f", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                    autosave=1;
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putInt("key", autosave);
+                                    editor.apply();
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
