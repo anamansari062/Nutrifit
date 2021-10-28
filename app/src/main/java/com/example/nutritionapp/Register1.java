@@ -61,8 +61,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         String Mobile = mobile.getText().toString().trim();
         String Password = passwd.getText().toString().trim();
         String cPassword = cmpasswd.getText().toString().trim();
-        String Height=getIntent().getStringExtra("Height");
-        String Weight=getIntent().getStringExtra("Weight");
+
 
         if (Name.isEmpty()) {
             name.setError("Name is required");
@@ -115,7 +114,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     Toast.makeText(Register1.this,"failed",Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            User user=new User(Name, Email, Mobile,Height,Weight);
+                            User user=new User(Name, Email, Mobile);
 
                             FirebaseDatabase.getInstance().getReference("USERS")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -137,8 +136,6 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                 }
                             });
                             Intent intent=new Intent(Register1.this,Login.class);
-
-                            intent.putExtra("Mobile",Mobile);
                             startActivity(intent);
                             finish();
 
@@ -154,3 +151,4 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
     }
 
 }
+
