@@ -50,6 +50,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/bg"
+            android:inputType="textPassword"
             android:hint="Password"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -120,7 +121,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/register2"
+                android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

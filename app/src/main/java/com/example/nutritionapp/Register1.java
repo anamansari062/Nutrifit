@@ -12,23 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.concurrent.TimeUnit;
 
 public class Register1 extends AppCompatActivity implements OnClickListener {
     private Button register1;
@@ -142,9 +135,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     }
                                 }
                             });
-                            Intent intent=new Intent(Register1.this,MainActivity.class);
-
-                            intent.putExtra("Mobile",Mobile);
+                            Intent intent=new Intent(Register1.this,Login.class);
                             startActivity(intent);
                             finish();
 
@@ -160,3 +151,4 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
     }
 
 }
+
