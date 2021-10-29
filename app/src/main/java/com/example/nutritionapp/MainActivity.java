@@ -1,6 +1,8 @@
 package com.example.nutritionapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        sharedPreferences=getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_logout:
                 Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("key", 0);
+                editor.apply();
+
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
