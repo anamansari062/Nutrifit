@@ -1,6 +1,5 @@
-package com.example.nutritionapp.ui.calculate;
+package com.example.nutritionapp.ui.update;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -24,17 +22,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.nutritionapp.MainBMI;
 import com.example.nutritionapp.R;
-import com.example.nutritionapp.databinding.FragmentCalculateBinding;
-import com.google.android.material.textfield.TextInputLayout;
+import com.example.nutritionapp.databinding.FragmentUpdateBinding;
 
 import java.util.ArrayList;
 
-public class CalculateFragment extends Fragment {
+public class UpdateFragment extends Fragment {
 
-    private CalculateViewModel calculateViewModel;
-    private FragmentCalculateBinding binding;
+    private UpdateViewModel updateViewModel;
+    private FragmentUpdateBinding binding;
     Button mcalculate;
     TextView mcurrentheight;
     TextView mcurrentage,mcurrentweight;
@@ -43,8 +39,8 @@ public class CalculateFragment extends Fragment {
     RelativeLayout mmale,mfemale;
    Spinner spinner;
 //    AutoCompleteTextView auto_activity;
-    ArrayList<String> arrayList_activity;
-    ArrayAdapter<String> arrayAdapter_activity;
+    ArrayList<String> arrayList_update;
+    ArrayAdapter arrayAdapter_update;
 
     int currentProgress;
     String mintProgress="160";
@@ -56,31 +52,31 @@ public class CalculateFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        calculateViewModel = new ViewModelProvider(this).get(CalculateViewModel.class);
+        updateViewModel = new ViewModelProvider(this).get(UpdateViewModel.class);
 
-        binding = FragmentCalculateBinding.inflate(inflater, container, false);
+        binding = FragmentUpdateBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        mcalculate = root.findViewById(R.id.button);
-        mcurrentage=root.findViewById(R.id.currentAge);
-        mcurrentheight=root.findViewById(R.id.currentHeight);
-        mcurrentweight= root.findViewById(R.id.currentWeight);
-        mincrementweight=root.findViewById(R.id.incrementWeight);
-        mincrementage=root.findViewById(R.id.incrementAge);
-        mdecrementage=root.findViewById(R.id.decrementAge);
-        mdecrementweight=root.findViewById(R.id.decrementWeight);
-        mheightbar=root.findViewById(R.id.heightBar);
-        mmale=root.findViewById(R.id.maleLogo);
-        mfemale=root.findViewById(R.id.femaleLogo);
-        spinner=root.findViewById(R.id.spinner1);
-        arrayList_activity = new ArrayList<>();
-        arrayList_activity.add(0,"How active are you?") ;
-        arrayList_activity.add("Low Physical Activity");
-        arrayList_activity.add("Average Physical Activity");
-        arrayList_activity.add("High Physical Activity");
+        mcalculate = root.findViewById(R.id.fragment_update_updateBtn);
+        mcurrentage=root.findViewById(R.id.fragment_update_currentAge);
+        mcurrentheight=root.findViewById(R.id.fragment_update_currentHeight);
+        mcurrentweight= root.findViewById(R.id.fragment_update_currentWeight);
+        mincrementweight=root.findViewById(R.id.fragment_update_incrementWeight);
+        mincrementage=root.findViewById(R.id.fragment_update_incrementAge);
+        mdecrementage=root.findViewById(R.id.fragment_update_decrementAge);
+        mdecrementweight=root.findViewById(R.id.fragment_update_decrementWeight);
+        mheightbar=root.findViewById(R.id.fragment_update_heightBar);
+        mmale=root.findViewById(R.id.fragment_update_maleLogo);
+        mfemale=root.findViewById(R.id.fragment_update_femaleLogo);
+        spinner=root.findViewById(R.id.fragment_update_spinner1);
+        arrayList_update = new ArrayList<>();
+        arrayList_update.add(0,"How active are you?") ;
+        arrayList_update.add("Low Physical Activity");
+        arrayList_update.add("Average Physical Activity");
+        arrayList_update.add("High Physical Activity");
 
 
-        arrayAdapter_activity = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,arrayList_activity);
-        spinner.setAdapter(arrayAdapter_activity);
+        arrayAdapter_update = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,arrayList_update);
+        spinner.setAdapter(arrayAdapter_update);
 //        auto_activity.setThreshold(1);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -193,12 +189,13 @@ public class CalculateFragment extends Fragment {
                 }
                 else
                 {
-                    Intent intent = new Intent(CalculateFragment.this.getActivity(), MainBMI.class);
-                    intent.putExtra("Gender",typeOfUser);
-                    intent.putExtra("Height",mintProgress);
-                    intent.putExtra("Weight",weight2);
-                    intent.putExtra("Age",age2);
-                    startActivity(intent);
+//                    Intent intent = new Intent(UpdateFragment.this.getActivity(), MainBMI.class);
+//                    intent.putExtra("Gender",typeOfUser);
+//                    intent.putExtra("Height",mintProgress);
+//                    intent.putExtra("Weight",weight2);
+//                    intent.putExtra("Age",age2);
+//                    startActivity(intent);
+                    Toast.makeText(getContext(), "Your details have been updated successfully", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -206,7 +203,7 @@ public class CalculateFragment extends Fragment {
 
 
 //        final TextView textView = binding.textCalculate;
-        calculateViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        updateViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 //                textView.setText(s);

@@ -27,7 +27,10 @@
             android:name=".Otp"
             android:exported="true" />
         <activity
-            android:name=".ui.calculate.MainBMI"
+            android:name=".MainBMI"
+            android:exported="true" />
+        <activity
+            android:name=".ui.search.SearchActivity"
             android:exported="true" />
         <activity
             android:name=".MyProfile"

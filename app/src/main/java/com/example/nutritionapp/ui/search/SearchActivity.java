@@ -91,6 +91,4 @@ public class SearchActivity extends AppCompatActivity {
         return totalCalories;
     }
 
-    }
-
-
+}

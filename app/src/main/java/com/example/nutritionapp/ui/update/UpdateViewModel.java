@@ -1,14 +1,14 @@
-package com.example.nutritionapp.ui.calculate;
+package com.example.nutritionapp.ui.update;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CalculateViewModel extends ViewModel {
+public class UpdateViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public CalculateViewModel() {
+    public UpdateViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is Calculate fragment");
     }

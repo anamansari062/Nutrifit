@@ -9,7 +9,7 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
 
-    <string name="menu_calculate">Calculate</string>
+    <string name="menu_calculate">Update</string>
     <string name="menu_blog">Read Blogs</string>
     <string name="menu_profile">My Profile</string>
     <string name="menu_about">About</string>
