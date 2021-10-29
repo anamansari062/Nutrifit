@@ -28,6 +28,7 @@
         <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_register2.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/bmi_main.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/fragment_calculate.xml" value="0.22969187675070027" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/fragment_update.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_profile_foreground.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.36875" />
@@ -43,11 +44,8 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register1.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_register2.xml" value="0.33" />
-
-        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
-
         <entry key="app/src/main/res/layout/activity_search_result.xml" value="0.35260416666666666" />
-
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.3374094202898551" />
         <entry key="app/src/main/res/layout/bmi_main.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.34148550724637683" />
