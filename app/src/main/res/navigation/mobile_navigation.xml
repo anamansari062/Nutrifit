@@ -9,7 +9,7 @@
         android:id="@+id/nav_calculate"
         android:name="com.example.nutritionapp.ui.update.UpdateFragment"
         android:label="@string/menu_update"
-        tools:layout="@layout/fragment_calculate" />
+        tools:layout="@layout/fragment_update" />
 
     <fragment
         android:id="@+id/nav_blog"
