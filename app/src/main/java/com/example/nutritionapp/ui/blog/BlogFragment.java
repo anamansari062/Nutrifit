@@ -31,8 +31,7 @@ public class BlogFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        blogViewModel =
-                new ViewModelProvider(this).get(BlogViewModel.class);
+        blogViewModel = new ViewModelProvider(this).get(BlogViewModel.class);
 
         binding = FragmentBlogBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

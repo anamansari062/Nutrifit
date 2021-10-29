@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
     EditText Passwd,emailid;
     FirebaseAuth mAuth;
     SharedPreferences sharedPreferences;
+    DataModal dm;
     int autosave;
 
     @Override
@@ -155,7 +156,7 @@ public class Login extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
         try{
             GoogleSignInAccount googleSignInAccount1=task.getResult(ApiException.class);
-            DataModal dm=new DataModal();
+            dm=new DataModal();
 
             dm.setName(googleSignInAccount1.getDisplayName());
             dm.setEmail(googleSignInAccount1.getEmail());

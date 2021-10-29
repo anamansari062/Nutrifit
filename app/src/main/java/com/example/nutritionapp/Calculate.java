@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.nutritionapp.R;
 
-public class MainBMI extends AppCompatActivity {
+public class Calculate extends AppCompatActivity {
     String bmi2;
     int bmi;
     String height2;

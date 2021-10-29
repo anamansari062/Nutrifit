@@ -18,7 +18,8 @@
         android:theme="@style/Theme.NutritionApp">
         <activity
             android:name=".Login"
-            android:exported="true"/>
+            android:exported="true"
+            android:noHistory="true"/>
         <activity
             android:name=".Register1"
             android:exported="true"/>
@@ -27,10 +28,7 @@
             android:name=".Otp"
             android:exported="true" />
         <activity
-            android:name=".ui.calculate.MainBMI"
-            android:exported="true" />
-        <activity
-            android:name=".MyProfile"
+            android:name=".Calculate"
             android:exported="true" />
         <activity
             android:name=".Register2"
@@ -39,10 +37,8 @@
         <activity
             android:name=".ui.search.SearchResult"
             android:exported="false" />
-      <activity
-            android:name=".Settings"
-            android:exported="true"
-            android:label="@string/title_activity_settings" />          
+        <activity android:name=".ui.search.SearchActivity"
+            android:exported="false"/>
       <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -1,4 +1,4 @@
-package com.example.nutritionapp.ui.calculate;
+package com.example.nutritionapp.ui.update;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -24,16 +23,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.nutritionapp.MainBMI;
+import com.example.nutritionapp.Calculate;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentCalculateBinding;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
-public class CalculateFragment extends Fragment {
+public class UpdateFragment extends Fragment {
 
-    private CalculateViewModel calculateViewModel;
+    private UpdateViewModel updateViewModel;
     private FragmentCalculateBinding binding;
     Button mcalculate;
     TextView mcurrentheight;
@@ -56,7 +54,7 @@ public class CalculateFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        calculateViewModel = new ViewModelProvider(this).get(CalculateViewModel.class);
+        updateViewModel = new ViewModelProvider(this).get(UpdateViewModel.class);
 
         binding = FragmentCalculateBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -193,7 +191,7 @@ public class CalculateFragment extends Fragment {
                 }
                 else
                 {
-                    Intent intent = new Intent(CalculateFragment.this.getActivity(), MainBMI.class);
+                    Intent intent = new Intent(UpdateFragment.this.getActivity(), Calculate.class);
                     intent.putExtra("Gender",typeOfUser);
                     intent.putExtra("Height",mintProgress);
                     intent.putExtra("Weight",weight2);
@@ -206,7 +204,7 @@ public class CalculateFragment extends Fragment {
 
 
 //        final TextView textView = binding.textCalculate;
-        calculateViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        updateViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 //                textView.setText(s);
