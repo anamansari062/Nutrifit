@@ -34,9 +34,6 @@
             android:name=".Register2"
             android:exported="true" />
 
-        <activity
-            android:name=".ui.search.SearchResult"
-            android:exported="false" />
         <activity android:name=".ui.search.SearchActivity"
             android:exported="false"/>
       <activity
