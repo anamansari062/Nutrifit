@@ -22,12 +22,12 @@ public class Calculate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bmi_main);
-        Intent intent=getIntent();
+//        Intent intent=getIntent();
         progressBar=findViewById(R.id.progressBar);
         textView=findViewById(R.id.textView_Progress);
 
-        height2=intent.getStringExtra("Height");
-        weight2=intent.getStringExtra("Weight");
+//        height2=intent.getStringExtra("Height");
+//        weight2=intent.getStringExtra("Weight");
 
         height=Float.parseFloat(height2);
         weight=Float.parseFloat(weight2);

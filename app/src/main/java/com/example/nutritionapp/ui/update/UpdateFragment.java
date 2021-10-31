@@ -25,14 +25,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutritionapp.Calculate;
 import com.example.nutritionapp.R;
-import com.example.nutritionapp.databinding.FragmentCalculateBinding;
+import com.example.nutritionapp.databinding.FragmentUpdateBinding;
 
 import java.util.ArrayList;
 
 public class UpdateFragment extends Fragment {
 
     private UpdateViewModel updateViewModel;
-    private FragmentCalculateBinding binding;
+    private FragmentUpdateBinding binding;
     Button mcalculate;
     TextView mcurrentheight;
     TextView mcurrentage,mcurrentweight;
@@ -56,20 +56,20 @@ public class UpdateFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         updateViewModel = new ViewModelProvider(this).get(UpdateViewModel.class);
 
-        binding = FragmentCalculateBinding.inflate(inflater, container, false);
+        binding = FragmentUpdateBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        mcalculate = root.findViewById(R.id.button);
-        mcurrentage=root.findViewById(R.id.currentAge);
-        mcurrentheight=root.findViewById(R.id.currentHeight);
-        mcurrentweight= root.findViewById(R.id.currentWeight);
-        mincrementweight=root.findViewById(R.id.incrementWeight);
-        mincrementage=root.findViewById(R.id.incrementAge);
-        mdecrementage=root.findViewById(R.id.decrementAge);
-        mdecrementweight=root.findViewById(R.id.decrementWeight);
-        mheightbar=root.findViewById(R.id.heightBar);
-        mmale=root.findViewById(R.id.maleLogo);
-        mfemale=root.findViewById(R.id.femaleLogo);
-        spinner=root.findViewById(R.id.spinner1);
+        mcalculate = root.findViewById(R.id.fragment_update_UpdateBtn);
+        mcurrentage=root.findViewById(R.id.fragment_update_currentAge);
+        mcurrentheight=root.findViewById(R.id.fragment_update_currentHeight);
+        mcurrentweight= root.findViewById(R.id.fragment_update_currentWeight);
+        mincrementweight=root.findViewById(R.id.fragment_update_incrementWeight);
+        mincrementage=root.findViewById(R.id.fragment_update_incrementAge);
+        mdecrementage=root.findViewById(R.id.fragment_update_decrementAge);
+        mdecrementweight=root.findViewById(R.id.fragment_update_decrementWeight);
+        mheightbar=root.findViewById(R.id.fragment_update_heightBar);
+        mmale=root.findViewById(R.id.fragment_update_maleLogo);
+        mfemale=root.findViewById(R.id.fragment_update_femaleLogo);
+        spinner=root.findViewById(R.id.fragment_update_spinner1);
         arrayList_activity = new ArrayList<>();
         arrayList_activity.add(0,"How active are you?") ;
         arrayList_activity.add("Low Physical Activity");
@@ -191,12 +191,13 @@ public class UpdateFragment extends Fragment {
                 }
                 else
                 {
-                    Intent intent = new Intent(UpdateFragment.this.getActivity(), Calculate.class);
-                    intent.putExtra("Gender",typeOfUser);
-                    intent.putExtra("Height",mintProgress);
-                    intent.putExtra("Weight",weight2);
-                    intent.putExtra("Age",age2);
-                    startActivity(intent);
+//                    Intent intent = new Intent(UpdateFragment.this.getActivity(), Calculate.class);
+//                    intent.putExtra("Gender",typeOfUser);
+//                    intent.putExtra("Height",mintProgress);
+//                    intent.putExtra("Weight",weight2);
+//                    intent.putExtra("Age",age2);
+//                    startActivity(intent);
+                    Toast.makeText(getContext(), "Your details have been updated successfully", Toast.LENGTH_SHORT).show();
 
                 }
             }
