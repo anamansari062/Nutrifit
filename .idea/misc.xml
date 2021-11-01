@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/drawable/ic_profile_photo.xml" value="0.25092592592592594" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/drawable/round_blog_prototype.xml" value="0.25092592592592594" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_main.xml" value="0.35" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_profile.xml" value="0.33" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_register1.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/activity_register2.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/blog_prototype.xml" value="0.3255208333333333" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/bmi_main.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/content_main.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/fragment_about.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/fragment_blog.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/fragment_calculate.xml" value="0.35" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/nav_header_main.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/layout/settings_activity.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
+        <entry key="../../../data/home/thefunnyintrovert/NutritionApp/app/src/main/res/menu/main.xml" value="0.3625" />
+        <entry key="../.gradle/caches/transforms-3/ccd6c517801f56e7200472775579e27c/transformed/appcompat-1.3.1/res/layout/support_simple_spinner_dropdown_item.xml" value="0.28072916666666664" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/drawable/circle.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_login.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_main_bmi.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_register1.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/activity_register2.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/bmi_main.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/fragment_calculate.xml" value="0.22969187675070027" />
+        <entry key="app/src/main/res/drawable-v24/ic_add_circle_grey.xml" value="0.3015625" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_profile_foreground.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/bg.xml" value="0.13425925925925927" />
+        <entry key="app/src/main/res/drawable/ellipse_21.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/frame.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.18981481481481483" />
+        <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.18981481481481483" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.18981481481481483" />
+        <entry key="app/src/main/res/drawable/ic_breakfast.xml" value="0.18981481481481483" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/ic_launcher_profile_background.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/ic_menu_profile.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/ic_profile_photo.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/malefemalenotfocus.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/selector_bottom_navigation_view_text_color.xml" value="0.1890625" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/timer_card.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.34148550724637683" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register1.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_register2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/bottom_navigation_view.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.34148550724637683" />
+        <entry key="app/src/main/res/layout/fragment_about.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/fragment_blog.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/fragment_calculate.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.34148550724637683" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.32457496136012365" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/home_prototype.xml" value="0.346875" />
+        <entry key="app/src/main/res/layout/home_test.xml" value="0.40925925925925927" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/layout/settings_activity.xml" value="0.3374094202898551" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.3625" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/menu/search_menu.xml" value="0.3625" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_profile.xml" value="0.2125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
