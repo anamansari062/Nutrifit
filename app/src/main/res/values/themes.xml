@@ -26,6 +26,6 @@
     </style>
 
     <style name="Theme.NutritionApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="Theme.NutritionApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
