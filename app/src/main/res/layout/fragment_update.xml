@@ -50,7 +50,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@id/centerverticalline"
-        android:background="@drawable/malefemalefocus">
+        android:background="@drawable/malefemalenotfocus">
 
         <ImageView
             android:layout_width="150px"
