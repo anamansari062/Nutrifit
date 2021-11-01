@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutritionapp.R;
 
-public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
+public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     @NonNull
     @Override
-    public blogAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BlogAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
         View view= layoutInflater.inflate(R.layout.blog_prototype, parent, false);
         ViewHolder viewHolder=  new ViewHolder(view);
@@ -21,7 +21,7 @@ public class blogAdapter extends RecyclerView.Adapter<blogAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull blogAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BlogAdapter.ViewHolder holder, int position) {
 
     }
 

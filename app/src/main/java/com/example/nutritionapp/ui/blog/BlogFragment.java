@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutritionapp.R;
-import com.example.nutritionapp.adapters.blogAdapter;
+import com.example.nutritionapp.adapters.BlogAdapter;
 import com.example.nutritionapp.databinding.FragmentBlogBinding;
 
 
@@ -24,7 +24,7 @@ public class BlogFragment extends Fragment {
     private BlogViewModel blogViewModel;
     private FragmentBlogBinding binding;
     RecyclerView blog_recycler;
-    blogAdapter blog_adapter;
+    BlogAdapter blog_adapter;
 
 
 
@@ -36,7 +36,7 @@ public class BlogFragment extends Fragment {
         binding = FragmentBlogBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         blog_recycler = root.findViewById(R.id.blogRecycler);
-        blog_adapter = new blogAdapter();
+        blog_adapter = new BlogAdapter();
         blog_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         blog_recycler.setAdapter(blog_adapter);
 
