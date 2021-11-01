@@ -1,5 +1,7 @@
 package com.example.nutritionapp.ui.update;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -51,6 +53,9 @@ public class UpdateFragment extends Fragment {
     int weight=70;
     String weight2="70";
     String typeOfUser="0";
+    double mcalorie,fcalorie;
+    int heightc,weightc,agec;
+    String value;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -92,6 +97,7 @@ public class UpdateFragment extends Fragment {
                 {
                     ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
 //                    ((TextView) adapterView.getChildAt(0)).setTextSize(5);
+                     value = adapterView.getItemAtPosition(i).toString();
                 }
             }
 
@@ -174,6 +180,9 @@ public class UpdateFragment extends Fragment {
             }
         });
 
+
+
+
         mcalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,12 +206,12 @@ public class UpdateFragment extends Fragment {
 //                    intent.putExtra("Weight",weight2);
 //                    intent.putExtra("Age",age2);
 //                    startActivity(intent);
-                    Toast.makeText(getContext(), "Your details have been updated successfully", Toast.LENGTH_SHORT).show();
-
+                    calculate();
+//                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
+                   alertDialog();
                 }
             }
         });
-
 
 //        final TextView textView = binding.textCalculate;
         updateViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -215,9 +224,71 @@ public class UpdateFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    private void calculate() {
+        weightc = Integer.parseInt(weight2);
+        heightc = Integer.parseInt(mintProgress);
+        agec = Integer.parseInt(age2);
+        if(typeOfUser.equals("MALE")&&value.equals("Low Physical Activity"))
+        {
+            mcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.2;
+        }
+        else if(typeOfUser.equals("MALE")&&value.equals("Average Physical Activity"))
+        {
+            mcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.375;
+        }
+        else if(typeOfUser.equals("MALE")&&value.equals("High Physical Activity"))
+        {
+            mcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.55;
+        }
+        else if(typeOfUser.equals("FEMALE")&&value.equals("Low Physical Activity"))
+        {
+            fcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.2;
+        }
+        else if(typeOfUser.equals("FEMALE")&&value.equals("Average Physical Activity"))
+        {
+            fcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.375;
+        }
+        else if(typeOfUser.equals("FEMALE")&&value.equals("High Physical Activity"))
+        {
+            fcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.55;
+        }
     }
-}
+    private void alertDialog() {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
+        if(typeOfUser.equals("MALE")) {
+            dialog.setMessage("Your details have been updated successfully , The number of " +
+                    "calories you need are : " + mcalorie + " cal");
+        }
+        else if(typeOfUser.equals("FEMALE"))
+        {
+            dialog.setMessage("Your details have been updated successfully , The number of " +
+                    "calories you need are : " + fcalorie + " cal");
+        }
+        dialog.setTitle("Successful");
+        dialog.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+//                        Toast.makeText(getContext(),"Yes is clicked",Toast.LENGTH_LONG).show();
+                    }
+                });
+//        dialog.setNegativeButton("cancel",new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+////                Toast.makeText(getContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
+                    }
+                }
+
+
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        binding = null;
+//    }
+//}
