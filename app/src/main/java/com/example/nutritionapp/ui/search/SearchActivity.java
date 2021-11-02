@@ -1,5 +1,6 @@
 package com.example.nutritionapp.ui.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SearchActivity extends AppCompatActivity {
     String host = "calorieninjas.p.rapidapi.com";
     String key = "9a845c1749msh980401f10c34888p1dbde1jsn50abf0bfda0b";
+    String title;
     Float totalServing, totalNutrients, savedCalories;
     EditText textSearch, textServe;
     TextView textResult;
@@ -48,7 +50,9 @@ public class SearchActivity extends AppCompatActivity {
         textServe= (EditText) findViewById(R.id.textServe);
         textResult= (TextView) findViewById(R.id.textResult);
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
-        setTitle("Add Food");
+        Intent intent= getIntent();
+        title= intent.getStringExtra("title");
+        setTitle(title);
 
 
 
@@ -85,7 +89,7 @@ public class SearchActivity extends AppCompatActivity {
                 ArrayList<FoodEntity> itemsArrayList = new ArrayList<FoodEntity>(response.body().getFood());
                 for (FoodEntity item : itemsArrayList) {
                     totalServing= item.getServing_size_g()/(serving);
-                    food= new FoodEntity(content, serving, calculateGrams(item.getCalories()), calculateGrams(item.getProtein_g()), calculateGrams(item.getCarbohydrates_total_g()), calculateGrams(item.getSugar_g()), calculateGrams(item.getFiber_g()), calculateGrams(item.getSodium_mg()), calculateGrams(item.getPotassium_mg()), calculateGrams(item.getFat_saturated_g()), calculateGrams(item.getFat_total_g()), calculateGrams(item.getCholesterol_mg()));
+                    food= new FoodEntity(content, title, serving, calculateGrams(item.getCalories()), calculateGrams(item.getProtein_g()), calculateGrams(item.getCarbohydrates_total_g()), calculateGrams(item.getSugar_g()), calculateGrams(item.getFiber_g()), calculateGrams(item.getSodium_mg()), calculateGrams(item.getPotassium_mg()), calculateGrams(item.getFat_saturated_g()), calculateGrams(item.getFat_total_g()), calculateGrams(item.getCholesterol_mg()));
                     displayResults(food);
                 }
                 return;

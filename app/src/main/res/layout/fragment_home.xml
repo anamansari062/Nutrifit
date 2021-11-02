@@ -6,6 +6,7 @@
     tools:context=".ui.home.HomeFragment"
     android:orientation="vertical">
     <RelativeLayout
+        android:id="@+id/relative_today"
         android:layout_width="match_parent"
         android:layout_height="110dp">
         <View
@@ -15,17 +16,19 @@
             android:layout_marginStart="300dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/ellipse_21" />
+
         <TextView
-            android:layout_width="72dp"
-            android:layout_height="30dp"
+            android:id="@+id/textCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="304dp"
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="Calories"
+            android:textAppearance="@style/today"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:textAppearance="@style/today" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/today"
