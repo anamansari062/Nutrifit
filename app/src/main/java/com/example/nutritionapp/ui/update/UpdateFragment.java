@@ -166,17 +166,21 @@ public class UpdateFragment extends Fragment {
         mdecrementage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                age-=1;
-                age2=String.valueOf(age);
-                mcurrentage.setText(age2);
+                if(age>0) {
+                    age -= 1;
+                    age2 = String.valueOf(age);
+                    mcurrentage.setText(age2);
+                }
             }
         });
         mdecrementweight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                weight-=1;
-                weight2=String.valueOf(weight);
-                mcurrentweight.setText(weight2);
+                if(weight>0) {
+                    weight -= 1;
+                    weight2 = String.valueOf(weight);
+                    mcurrentweight.setText(weight2);
+                }
             }
         });
 
