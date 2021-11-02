@@ -10,6 +10,7 @@ public class FoodEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String foodName;
+    private String foodType;
     private Float serving_size_g;
     private Float calories;
     private Float protein_g;
@@ -22,8 +23,9 @@ public class FoodEntity {
     private Float fat_total_g;
     private Float cholesterol_mg;
 
-    public FoodEntity(String foodName, Float serving_size_g, Float calories, Float protein_g, Float carbohydrates_total_g, Float sugar_g, Float fiber_g, Float sodium_mg, Float potassium_mg, Float fat_saturated_g, Float fat_total_g, Float cholesterol_mg) {
+    public FoodEntity(String foodName, String foodType, Float serving_size_g, Float calories, Float protein_g, Float carbohydrates_total_g, Float sugar_g, Float fiber_g, Float sodium_mg, Float potassium_mg, Float fat_saturated_g, Float fat_total_g, Float cholesterol_mg) {
         this.foodName = foodName;
+        this.foodType= foodType;
         this.serving_size_g = serving_size_g;
         this.calories = calories;
         this.protein_g = protein_g;
@@ -47,6 +49,10 @@ public class FoodEntity {
 
     public String getFoodName() {
         return foodName;
+    }
+
+    public String getFoodType() {
+        return foodType;
     }
 
     public Float getServing_size_g() {

@@ -19,8 +19,13 @@
         <item name="android:windowFullscreen">true</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="today">
+    <item name="android:textColor">
+        #000000
+    </item>
+    </style>
 
     <style name="Theme.NutritionApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="Theme.NutritionApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

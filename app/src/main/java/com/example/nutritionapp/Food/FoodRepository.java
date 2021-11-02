@@ -11,12 +11,19 @@ import java.util.List;
 
 public class FoodRepository {
     private FoodDao foodDao;
-    private LiveData<List<FoodEntity>> allFoods;
+    private LiveData<List<FoodEntity>> allFoods, allBreakfast, allLunch, allSnacks, allDinner;
+    private LiveData<Float> totalTodayCalories, totalBreakfastCalories;
 
     public FoodRepository(Application application) {
         FoodDatabase database = FoodDatabase.getInstance(application);
         foodDao = database.foodDao();
         allFoods = foodDao.getAllFoodData();
+        allBreakfast= foodDao.getBreakfastData();
+        allLunch= foodDao.getLunchData();
+        allSnacks= foodDao.getSnacksData();
+        allDinner= foodDao.getDinnerData();
+        totalTodayCalories= foodDao.getTotalTodayCalories();
+//        totalBreakfastCalories= foodDao.getBreakfastCalories();
     }
 
     public void insert(FoodEntity food) {
@@ -35,6 +42,22 @@ public class FoodRepository {
     public LiveData<List<FoodEntity>> getAllFoodData() {
         return allFoods;
     }
+
+    public  LiveData<List<FoodEntity>> getBreakfastData(){return allBreakfast; }
+
+    public LiveData<List<FoodEntity>> getAllLunch(){return allLunch;}
+
+    public LiveData<List<FoodEntity>> getAllSnacks(){return allSnacks;}
+
+    public LiveData<List<FoodEntity>> getAllDinner(){return  allDinner;}
+
+    public LiveData<Float> getTotalTodayCalories(){
+        return totalTodayCalories;
+    }
+//
+//    public Float getBreakfastCalories(){
+//        return totalBreakfastCalories;
+//    }
 
     private static class InsertFoodAsyncTask extends AsyncTask<FoodEntity, Void, Void> {
         private FoodDao foodDao;
