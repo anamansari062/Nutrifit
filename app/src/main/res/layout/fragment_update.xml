@@ -50,7 +50,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@id/centerverticalline"
-        android:background="@drawable/malefemalefocus">
+        android:background="@drawable/malefemalenotfocus">
 
         <ImageView
             android:layout_width="150px"
@@ -365,14 +365,14 @@
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/fragment_update_UpdateBtn"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="20dp">
 
         <Spinner
             android:id="@+id/fragment_update_spinner1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/default_background"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             >
 
         </Spinner>
@@ -385,7 +385,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="55dp"
         android:text="Update"
         android:textSize="15sp">
 

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable/corners.xml" value="0.36875" />
         <entry key="app/src/main/res/drawable/ic_baseline_expand_more_24.xml" value="0.36875" />
         <entry key="app/src/main/res/layout/activity_display_food.xml" value="0.3269927536231884" />
@@ -16,4 +17,10 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+=======
+        <entry key="..\:/Users/ishir/AndroidProjects/NutritionApp/app/src/main/res/layout/fragment_update.xml" value="0.23229166666666667" />
+      </map>
+    </option>
+  </component>
+>>>>>>> origin/master
 </project>
