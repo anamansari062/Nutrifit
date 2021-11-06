@@ -52,7 +52,7 @@ public class SearchActivity extends AppCompatActivity {
         buttonSearch = (Button) findViewById(R.id.buttonSearch);
         Intent intent= getIntent();
         title= intent.getStringExtra("title");
-        setTitle(title);
+        setTitle("Add " + title);
 
 
 
