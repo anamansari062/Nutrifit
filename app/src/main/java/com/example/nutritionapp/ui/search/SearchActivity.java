@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutritionapp.Food.FoodEntity;
@@ -20,6 +22,7 @@ import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.Json.JsonObject;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.interfaces.JsonPlaceHolderApi;
+import com.example.nutritionapp.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 
@@ -118,29 +121,29 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menuAddItem:
-                saveItem(food);
+        if (item.getItemId() == R.id.menuAddItem) {
+            if(saveItem(food)) {
+                Fragment fragment = new HomeFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment_content_main, fragment).commit();
                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            }
         }
+        return super.onOptionsItemSelected(item);
     }
 
     public void displayResults(FoodEntity food){
         textResult.setText(food.getFoodName());
-        return;
-
     }
 
-    private void saveItem(FoodEntity food) {
+    private boolean saveItem(FoodEntity food) {
         if(textResult.getText().toString().length()==0){
             Toast.makeText(this, "Please search the item first", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
         foodViewModel.insert(food);
         Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
-        return;
+        return true;
 
     }
 
