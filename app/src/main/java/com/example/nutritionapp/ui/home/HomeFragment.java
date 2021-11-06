@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //To display breakfast list below using cardview
+        //To display breakfast list using cardview
 
         cardBreakfast= root.findViewById(R.id.base_breakfast);
         fixedBreakfast= root.findViewById(R.id.fixed_breakfast);
