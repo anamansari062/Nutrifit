@@ -60,7 +60,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     public  class HomeViewHolder extends RecyclerView.ViewHolder {
         private TextView mealType,mealCalories;
-        private ImageButton addMeal;
+        private ImageButton addMeal,showListMeal;
         private ImageView mealImage;
 
 
@@ -71,7 +71,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             mealCalories =  itemView.findViewById(R.id.home_recycler_meal_calories);
             mealImage =  itemView.findViewById(R.id.home_recycler_meal_image);
             addMeal =  itemView.findViewById(R.id.home_recycler_meal_add);
-
+            showListMeal = itemView.findViewById(R.id.home_recycler_meal_show_list);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

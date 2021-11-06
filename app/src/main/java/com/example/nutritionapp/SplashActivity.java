@@ -18,6 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         Thread td= new Thread(){
             public void run(){
                 try {
+                    // TODO change the time later as it takes alot of time to go to home fragment
                     sleep(3000);
                 }catch (Exception e){
                     e.printStackTrace();
