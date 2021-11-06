@@ -53,6 +53,20 @@
             android:textAppearance="@style/today"
             android:textSize="20sp"
             android:translationY="-0.52sp" />
+
+    <RelativeLayout android:id="@+id/home_recycler_meal_show_list_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageButton
+            android:id="@+id/home_recycler_meal_show_list"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+    </RelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"

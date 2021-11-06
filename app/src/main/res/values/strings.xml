@@ -46,4 +46,8 @@
     <string name="Breakfast">Breakfast</string>
     <string name="bottom_nav_home">Home</string>
     <string name="bottom_nav_dashboard">Dashboard</string>
+    <string name="home_breakfast">Breakfast</string>
+    <string name="home_lunch">Lunch</string>
+    <string name="home_snacks">Snacks</string>
+    <string name="home_dinner">dinner</string>
 </resources>

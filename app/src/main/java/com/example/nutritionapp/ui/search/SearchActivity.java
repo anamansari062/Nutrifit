@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.nutritionapp.Food.FoodEntity;
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.Json.JsonObject;
+import com.example.nutritionapp.MainActivity;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.interfaces.JsonPlaceHolderApi;
 import com.example.nutritionapp.ui.home.HomeFragment;
@@ -123,9 +124,7 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuAddItem) {
             if(saveItem(food)) {
-                Fragment fragment = new HomeFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment_content_main, fragment).commit();
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();
                 return true;
             }
         }
