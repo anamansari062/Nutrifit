@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
         final DisplayFoodAdapter adapterBreakfast = new DisplayFoodAdapter();
         recyclerBreakfast.setAdapter(adapterBreakfast);
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        foodViewModel.getAllFoodData().observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
+        foodViewModel.getAllBreakfast().observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
         fixedBreakfast.setOnClickListener(view -> {
             if (hiddenBreakfast.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardBreakfast,
