@@ -25,7 +25,11 @@ import com.example.nutritionapp.R;
 import com.example.nutritionapp.interfaces.JsonPlaceHolderApi;
 import com.example.nutritionapp.ui.home.HomeFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,6 +61,7 @@ public class SearchActivity extends AppCompatActivity {
         Intent intent= getIntent();
         title= intent.getStringExtra("title");
         setTitle("Add " + title);
+
 
 
 
@@ -93,7 +98,8 @@ public class SearchActivity extends AppCompatActivity {
                 ArrayList<FoodEntity> itemsArrayList = new ArrayList<FoodEntity>(response.body().getFood());
                 for (FoodEntity item : itemsArrayList) {
                     totalServing= item.getServing_size_g()/(serving);
-                    food= new FoodEntity(content, title, serving, calculateGrams(item.getCalories()), calculateGrams(item.getProtein_g()), calculateGrams(item.getCarbohydrates_total_g()), calculateGrams(item.getSugar_g()), calculateGrams(item.getFiber_g()), calculateGrams(item.getSodium_mg()), calculateGrams(item.getPotassium_mg()), calculateGrams(item.getFat_saturated_g()), calculateGrams(item.getFat_total_g()), calculateGrams(item.getCholesterol_mg()));
+                    Date date = Calendar.getInstance().getTime();
+                    food= new FoodEntity(date , content, title, serving, calculateGrams(item.getCalories()), calculateGrams(item.getProtein_g()), calculateGrams(item.getCarbohydrates_total_g()), calculateGrams(item.getSugar_g()), calculateGrams(item.getFiber_g()), calculateGrams(item.getSodium_mg()), calculateGrams(item.getPotassium_mg()), calculateGrams(item.getFat_saturated_g()), calculateGrams(item.getFat_total_g()), calculateGrams(item.getCholesterol_mg()));
                     displayResults(food);
                 }
                 return;

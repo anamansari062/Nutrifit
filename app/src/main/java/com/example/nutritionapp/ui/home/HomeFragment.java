@@ -54,6 +54,8 @@ public class HomeFragment extends Fragment {
         snacksAdd= root.findViewById(R.id.home_snacks_add);
         dinnerAdd= root.findViewById(R.id.home_dinner_add);
 
+        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
+
         //To intent to search activity
 
         breakfastAdd.setOnClickListener(view -> {
@@ -82,8 +84,22 @@ public class HomeFragment extends Fragment {
 
 
         //To display all food list & calories
-
         totalCalories = root.findViewById(R.id.total_calories);
+        foodViewModel.getTotalTodayCalories().observe(getViewLifecycleOwner(), Float -> setTotalCalories(Float));
+
+        breakfastCalories = root.findViewById(R.id.home_breakfast_calories);
+        foodViewModel.getTotalBreakfastCalories().observe(getViewLifecycleOwner(), Float -> setBreakfastCalories(Float));
+
+        lunchCalories = root.findViewById(R.id.home_lunch_calories);
+        foodViewModel.getTotalLunchCalories().observe(getViewLifecycleOwner(), Float -> setLunchCalories(Float));
+
+        snacksCalories = root.findViewById(R.id.home_snacks_calories);
+        foodViewModel.getTotalSnacksCalories().observe(getViewLifecycleOwner(), Float -> setSnacksCalories(Float));
+
+        dinnerCalories = root.findViewById(R.id.home_dinner_calories);
+        foodViewModel.getTotalDinnerCalories().observe(getViewLifecycleOwner(), Float -> setDinnerCalories(Float));
+
+
         relativeToday= root.findViewById(R.id.relative_today);
         relativeToday.setOnClickListener(view -> {
             Intent intent= new Intent(root.getContext(), DisplayFood.class);
@@ -104,7 +120,6 @@ public class HomeFragment extends Fragment {
 
         final DisplayFoodAdapter adapterBreakfast = new DisplayFoodAdapter();
         recyclerBreakfast.setAdapter(adapterBreakfast);
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         foodViewModel.getAllBreakfast().observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
         showListBreakfast.setOnClickListener(view -> {
             if (hiddenBreakfast.getVisibility() == View.VISIBLE) {
@@ -136,7 +151,6 @@ public class HomeFragment extends Fragment {
 
         final DisplayFoodAdapter adapterLunch = new DisplayFoodAdapter();
         recyclerLunch.setAdapter(adapterLunch);
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         foodViewModel.getAllLunch().observe(getViewLifecycleOwner(), adapterLunch::setFoods);
         showListLunch.setOnClickListener(view -> {
             if (hiddenLunch.getVisibility() == View.VISIBLE) {
@@ -168,7 +182,6 @@ public class HomeFragment extends Fragment {
 
         final DisplayFoodAdapter adapterSnacks = new DisplayFoodAdapter();
         recyclerSnacks.setAdapter(adapterSnacks);
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         foodViewModel.getAllSnacks().observe(getViewLifecycleOwner(), adapterSnacks::setFoods);
         showListSnacks.setOnClickListener(view -> {
             if (hiddenSnacks.getVisibility() == View.VISIBLE) {
@@ -200,7 +213,6 @@ public class HomeFragment extends Fragment {
 
         final DisplayFoodAdapter adapterDinner = new DisplayFoodAdapter();
         recyclerDinner.setAdapter(adapterDinner);
-        foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         foodViewModel.getAllDinner().observe(getViewLifecycleOwner(), adapterDinner::setFoods);
         showListDinner.setOnClickListener(view -> {
             if (hiddenDinner.getVisibility() == View.VISIBLE) {
@@ -217,6 +229,41 @@ public class HomeFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    private void setDinnerCalories(Float calories) {
+        if(calories== null)
+            dinnerCalories.setText("0");
+        else
+            dinnerCalories.setText(calories.toString());
+    }
+
+    private void setSnacksCalories(Float calories) {
+        if(calories== null)
+            snacksCalories.setText("0");
+        else
+            snacksCalories.setText(calories.toString());
+    }
+
+    private void setLunchCalories(Float calories) {
+        if(calories== null)
+            lunchCalories.setText("0");
+        else
+            lunchCalories.setText(calories.toString());
+    }
+
+    private void setBreakfastCalories(Float calories) {
+        if(calories== null)
+            breakfastCalories.setText("0");
+        else
+            breakfastCalories.setText(calories.toString());
+    }
+
+    private void setTotalCalories(Object calories) {
+        if(calories== null)
+            totalCalories.setText("0");
+        else
+            totalCalories.setText(calories.toString());
     }
 
     @Override

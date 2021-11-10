@@ -97,6 +97,7 @@
                     <RelativeLayout android:id="@+id/home_breakfast_text_layout"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
+
                         <TextView
                             android:id="@+id/home_breakfast"
                             android:layout_width="wrap_content"
@@ -150,7 +151,8 @@
 
                         <!-- This is for onClick after which list will be displayed-->
 
-                        <RelativeLayout android:id="@+id/show_breakfast_list_layout"
+                        <RelativeLayout
+                            android:id="@+id/show_breakfast_list_layout"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class FoodRepository {
     private FoodDao foodDao;
     private LiveData<List<FoodEntity>> allFoods, allBreakfast, allLunch, allSnacks, allDinner;
-    private LiveData<Float> totalTodayCalories, totalBreakfastCalories;
+    private LiveData<Float> totalTodayCalories, totalBreakfastCalories, totalLunchCalories, totalSnacksCalories, totalDinnerCalories, totalProtein, totalSugar, totalFiber, totalFat, totalFatSat, totalCarb, totalPotassium, totalCholesterol, totalSodium;
 
     public FoodRepository(Application application) {
         FoodDatabase database = FoodDatabase.getInstance(application);
@@ -23,7 +23,19 @@ public class FoodRepository {
         allSnacks= foodDao.getSnacksData();
         allDinner= foodDao.getDinnerData();
         totalTodayCalories= foodDao.getTotalTodayCalories();
-//        totalBreakfastCalories= foodDao.getBreakfastCalories();
+        totalBreakfastCalories= foodDao.getBreakfastCalories();
+        totalLunchCalories= foodDao.getLunchCalories();
+        totalSnacksCalories= foodDao.getSnacksCalories();
+        totalDinnerCalories= foodDao.getDinnerCalories();
+        totalProtein= foodDao.getTotalProtein();
+        totalCarb= foodDao.getTotalCarb();
+        totalFiber= foodDao.getTotalFiber();
+        totalFat= foodDao.getTotalFat();
+        totalFatSat= foodDao.getTotalFatSat();
+        totalSugar= foodDao.getTotalSugar();
+        totalSodium= foodDao.getTotalSodium();
+        totalPotassium= foodDao.getTotalPotassium();
+        totalCholesterol= foodDao.getTotalCholesterol();
     }
 
     public void insert(FoodEntity food) {
@@ -54,11 +66,58 @@ public class FoodRepository {
     public LiveData<Float> getTotalTodayCalories(){
         return totalTodayCalories;
     }
-//
-//    public Float getBreakfastCalories(){
-//        return totalBreakfastCalories;
-//    }
 
+    public LiveData<Float> getTotalBreakfastCalories(){
+        return totalBreakfastCalories;
+    }
+
+    public LiveData<Float> getTotalProtein(){
+        return totalProtein;
+    }
+
+    public LiveData<Float> getTotalSugar(){
+        return totalSugar;
+    }
+
+    public LiveData<Float> getTotalFiber(){
+        return totalFiber;
+    }
+
+    public LiveData<Float> getTotalFat(){
+        return totalFat;
+    }
+
+    public LiveData<Float> getTotalFatSat(){
+        return totalFatSat;
+    }
+
+    public LiveData<Float> getTotalCarb(){
+        return totalCarb;
+    }
+
+    public LiveData<Float> getTotalPotassium(){
+        return totalPotassium;
+    }
+
+    public LiveData<Float> getTotalCholesterol(){
+        return totalCholesterol;
+    }
+
+    public LiveData<Float> getTotalSodium(){
+        return totalSodium;
+    }
+
+    public LiveData<Float> getTotalLunchCalories(){
+        return totalLunchCalories;
+    }
+
+    public LiveData<Float> getTotalSnacksCalories(){
+        return totalSnacksCalories;
+    }
+
+    public LiveData<Float> getTotalDinnerCalories(){
+        return totalDinnerCalories;
+    }
     private static class InsertFoodAsyncTask extends AsyncTask<FoodEntity, Void, Void> {
         private FoodDao foodDao;
 
