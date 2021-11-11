@@ -9,16 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.example.nutritionapp.ui.about.AboutFragment;
-import com.example.nutritionapp.ui.blog.BlogFragment;
-import com.example.nutritionapp.ui.home.HomeFragment;
-import com.example.nutritionapp.ui.search.SearchActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -60,21 +52,19 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_logout:
-                Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("key", 0);
-                editor.apply();
+        if (item.getItemId() == R.id.action_logout) {
+            Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("key", 0);
+            editor.apply();
 
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
 
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
     @Override
     public boolean onSupportNavigateUp() {

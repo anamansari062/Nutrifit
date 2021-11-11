@@ -18,20 +18,20 @@ public class FoodEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @TypeConverters(DataConverter.class)
-    private Date date;
-    private String foodName;
-    private String foodType;
-    private Float serving_size_g;
-    private Float calories;
-    private Float protein_g;
-    private Float carbohydrates_total_g;
-    private Float sugar_g;
-    private Float fiber_g;
-    private Float sodium_mg;
-    private Float potassium_mg;
-    private Float fat_saturated_g;
-    private Float fat_total_g;
-    private Float cholesterol_mg;
+    private final Date date;
+    private final String foodName;
+    private final String foodType;
+    private final Float serving_size_g;
+    private final Float calories;
+    private final Float protein_g;
+    private final Float carbohydrates_total_g;
+    private final Float sugar_g;
+    private final Float fiber_g;
+    private final Float sodium_mg;
+    private final Float potassium_mg;
+    private final Float fat_saturated_g;
+    private final Float fat_total_g;
+    private final Float cholesterol_mg;
 
     public FoodEntity(Date date, String foodName, String foodType, Float serving_size_g, Float calories, Float protein_g, Float carbohydrates_total_g, Float sugar_g, Float fiber_g, Float sodium_mg, Float potassium_mg, Float fat_saturated_g, Float fat_total_g, Float cholesterol_mg) {
         this.date = date;

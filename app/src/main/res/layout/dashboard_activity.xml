@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/relative_no_meal_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/noMealTracked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="90dp"
+            android:lineSpacingExtra="1sp"
+            android:text="You haven't added any food yet"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/no_meal_tracked_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="60dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Track to get the insights on your nutrient intake"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/start_tracking_meal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="1sp"
+            android:text="START TRACKING"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:translationY="-0.52sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_tracking_meal_button"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            app:icon="@drawable/ic_baseline_arrow_forward_24"
+            app:iconGravity="end"
+            app:iconTint="@color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dashboard_food_analysis_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:id="@+id/dashboard_food_analysis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Food Log Analysis"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/analysis" />
+
+        <TextView
+            android:id="@+id/dashboard_food_analysis_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="43dp"
+            android:lineSpacingExtra="1sp"
+            android:text="See your Daily Calorie and Nutrient intake here"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:translationY="-0.52sp" />
+    </RelativeLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_today_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/dashboard_calorie_intake_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Your Calorie Intake"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_calorie_intake_goal_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_total_calories_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_calorie_intake_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="65dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="20dp"
+            android:background="#D3D3D3" />
+
+        <TextView
+            android:id="@+id/dashboard_big_macronutrients_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="110dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Big macronutrients List"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Protein"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_protein_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="150dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_protein_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="165dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="180dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Carbs"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/carbs" />
+
+        <TextView
+            android:id="@+id/dashboard_carbs_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="180dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_carbs_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="195dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_fats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="210dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Fats"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/fat" />
+
+        <TextView
+            android:id="@+id/dashboard_fats_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="210dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_fats_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_fibre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="240dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Fibre"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/fibre" />
+
+        <TextView
+            android:id="@+id/dashboard_fibre_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="240dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_fibre_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="20dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="290dp"
+            android:layout_marginEnd="20dp"
+            android:background="#D3D3D3" />
+
+        <TextView
+            android:id="@+id/dashboard_small_macronutrients_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="300dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Small macronutrients List"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_sugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="340dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Sugar"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_sugar_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="340dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_sugar_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="355dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_fat_saturated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="370dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Fat Saturated"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_fat_saturated_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="370dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_fat_saturated_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="385dp"
+            android:layout_marginEnd="20dp" />
+
+
+        <TextView
+            android:id="@+id/dashboard_sodium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="400dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Sodium"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_sodium_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="400dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_sodium_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="415dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_cholesterol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="430dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Cholesterol"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_cholesterol_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="430dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_cholesterol_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="445dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/dashboard_potassium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="460dp"
+            android:lineSpacingExtra="1sp"
+            android:text="   Potassium"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_potassium_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_marginTop="460dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <ProgressBar
+            android:id="@+id/progress_potassium_horizontal"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="475dp"
+            android:layout_marginEnd="20dp" />
+    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
+
+
