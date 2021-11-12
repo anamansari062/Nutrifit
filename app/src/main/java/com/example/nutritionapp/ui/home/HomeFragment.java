@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,19 +27,20 @@ import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.adapters.DisplayFoodAdapter;
 import com.example.nutritionapp.databinding.FragmentHomeBinding;
+import com.example.nutritionapp.ui.Dashboard.DashboardActivity;
 import com.example.nutritionapp.ui.search.SearchActivity;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
-    RelativeLayout relativeToday;
+    CardView cardToday;
     FoodViewModel foodViewModel;
     ImageButton breakfastAdd, lunchAdd, snacksAdd, dinnerAdd;
     CardView cardBreakfast,cardLunch,cardSnacks,cardDinner;
     RelativeLayout fixedBreakfast,fixedLunch,fixedSnacks,fixedDinner;
     LinearLayout hiddenBreakfast,hiddenLunch,hiddenSnacks,hiddenDinner;
     RecyclerView recyclerBreakfast,recyclerLunch,recyclerSnacks,recyclerDinner;
-    TextView homeBreakfast,homeLunch,homeSnacks,homeDinner,breakfastCalories,lunchCalories,snacksCalories,dinnerCalories,totalCalories;
-    ImageButton showListBreakfast,showListLunch,showListDinner,showListSnacks;
+    TextView homeBreakfast,homeLunch,homeSnacks,homeDinner,breakfastCalories,lunchCalories,snacksCalories,dinnerCalories,totalCalories,todayInsights;
+    ProgressBar progressBar;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -99,9 +101,11 @@ public class HomeFragment extends Fragment {
         dinnerCalories = root.findViewById(R.id.home_dinner_calories);
         foodViewModel.getTotalDinnerCalories().observe(getViewLifecycleOwner(), Float -> setDinnerCalories(Float));
 
+        progressBar = (ProgressBar) root.findViewById(R.id.progress_bar);
+        foodViewModel.getTotalTodayCalories().observe(getViewLifecycleOwner(), Float -> updateProgressBar(Float));
 
-        relativeToday= root.findViewById(R.id.relative_today);
-        relativeToday.setOnClickListener(view -> {
+        cardToday= root.findViewById(R.id.card_today_home);
+        cardToday.setOnClickListener(view -> {
             Intent intent= new Intent(root.getContext(), DisplayFood.class);
             intent.putExtra("type", "Today");
             startActivity(intent);
@@ -112,7 +116,6 @@ public class HomeFragment extends Fragment {
         fixedBreakfast= root.findViewById(R.id.fixed_breakfast);
         hiddenBreakfast= root.findViewById(R.id.hidden_breakfast);
         homeBreakfast= root.findViewById(R.id.home_breakfast);
-        showListBreakfast= root.findViewById(R.id.show_breakfast_list);
 
         recyclerBreakfast = root.findViewById(R.id.recycler_breakfast);
         recyclerBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -121,15 +124,13 @@ public class HomeFragment extends Fragment {
         final DisplayFoodAdapter adapterBreakfast = new DisplayFoodAdapter();
         recyclerBreakfast.setAdapter(adapterBreakfast);
         foodViewModel.getAllBreakfast().observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
-        showListBreakfast.setOnClickListener(view -> {
+        fixedBreakfast.setOnClickListener(view -> {
             if (hiddenBreakfast.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardBreakfast,
                         new AutoTransition());
-                showListBreakfast.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
                 hiddenBreakfast.setVisibility(View.GONE);
             }
             else {
-                showListBreakfast.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
                 TransitionManager.beginDelayedTransition(cardBreakfast,
                         new AutoTransition());
                 hiddenBreakfast.setVisibility(View.VISIBLE);
@@ -142,7 +143,6 @@ public class HomeFragment extends Fragment {
         fixedLunch= root.findViewById(R.id.fixed_lunch);
         hiddenLunch= root.findViewById(R.id.hidden_lunch);
         homeLunch= root.findViewById(R.id.home_lunch);
-        showListLunch= root.findViewById(R.id.show_lunch_list);
 
         recyclerLunch = root.findViewById(R.id.recycler_lunch);
         recyclerLunch.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -152,15 +152,13 @@ public class HomeFragment extends Fragment {
         final DisplayFoodAdapter adapterLunch = new DisplayFoodAdapter();
         recyclerLunch.setAdapter(adapterLunch);
         foodViewModel.getAllLunch().observe(getViewLifecycleOwner(), adapterLunch::setFoods);
-        showListLunch.setOnClickListener(view -> {
+        fixedLunch.setOnClickListener(view -> {
             if (hiddenLunch.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardLunch,
                         new AutoTransition());
-                showListLunch.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
                 hiddenLunch.setVisibility(View.GONE);
             }
             else {
-                showListLunch.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
                 TransitionManager.beginDelayedTransition(cardLunch,
                         new AutoTransition());
                 hiddenLunch.setVisibility(View.VISIBLE);
@@ -173,7 +171,6 @@ public class HomeFragment extends Fragment {
         fixedSnacks= root.findViewById(R.id.fixed_snacks);
         hiddenSnacks= root.findViewById(R.id.hidden_snacks);
         homeSnacks= root.findViewById(R.id.home_snacks);
-        showListSnacks = root.findViewById(R.id.show_snacks_list);
 
         recyclerSnacks = root.findViewById(R.id.recycler_snacks);
         recyclerSnacks.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -183,15 +180,13 @@ public class HomeFragment extends Fragment {
         final DisplayFoodAdapter adapterSnacks = new DisplayFoodAdapter();
         recyclerSnacks.setAdapter(adapterSnacks);
         foodViewModel.getAllSnacks().observe(getViewLifecycleOwner(), adapterSnacks::setFoods);
-        showListSnacks.setOnClickListener(view -> {
+        fixedSnacks.setOnClickListener(view -> {
             if (hiddenSnacks.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardSnacks,
                         new AutoTransition());
-                showListSnacks.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
                 hiddenSnacks.setVisibility(View.GONE);
             }
             else {
-                showListSnacks.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
                 TransitionManager.beginDelayedTransition(cardSnacks,
                         new AutoTransition());
                 hiddenSnacks.setVisibility(View.VISIBLE);
@@ -204,7 +199,6 @@ public class HomeFragment extends Fragment {
         fixedDinner= root.findViewById(R.id.fixed_dinner);
         hiddenDinner= root.findViewById(R.id.hidden_dinner);
         homeDinner= root.findViewById(R.id.home_dinner);
-        showListDinner= root.findViewById(R.id.show_dinner_list);
 
         recyclerDinner = root.findViewById(R.id.recycler_dinner);
         recyclerDinner.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -214,61 +208,85 @@ public class HomeFragment extends Fragment {
         final DisplayFoodAdapter adapterDinner = new DisplayFoodAdapter();
         recyclerDinner.setAdapter(adapterDinner);
         foodViewModel.getAllDinner().observe(getViewLifecycleOwner(), adapterDinner::setFoods);
-        showListDinner.setOnClickListener(view -> {
+        fixedDinner.setOnClickListener(view -> {
             if (hiddenDinner.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardDinner,
                         new AutoTransition());
-                showListDinner.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
                 hiddenDinner.setVisibility(View.GONE);
             }
             else {
-                showListDinner.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
                 TransitionManager.beginDelayedTransition(cardDinner,
                         new AutoTransition());
                 hiddenDinner.setVisibility(View.VISIBLE);
             }
         });
+
+        todayInsights = root.findViewById(R.id.today_insights);
+
+        todayInsights.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            startActivity(intent);
+        });
+
         return root;
     }
 
     private void setDinnerCalories(Float calories) {
-        if(calories== null)
-            dinnerCalories.setText("0");
-        else
+        if(calories!= null)
             dinnerCalories.setText(calories.toString());
+//            dinnerCalories.setText("0");
+//        else
+
     }
 
     private void setSnacksCalories(Float calories) {
-        if(calories== null)
-            snacksCalories.setText("0");
-        else
+        if(calories!= null)
             snacksCalories.setText(calories.toString());
+//            snacksCalories.setText("0");
+//        else
+
     }
 
     private void setLunchCalories(Float calories) {
-        if(calories== null)
-            lunchCalories.setText("0");
-        else
+        if(calories!= null)
             lunchCalories.setText(calories.toString());
+//            lunchCalories.setText("0");
+//        else
+
     }
 
     private void setBreakfastCalories(Float calories) {
-        if(calories== null)
-            breakfastCalories.setText("0");
-        else
+        if(calories!= null)
             breakfastCalories.setText(calories.toString());
+//            breakfastCalories.setText("0");
+//        else
+
     }
 
     private void setTotalCalories(Object calories) {
-        if(calories== null)
-            totalCalories.setText("0");
-        else
-            totalCalories.setText(calories.toString());
-    }
+        if(calories!= null)
+            totalCalories.setText(String.format("%sCal", calories.toString()));
+        }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void updateProgressBar(Object calories) {
+        if (calories != null) {
+            float totalCaloriesEaten = (Float) calories;
+            int calorieGoal = 800;
+
+            if (calorieGoal > totalCaloriesEaten)
+                progressBar.setProgress((int) ((totalCaloriesEaten / calorieGoal) * 100));
+            else
+                progressBar.setProgress(100);
+        }
+        else{
+            progressBar.setProgress(0);
+            totalCalories.setText("0Cal");
+        }
     }
 }

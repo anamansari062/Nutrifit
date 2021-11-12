@@ -50,4 +50,6 @@
     <string name="home_lunch">Lunch</string>
     <string name="home_snacks">Snacks</string>
     <string name="home_dinner">dinner</string>
+    <string name="NoFoodEatenHomeFragment">No Food Added yet!</string>
+    <string name="today_insights">Click here to see the insights</string>
 </resources>

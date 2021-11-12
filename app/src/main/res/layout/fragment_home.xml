@@ -8,30 +8,16 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <RelativeLayout
-        android:id="@+id/relative_today"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_today_home"
         android:layout_width="match_parent"
-        android:layout_height="110dp">
-<!--        <View-->
-<!--            android:id="@+id/ellipse_21"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:layout_marginStart="300dp"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:background="@drawable/ellipse_21" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textCalories"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="304dp"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Calories"-->
-<!--            android:textAppearance="@style/today"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="15sp"-->
-<!--            android:textStyle="bold" />-->
+        android:layout_height="150dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardMaxElevation="3dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
         <TextView
             android:id="@+id/today"
@@ -47,19 +33,49 @@
             android:textSize="20sp"
             android:translationY="-0.52sp" />
         <TextView
-            android:id="@+id/total_calories"
+            android:id="@+id/today_insights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="50dp"
             android:lineSpacingExtra="1sp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="300dp"
-            android:text=""
+            android:text="@string/today_insights"
             android:textAppearance="@style/today"
-            android:textSize="20sp"
-            android:translationY="-0.52sp" />
+            android:textSize="15sp"
+            android:translationY="-0.52sp"
+            android:clickable="true"
+            android:focusable="true" />
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="250dp">
 
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@style/CircularDeterminateProgressBar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:max="100"
+                tools:progress="0" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/total_calories"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:lineSpacingExtra="1sp"
+                android:text=""
+                android:textAppearance="@style/today"
+                android:textSize="15sp"
+                android:translationY="-0.52sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -74,7 +90,13 @@
                 android:id="@+id/base_breakfast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/white"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -90,10 +112,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
                     <RelativeLayout android:id="@+id/home_breakfast_text_layout"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
@@ -120,21 +142,24 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="352dp"
+                            android:layout_marginStart="330dp"
                             android:layout_marginTop="30dp"
                             android:background="@drawable/ic_plus_icon" />
                     </RelativeLayout>
-                    <RelativeLayout android:id="@+id/home_breakfast_image_layout"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-                        <ImageView
-                            android:id="@+id/home_breakfast_image"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/breakfast" />
-                    </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/home_breakfast_image_layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+
+                            <ImageView
+                                android:id="@+id/home_breakfast_image"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
+                                android:src="@drawable/breakfast" />
+                        </RelativeLayout>
                         <TextView
                             android:id="@+id/home_breakfast_calories"
                             android:layout_width="wrap_content"
@@ -149,26 +174,12 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-                        <!-- This is for onClick after which list will be displayed-->
 
-                        <RelativeLayout
-                            android:id="@+id/show_breakfast_list_layout"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
 
-                            <ImageButton
-                                android:id="@+id/show_breakfast_list"
-                                android:layout_width="38dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="70dp"
-                                android:background="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                        </RelativeLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
 
                     </RelativeLayout>
 
@@ -198,7 +209,13 @@
                 android:id="@+id/base_lunch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/white"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -214,10 +231,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
 
                         <RelativeLayout android:id="@+id/home_lunch_text_layout"
                             android:layout_width="fill_parent"
@@ -244,19 +261,22 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="352dp"
+                                android:layout_marginStart="330dp"
                                 android:layout_marginTop="30dp"
                                 android:background="@drawable/ic_plus_icon" />
                         </RelativeLayout>
-                        <RelativeLayout android:id="@+id/home_lunch_image_layout"
+
+                        <RelativeLayout
+                            android:id="@+id/home_lunch_image_layout"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
+
                             <ImageView
                                 android:id="@+id/home_lunch_image"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:layout_marginStart="8dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
                                 android:src="@drawable/lunch" />
                         </RelativeLayout>
 
@@ -274,26 +294,10 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-                        <!-- This is for onClick after which list will be displayed-->
-
-                        <RelativeLayout android:id="@+id/show_lunch_list_layout"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
-
-                            <ImageButton
-                                android:id="@+id/show_lunch_list"
-                                android:layout_width="38dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="70dp"
-                                android:background="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                        </RelativeLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
 
                     </RelativeLayout>
 
@@ -323,7 +327,13 @@
                 android:id="@+id/base_snacks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/white"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -339,10 +349,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
 
                         <RelativeLayout android:id="@+id/home_snacks_text_layout"
                             android:layout_width="fill_parent"
@@ -369,19 +379,22 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="352dp"
+                                android:layout_marginStart="330dp"
                                 android:layout_marginTop="30dp"
                                 android:background="@drawable/ic_plus_icon" />
                         </RelativeLayout>
-                        <RelativeLayout android:id="@+id/home_snacks_image_layout"
+
+                        <RelativeLayout
+                            android:id="@+id/home_snacks_image_layout"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
+
                             <ImageView
                                 android:id="@+id/home_snacks_image"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:layout_marginStart="8dp"
                                 android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
                                 android:src="@drawable/snacks" />
                         </RelativeLayout>
 
@@ -399,26 +412,10 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
-                        <!-- This is for onClick after which list will be displayed-->
-
-                        <RelativeLayout
-                            android:id="@+id/show_snacks_list_layout"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
-
-                            <ImageButton
-                                android:id="@+id/show_snacks_list"
-                                android:layout_width="38dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="70dp"
-                                android:background="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                        </RelativeLayout>
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
                     </RelativeLayout>
 
                     <!--This is display one which is hidden-->
@@ -445,7 +442,13 @@
                 android:id="@+id/base_dinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:background="@color/white"
+                app:cardElevation="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardMaxElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -461,10 +464,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
 
                         <RelativeLayout android:id="@+id/home_dinner_text_layout"
                             android:layout_width="fill_parent"
@@ -491,7 +494,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="352dp"
+                                android:layout_marginStart="330dp"
                                 android:layout_marginTop="30dp"
                                 android:background="@drawable/ic_plus_icon" />
                         </RelativeLayout>
@@ -520,25 +523,11 @@
                             android:textAppearance="@style/today"
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
-                        <!-- This is for onClick after which list will be displayed-->
 
-                        <RelativeLayout android:id="@+id/show_dinner_list_layout"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
-
-                            <ImageButton
-                                android:id="@+id/show_dinner_list"
-                                android:layout_width="38dp"
-                                android:layout_height="wrap_content"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="70dp"
-                                android:background="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                        </RelativeLayout>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
+<!--                        <View-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:background="#000000" />-->
 
                     </RelativeLayout>
 
@@ -561,12 +550,10 @@
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000000" />
+y
 
         </LinearLayout>
     </ScrollView>
+
 
 </LinearLayout>

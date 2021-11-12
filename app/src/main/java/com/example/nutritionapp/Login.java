@@ -170,8 +170,8 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        catch (ApiException exp){
-
+        catch (ApiException exp) {
+            exp.printStackTrace();
         }
 
 
