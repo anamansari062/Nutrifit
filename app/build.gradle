@@ -64,4 +64,5 @@ dependencies {
 
 
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
 }
