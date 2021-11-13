@@ -30,41 +30,86 @@
         <EditText
             android:id="@+id/Name"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/bg"
-            android:hint="Name"
-
             android:gravity="center"
+
+            android:hint="Name"
             android:imeOptions="actionNext"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/Email"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/bg"
-            android:hint="Email"
             android:gravity="center"
+            android:hint="Email"
             android:imeOptions="actionNext"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg"
+            android:gravity="center"
+            android:hint="Mobile Number"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/Height"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg"
+            android:gravity="center"
+            android:hint="Height in cm"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:textColor="@color/yellow"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/Weight"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg"
+            android:gravity="center"
+            android:hint="Weight in kg"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:textColor="@color/yellow"
+            android:textSize="24sp" />
+
+        <EditText
+           android:id="@+id/age"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/bg"
-            android:hint="Mobile Number"
+            android:hint=" age"
             android:inputType="number"
             android:gravity="center"
             android:imeOptions="actionNext"
@@ -85,6 +130,8 @@
             android:imeOptions="actionNext"
             android:textColor="@color/black"
             android:textSize="24sp"/>
+
+
 
         <EditText
             android:id="@+id/cmpasswd"

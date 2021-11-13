@@ -23,9 +23,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class Register1 extends AppCompatActivity implements OnClickListener {
     private Button register1;
-    private EditText name, email, mobile, passwd, cmpasswd;
+    private EditText name, email, mobile, passwd, cmpasswd,height,weight,age;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
@@ -40,6 +42,9 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         email = (EditText) findViewById(R.id.Email);
         mobile = (EditText) findViewById(R.id.mobile);
         passwd = (EditText) findViewById(R.id.Password);
+        height = (EditText) findViewById(R.id.Height);
+        weight = (EditText) findViewById(R.id.Weight);
+        age = (EditText) findViewById(R.id.age);
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
         cmpasswd=findViewById(R.id.cmpasswd);
 
@@ -61,6 +66,10 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         String Mobile = mobile.getText().toString().trim();
         String Password = passwd.getText().toString().trim();
         String cPassword = cmpasswd.getText().toString().trim();
+        String Height = height.getText().toString().trim();
+        String Weight = weight.getText().toString().trim();
+        String Age = age.getText().toString().trim();
+
 
 
         if (Name.isEmpty()) {
@@ -71,6 +80,21 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         if (Email.isEmpty()) {
             email.setError("Email is required");
             email.requestFocus();
+            return;
+        }
+        if (Height.isEmpty()) {
+            height.setError("Height is required");
+            height.requestFocus();
+            return;
+        }
+        if (Weight.isEmpty()) {
+            weight.setError("Weight is required");
+            weight.requestFocus();
+            return;
+        }
+        if (Age.isEmpty()) {
+            age.setError("Age is required");
+            age.requestFocus();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
@@ -114,11 +138,19 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     Toast.makeText(Register1.this,"failed",Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            User user=new User(Name, Email, Mobile);
+                            HashMap<String,Object> map=new HashMap<>();
+                            map.put("name",Name);
+                            map.put("email",Email);
+                            map.put("mobile",Mobile);
+                            map.put("password",Password);
+                            map.put("id",mAuth.getCurrentUser().getUid());
+                            map.put("height",Height);
+                            map.put("weight",Weight);
+                            map.put("age",Age);
 
                             FirebaseDatabase.getInstance().getReference("USERS")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
