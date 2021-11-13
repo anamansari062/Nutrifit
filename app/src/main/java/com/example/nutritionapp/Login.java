@@ -112,7 +112,7 @@ public class Login extends AppCompatActivity {
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putInt("key", autosave);
                                     editor.apply();
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    Intent intent = new Intent(Login.this, ViewPagerMain.class);
                                     startActivity(intent);
                                     finish();
                                 }

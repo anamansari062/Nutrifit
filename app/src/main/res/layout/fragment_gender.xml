@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".GenderFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="65dp"
+        android:text="What's Your Gender?"
+        android:textColor="#131313"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_gender_maleLogo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="346dp"
+        android:background="@drawable/malefemalenotfocus">
+
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_below="@+id/textView5"-->
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginStart="140dp"-->
+        <!--            android:layout_marginTop="46dp"-->
+        <!--            android:layout_marginEnd="151dp"-->
+        <!--            android:layout_marginBottom="335dp">-->
+
+        <!--        </RelativeLayout>-->
+
+
+        <ImageView
+            android:layout_width="111dp"
+            android:layout_height="120px"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/male" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="75dp"
+            android:layout_marginBottom="36dp"
+            android:text="MALE"
+            android:textColor="#FAFAFA"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/fragment_gender_femaleLogo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="154dp"
+        android:background="@drawable/malefemalenotfocus">
+
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="120dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_below="@+id/textView5"-->
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginStart="140dp"-->
+        <!--            android:layout_marginTop="46dp"-->
+        <!--            android:layout_marginEnd="151dp"-->
+        <!--            android:layout_marginBottom="335dp">-->
+
+        <!--        </RelativeLayout>-->
+
+        <ImageView
+            android:layout_width="111dp"
+            android:layout_height="120px"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/female" />
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="75dp"
+            android:layout_marginBottom="36dp"
+            android:text="FEMALE"
+            android:textColor="#FDFCFC"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</RelativeLayout>

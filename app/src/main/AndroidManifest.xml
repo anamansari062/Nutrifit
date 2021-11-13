@@ -16,6 +16,9 @@
             android:name=".DisplayFood"
             android:exported="false" />
         <activity
+            android:name=".ViewPagerMain"
+            android:exported="false" />
+        <activity
             android:name=".DisplayResult"
             android:exported="false" />
         <activity

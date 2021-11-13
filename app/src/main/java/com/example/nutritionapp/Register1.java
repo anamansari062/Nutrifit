@@ -167,8 +167,8 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     }
                                 }
                             });
-                            Intent intent=new Intent(Register1.this,Login.class);
-                            startActivity(intent);
+                            Intent i=new Intent(Register1.this,ViewPagerMain.class);
+                            startActivity(i);
                             finish();
 
 
