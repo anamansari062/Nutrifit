@@ -7,13 +7,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.adapters.DisplayFoodAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DisplayFood extends AppCompatActivity {
     FoodViewModel foodViewModel;
     String type;
+    Date currentDate;
+    SimpleDateFormat dateFormat;
+    String dateOnly;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +41,30 @@ public class DisplayFood extends AppCompatActivity {
         final DisplayFoodAdapter adapter = new DisplayFoodAdapter();
         recyclerView.setAdapter(adapter);
 
+        currentDate = new Date();
+        dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+        dateOnly = dateFormat.format(currentDate);
+
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
         switch (type){
             case "Today":
-                foodViewModel.getAllFoodData().observe(this, foodEntity -> adapter.setFoods(foodEntity));
+                foodViewModel.getAllFoodData(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
                 break;
 
             case "Breakfast":
-                foodViewModel.getAllBreakfast().observe(this, foodEntity -> adapter.setFoods(foodEntity));
+                foodViewModel.getAllBreakfast(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
                 break;
 
             case "Lunch":
-                foodViewModel.getAllLunch().observe(this, foodEntity -> adapter.setFoods(foodEntity));
+                foodViewModel.getAllLunch(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
                 break;
 
             case "Snacks":
-                foodViewModel.getAllSnacks().observe(this, foodEntity -> adapter.setFoods(foodEntity));
+                foodViewModel.getAllSnacks(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
                 break;
 
             case "Dinner":
-                foodViewModel.getAllDinner().observe(this, foodEntity -> adapter.setFoods(foodEntity));
+                foodViewModel.getAllDinner(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
                 break;
 
         }

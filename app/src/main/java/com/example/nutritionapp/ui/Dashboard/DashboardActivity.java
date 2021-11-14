@@ -22,6 +22,9 @@ import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.MainActivity;
 import com.example.nutritionapp.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DashboardActivity extends AppCompatActivity {
 
     Button startTrackingButton;
@@ -30,6 +33,9 @@ public class DashboardActivity extends AppCompatActivity {
     FoodViewModel foodViewModel;
     ProgressBar progressTotalCaloriesBar, progressTotalProteinBar, progressTotalFatsBar, progressTotalCarbsBar, progressTotalFibreBar, progressTotalSodiumBar, progressTotalPotassiumBar, progressTotalSugarBar, progressTotalCholesterolBar, progressTotalFatSaturatedBar;
     TextView dashboardCalorieIntakePercentageText, dashboardCalorieIntakeGoalShow, dashboardProteinIntake, dashboardCarbsIntake, dashboardFatsIntake, dashboardFibreIntake, dashboardSodiumIntake, dashboardPotassiumIntake, dashboardSugarIntake, dashboardCholesterolIntake, dashboardFatSaturatedIntake;
+    Date currentDate;
+    SimpleDateFormat dateFormat;
+    String dateOnly;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,10 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardCholesterolIntake = findViewById(R.id.dashboard_cholesterol_intake);
         dashboardFatSaturatedIntake = findViewById(R.id.dashboard_fat_saturated_intake);
 
+        currentDate = new Date();
+        dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+        dateOnly = dateFormat.format(currentDate);
+
         startTrackingButton = findViewById(R.id.start_tracking_meal_button);
         startTrackingButton.setOnClickListener(view -> {
             Intent intent = new Intent(DashboardActivity.this, MainActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();
@@ -63,34 +73,34 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
         progressTotalCaloriesBar = (ProgressBar) findViewById(R.id.progress_total_calories_horizontal);
-        foodViewModel.getTotalTodayCalories().observe(this, Float -> updateTotalCaloriesProgressBar(Float));
+        foodViewModel.getTotalTodayCalories(dateOnly).observe(this, Float -> updateTotalCaloriesProgressBar(Float));
 
         progressTotalProteinBar = (ProgressBar) findViewById(R.id.progress_protein_horizontal);
-        foodViewModel.getTotalProtein().observe(this, Float -> updateTotalProteinProgressBar(Float));
+        foodViewModel.getTotalProtein(dateOnly).observe(this, Float -> updateTotalProteinProgressBar(Float));
 
         progressTotalCarbsBar = (ProgressBar) findViewById(R.id.progress_carbs_horizontal);
-        foodViewModel.getTotalCarb().observe(this, Float -> updateTotalCarbsProgressBar(Float));
+        foodViewModel.getTotalCarb(dateOnly).observe(this, Float -> updateTotalCarbsProgressBar(Float));
 
         progressTotalFatsBar = (ProgressBar) findViewById(R.id.progress_fats_horizontal);
-        foodViewModel.getTotalFat().observe(this, Float -> updateTotalFatsProgressBar(Float));
+        foodViewModel.getTotalFat(dateOnly).observe(this, Float -> updateTotalFatsProgressBar(Float));
 
         progressTotalFibreBar = (ProgressBar) findViewById(R.id.progress_fibre_horizontal);
-        foodViewModel.getTotalFiber().observe(this, Float -> updateTotalFibreProgressBar(Float));
+        foodViewModel.getTotalFiber(dateOnly).observe(this, Float -> updateTotalFibreProgressBar(Float));
 
         progressTotalSodiumBar = (ProgressBar) findViewById(R.id.progress_sodium_horizontal);
-        foodViewModel.getTotalSodium().observe(this, Float -> updateTotalSodiumProgressBar(Float));
+        foodViewModel.getTotalSodium(dateOnly).observe(this, Float -> updateTotalSodiumProgressBar(Float));
 
         progressTotalPotassiumBar = (ProgressBar) findViewById(R.id.progress_potassium_horizontal);
-        foodViewModel.getTotalPotassium().observe(this, Float -> updateTotalPotassiumProgressBar(Float));
+        foodViewModel.getTotalPotassium(dateOnly).observe(this, Float -> updateTotalPotassiumProgressBar(Float));
 
         progressTotalSugarBar = (ProgressBar) findViewById(R.id.progress_sugar_horizontal);
-        foodViewModel.getTotalSugar().observe(this, Float -> updateTotalSugarProgressBar(Float));
+        foodViewModel.getTotalSugar(dateOnly).observe(this, Float -> updateTotalSugarProgressBar(Float));
 
         progressTotalCholesterolBar = (ProgressBar) findViewById(R.id.progress_cholesterol_horizontal);
-        foodViewModel.getTotalCholesterol().observe(this, Float -> updateTotalCholesterolProgressBar(Float));
+        foodViewModel.getTotalCholesterol(dateOnly).observe(this, Float -> updateTotalCholesterolProgressBar(Float));
 
         progressTotalFatSaturatedBar = (ProgressBar) findViewById(R.id.progress_fat_saturated_horizontal);
-        foodViewModel.getTotalFatSat().observe(this, Float -> updateTotalFatSaturationProgressBar(Float));
+        foodViewModel.getTotalFatSat(dateOnly).observe(this, Float -> updateTotalFatSaturationProgressBar(Float));
 
         
 

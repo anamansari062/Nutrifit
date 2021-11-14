@@ -1,24 +1,15 @@
 package com.example.nutritionapp.Food;
 
 
-import android.provider.ContactsContract;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
-
-
-import com.example.nutritionapp.DataConverter;
-
-import java.util.Date;
 
 @Entity(tableName = "food_table")
 public class FoodEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    @TypeConverters(DataConverter.class)
-    private final Date date;
+    private final String date;
     private final String foodName;
     private final String foodType;
     private final Float serving_size_g;
@@ -33,7 +24,7 @@ public class FoodEntity {
     private final Float fat_total_g;
     private final Float cholesterol_mg;
 
-    public FoodEntity(Date date, String foodName, String foodType, Float serving_size_g, Float calories, Float protein_g, Float carbohydrates_total_g, Float sugar_g, Float fiber_g, Float sodium_mg, Float potassium_mg, Float fat_saturated_g, Float fat_total_g, Float cholesterol_mg) {
+    public FoodEntity(String date, String foodName, String foodType, Float serving_size_g, Float calories, Float protein_g, Float carbohydrates_total_g, Float sugar_g, Float fiber_g, Float sodium_mg, Float potassium_mg, Float fat_saturated_g, Float fat_total_g, Float cholesterol_mg) {
         this.date = date;
         this.foodName = foodName;
         this.foodType= foodType;
@@ -58,7 +49,7 @@ public class FoodEntity {
         return id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 

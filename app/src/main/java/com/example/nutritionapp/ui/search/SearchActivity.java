@@ -2,6 +2,7 @@ package com.example.nutritionapp.ui.search;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,6 +48,10 @@ public class SearchActivity extends AppCompatActivity {
     TextView textResult;
     Button buttonSearch;
     FoodEntity food;
+    Date currentDate;
+    SimpleDateFormat dateFormat;
+    String dateOnly;
+
     private FoodViewModel foodViewModel;
 
 
@@ -102,8 +107,10 @@ public class SearchActivity extends AppCompatActivity {
                 ArrayList<FoodEntity> itemsArrayList = new ArrayList<FoodEntity>(response.body().getFood());
                 for (FoodEntity item : itemsArrayList) {
                     totalServing= item.getServing_size_g()/(serving);
-                    Date date = Calendar.getInstance().getTime();
-                    food= new FoodEntity(date , content, title, serving, calculateGrams(item.getCalories()), calculateGrams(item.getProtein_g()), calculateGrams(item.getCarbohydrates_total_g()), calculateGrams(item.getSugar_g()), calculateGrams(item.getFiber_g()), calculateGrams(item.getSodium_mg()), calculateGrams(item.getPotassium_mg()), calculateGrams(item.getFat_saturated_g()), calculateGrams(item.getFat_total_g()), calculateGrams(item.getCholesterol_mg()));
+                    currentDate = new Date();
+                    dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+                    dateOnly = dateFormat.format(currentDate);
+                    food= new FoodEntity(dateOnly, content, title, serving, calculateGrams(item.getCalories()), calculateGrams(item.getProtein_g()), calculateGrams(item.getCarbohydrates_total_g()), calculateGrams(item.getSugar_g()), calculateGrams(item.getFiber_g()), calculateGrams(item.getSodium_mg()), calculateGrams(item.getPotassium_mg()), calculateGrams(item.getFat_saturated_g()), calculateGrams(item.getFat_total_g()), calculateGrams(item.getCholesterol_mg()));
                     displayResults(food);
                 }
                 return;
@@ -145,7 +152,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void displayResults(FoodEntity food){
-        textResult.setText(food.getFoodName());
+        textResult.setText(food.getFoodName() + " " + food.getDate());
     }
 
     private boolean saveItem(FoodEntity food) {

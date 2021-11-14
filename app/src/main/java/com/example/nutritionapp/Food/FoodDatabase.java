@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.nutritionapp.interfaces.FoodDao;
 
-@Database(entities = {FoodEntity.class}, version = 3)
+@Database(entities = {FoodEntity.class}, version = 4)
 public abstract class FoodDatabase extends RoomDatabase {
     private static FoodDatabase instance;
     public abstract FoodDao foodDao();
