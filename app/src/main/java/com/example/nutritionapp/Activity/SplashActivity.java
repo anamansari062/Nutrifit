@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
+import com.example.nutritionapp.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 finally {
-                    Intent intent=new Intent(SplashActivity.this,Login.class);
+                    Intent intent=new Intent(SplashActivity.this, Login.class);
                     startActivity(intent);
                     finish();
                 }

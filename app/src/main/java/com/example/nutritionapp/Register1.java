@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.nutritionapp.Register.ViewPagerMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -167,7 +168,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     }
                                 }
                             });
-                            Intent i=new Intent(Register1.this,ViewPagerMain.class);
+                            Intent i=new Intent(Register1.this, ViewPagerMain.class);
                             startActivity(i);
                             finish();
 

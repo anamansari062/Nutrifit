@@ -9,18 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nutritionapp.DisplayFood;
-import com.example.nutritionapp.Food.FoodEntity;
-import com.example.nutritionapp.Food.FoodRepository;
-import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.ui.search.SearchActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
     ArrayList<Integer> mealImages = new ArrayList<Integer>();

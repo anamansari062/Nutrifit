@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.widget.Toast;
 
 import com.example.nutritionapp.Food.FoodViewModel;
+import com.example.nutritionapp.R;
 import com.example.nutritionapp.adapters.DisplayFoodAdapter;
 
 import java.text.SimpleDateFormat;

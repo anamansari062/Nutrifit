@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.Activity;
 
 import android.net.Uri;
 import android.os.Parcel;

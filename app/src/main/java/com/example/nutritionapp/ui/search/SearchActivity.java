@@ -2,7 +2,6 @@ package com.example.nutritionapp.ui.search;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,23 +14,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutritionapp.Food.FoodEntity;
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.Json.JsonObject;
-import com.example.nutritionapp.MainActivity;
+import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.interfaces.JsonPlaceHolderApi;
-import com.example.nutritionapp.ui.home.HomeFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;

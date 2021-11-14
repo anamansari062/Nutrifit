@@ -24,7 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nutritionapp.DisplayFood;
+import com.example.nutritionapp.Activity.DisplayFood;
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.adapters.DisplayFoodAdapter;

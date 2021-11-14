@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -7,6 +7,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.nutritionapp.adapters.FragmentAdapter;
+import com.example.nutritionapp.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class ViewPagerMain extends AppCompatActivity {
@@ -27,6 +29,9 @@ public class ViewPagerMain extends AppCompatActivity {
         adapter = new FragmentAdapter(fm,getLifecycle());
         pager2.setAdapter(adapter);
 
+        tabLayout.addTab(tabLayout.newTab().setText(""));
+        tabLayout.addTab(tabLayout.newTab().setText(""));
+        tabLayout.addTab(tabLayout.newTab().setText(""));
         tabLayout.addTab(tabLayout.newTab().setText(""));
         tabLayout.addTab(tabLayout.newTab().setText(""));
         tabLayout.addTab(tabLayout.newTab().setText(""));

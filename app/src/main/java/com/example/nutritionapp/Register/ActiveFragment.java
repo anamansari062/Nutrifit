@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.Register;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import com.example.nutritionapp.Activity.MainActivity;
+import com.example.nutritionapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -102,7 +105,7 @@ public class ActiveFragment extends Fragment {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),MainActivity.class);
+                Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
             }
         });

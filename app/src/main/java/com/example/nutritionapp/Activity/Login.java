@@ -1,4 +1,4 @@
-package com.example.nutritionapp;
+package com.example.nutritionapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nutritionapp.R;
+import com.example.nutritionapp.Register.ViewPagerMain;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -55,14 +57,14 @@ public class Login extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
         int j=sharedPreferences.getInt("key",0);
         if(j>0){
-            Intent activity= new Intent(getApplicationContext(),MainActivity.class);
+            Intent activity= new Intent(getApplicationContext(), MainActivity.class);
             startActivity(activity);
         }
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(Login.this,Register1.class);
+                intent = new Intent(Login.this, ViewPagerMain.class);
                 startActivity(intent);
                 finish();
             }

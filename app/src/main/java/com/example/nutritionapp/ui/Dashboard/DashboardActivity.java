@@ -1,7 +1,5 @@
 package com.example.nutritionapp.ui.Dashboard;
 
-import static android.view.View.GONE;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,7 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutritionapp.Food.FoodViewModel;
-import com.example.nutritionapp.MainActivity;
+import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.R;
 
 import java.text.SimpleDateFormat;
