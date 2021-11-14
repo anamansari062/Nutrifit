@@ -1,13 +1,16 @@
 package com.example.nutritionapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.widget.Toast;
 
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.adapters.DisplayFoodAdapter;
@@ -46,30 +49,21 @@ public class DisplayFood extends AppCompatActivity {
         dateOnly = dateFormat.format(currentDate);
 
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-        switch (type){
-            case "Today":
-                foodViewModel.getAllFoodData(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
-                break;
 
-            case "Breakfast":
-                foodViewModel.getAllBreakfast(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
-                break;
+        foodViewModel.getAllFoodData(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
 
-            case "Lunch":
-                foodViewModel.getAllLunch(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
-                break;
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-            case "Snacks":
-                foodViewModel.getAllSnacks(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
-                break;
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                foodViewModel.delete(adapter.getFoodAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(DisplayFood.this, "Food Deleted", Toast.LENGTH_SHORT).show();
 
-            case "Dinner":
-                foodViewModel.getAllDinner(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
-                break;
-
-        }
-
-
-
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 }

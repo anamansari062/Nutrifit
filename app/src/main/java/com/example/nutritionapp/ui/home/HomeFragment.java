@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nutritionapp.DisplayFood;
 import com.example.nutritionapp.Food.FoodViewModel;
@@ -116,7 +118,6 @@ public class HomeFragment extends Fragment {
         cardToday= root.findViewById(R.id.card_today_home);
         cardToday.setOnClickListener(view -> {
             Intent intent= new Intent(root.getContext(), DisplayFood.class);
-            intent.putExtra("type", "Today");
             startActivity(intent);
         });
 
@@ -237,6 +238,62 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                foodViewModel.delete(adapterBreakfast.getFoodAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Food Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(recyclerBreakfast);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                foodViewModel.delete(adapterDinner.getFoodAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Food Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(recyclerDinner);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                foodViewModel.delete(adapterLunch.getFoodAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Food Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(recyclerLunch);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                foodViewModel.delete(adapterSnacks.getFoodAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Food Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(recyclerSnacks);
+
         return root;
     }
 
@@ -274,7 +331,7 @@ public class HomeFragment extends Fragment {
 
     private void setTotalCalories(Object calories) {
         if(calories!= null)
-            totalCalories.setText(String.format("%sCal", calories.toString()));
+            totalCalories.setText(String.format("%s \nCal", String.format("%.1f",calories)));
         }
 
     @Override

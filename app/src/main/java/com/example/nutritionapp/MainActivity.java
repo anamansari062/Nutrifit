@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.nutritionapp.Food.FoodViewModel;
 import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private FoodViewModel foodViewModel;
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
             Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+            foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
+            foodViewModel.deleteAllFoods();
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("key", 0);
             editor.apply();

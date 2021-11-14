@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutritionapp.Food.FoodEntity;
+import com.example.nutritionapp.Food.FoodRepository;
 import com.example.nutritionapp.R;
 
 import java.util.ArrayList;
@@ -33,6 +34,10 @@ public class DisplayFoodAdapter extends RecyclerView.Adapter<DisplayFoodAdapter.
         holder.textDisplayFood.setText(currentFoodEntity.getFoodName());
         holder.textDisplayCalories.setText(currentFoodEntity.getCalories().toString());
 
+    }
+
+    public FoodEntity getFoodAt(int position){
+        return foodEntity.get(position);
     }
 
     public void setFoods(List<FoodEntity> foodEntity) {
