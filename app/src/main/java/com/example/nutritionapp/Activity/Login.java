@@ -31,33 +31,33 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     private static final String TAG = "SignInActivity";
-    com.google.android.gms.common.SignInButton SignIn;
-    GoogleSignInClient googleSignInClient;
-    GoogleSignInAccount googleSignInAccount;
+    //    com.google.android.gms.common.SignInButton SignIn;
+//    GoogleSignInClient googleSignInClient;
+//    GoogleSignInAccount googleSignInAccount;
     TextView register;
     Button login;
-    TextView forgot;
-    EditText Passwd,emailid;
+    //    TextView forgot;
+    EditText Passwd, emailid;
     FirebaseAuth mAuth;
     SharedPreferences sharedPreferences;
-    DataModal dm;
+    //    DataModal dm;
     int autosave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        SignIn = findViewById(R.id.google_sign_in);
-        register=findViewById(R.id.register);
-        login=findViewById(R.id.login);
-        forgot=findViewById(R.id.textView2);
-        Passwd=findViewById(R.id.Password1);
-        emailid=findViewById(R.id.emailid);
-        mAuth=FirebaseAuth.getInstance();
+//        SignIn = findViewById(R.id.google_sign_in);
+        register = findViewById(R.id.register);
+        login = findViewById(R.id.login);
+//        forgot=findViewById(R.id.textView2);
+        Passwd = findViewById(R.id.Password1);
+        emailid = findViewById(R.id.emailid);
+        mAuth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
-        int j=sharedPreferences.getInt("key",0);
-        if(j>0){
-            Intent activity= new Intent(getApplicationContext(), MainActivity.class);
+        int j = sharedPreferences.getInt("key", 0);
+        if (j > 0) {
+            Intent activity = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(activity);
         }
         register.setOnClickListener(new View.OnClickListener() {
@@ -72,17 +72,16 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(emailid.getText().toString().contentEquals("")){
+                if (emailid.getText().toString().contentEquals("")) {
                     emailid.setError("email can't be empty");
                     emailid.requestFocus();
-                }
-                else if(Passwd.getText().toString().contentEquals("")){
+                } else if (Passwd.getText().toString().contentEquals("")) {
                     Passwd.setError("password can't be empty");
                     Passwd.requestFocus();
                 }
 
-                    String Email = emailid.getText().toString();
-                    final String Password = Passwd.getText().toString();
+                String Email = emailid.getText().toString();
+                final String Password = Passwd.getText().toString();
 
                 if (TextUtils.isEmpty(Email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -105,81 +104,80 @@ public class Login extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (Password.length() < 6) {
-                                        Toast.makeText(Login.this,"error",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Login.this, "error", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(Login.this, "f", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    autosave=1;
+                                    autosave = 1;
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putInt("key", autosave);
                                     editor.apply();
-                                    Intent intent = new Intent(Login.this, ViewPagerMain.class);
+                                    Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
                             }
                         });
-                }
-            });
-
-
-
-
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-        googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        SignIn.setSize(SignInButton.SIZE_STANDARD);
-        SignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
             }
         });
-    }
-    private void signIn() {
-        Intent intent = googleSignInClient.getSignInIntent();
-        startActivityForResult(intent, 1);
+
+
+//        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+//        googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
+//        SignIn.setSize(SignInButton.SIZE_STANDARD);
+//        SignIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                signIn();
+//            }
+//        });
+//    }
+//    private void signIn() {
+//        Intent intent = googleSignInClient.getSignInIntent();
+//        startActivityForResult(intent, 1);
+//
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode==1){
+//            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+//            handleSignInResult(task);
+//        }
+//        else{
+//            Toast.makeText(this,"Something Went Wrong",Toast.LENGTH_LONG).show();
+//        }
+//    }
+//    private void handleSignInResult(Task<GoogleSignInAccount> task) {
+//        try{
+//            GoogleSignInAccount googleSignInAccount1=task.getResult(ApiException.class);
+//            dm=new DataModal();
+//
+//            dm.setName(googleSignInAccount1.getDisplayName());
+//            dm.setEmail(googleSignInAccount1.getEmail());
+//            dm.setImageUrl(googleSignInAccount1.getPhotoUrl());
+//            dm.setName2(googleSignInAccount1.getGivenName());
+//
+//            Intent intent=new Intent(Login.this, MainActivity.class);
+//
+//
+//            intent.putExtra("obj",dm);
+//            startActivity(intent);
+//            finish();
+//        }
+//        catch (ApiException exp) {
+//            exp.printStackTrace();
+//        }
+//
+//
+//
+//    }
+
 
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1){
-            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-        else{
-            Toast.makeText(this,"Something Went Wrong",Toast.LENGTH_LONG).show();
-        }
-    }
-    private void handleSignInResult(Task<GoogleSignInAccount> task) {
-        try{
-            GoogleSignInAccount googleSignInAccount1=task.getResult(ApiException.class);
-            dm=new DataModal();
-
-            dm.setName(googleSignInAccount1.getDisplayName());
-            dm.setEmail(googleSignInAccount1.getEmail());
-            dm.setImageUrl(googleSignInAccount1.getPhotoUrl());
-            dm.setName2(googleSignInAccount1.getGivenName());
-
-            Intent intent=new Intent(Login.this, MainActivity.class);
-
-           
-            intent.putExtra("obj",dm);
-            startActivity(intent);
-            finish();
-        }
-        catch (ApiException exp) {
-            exp.printStackTrace();
-        }
-
-
-
-    }
-
-
 }
 

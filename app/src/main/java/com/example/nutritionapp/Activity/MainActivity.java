@@ -1,6 +1,7 @@
 package com.example.nutritionapp.Activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.R;
 import com.google.android.material.navigation.NavigationView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -56,16 +58,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
-            foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-            foodViewModel.deleteAllFoods();
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("key", 0);
-            editor.apply();
 
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
-            finish();
+
+            AlertDialog.Builder builder= new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    foodViewModel = new ViewModelProvider(MainActivity.this).get(FoodViewModel.class);
+                    foodViewModel.deleteAllFoods();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("key", 0);
+                    editor.apply();
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    startActivity(intent);
+                    finish();
+                }
+            })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+            AlertDialog alertDialog= builder.create();
+            alertDialog.show();
+
 
             return true;
         }
