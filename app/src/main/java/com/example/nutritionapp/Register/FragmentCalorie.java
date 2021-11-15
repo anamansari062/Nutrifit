@@ -46,6 +46,7 @@ public class FragmentCalorie extends Fragment {
     FragmentCalorieBinding binding;
     Button register;
     String height, weight, age, gender, active, name, pass, email, mobile;
+    String Email,Password;
     private FirebaseAuth mAuth;
 
     public void setName(String name) {
@@ -127,6 +128,7 @@ public class FragmentCalorie extends Fragment {
         View rootView = binding.getRoot();
         calories= rootView.findViewById(R.id.display_calories);
         register= rootView.findViewById(R.id.button_register);
+        mAuth=FirebaseAuth.getInstance();
 
         sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         sharedViewModel.getEmail().observe(getViewLifecycleOwner(), this::setEmail);
@@ -140,6 +142,7 @@ public class FragmentCalorie extends Fragment {
         sharedViewModel.getActive().observe(getViewLifecycleOwner(), this::setActive);
         sharedViewModel.getCalories().observe(getViewLifecycleOwner(), Double-> displayCalories(Double));
 
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,70 +154,16 @@ public class FragmentCalorie extends Fragment {
         return rootView;
     }
 
-    private void registerUser(){
-//    mAuth.createUserWithEmailAndPassword(getEmail(), getPass())
-//            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//        @Override
-//        public void onComplete(@NonNull Task<AuthResult> task) {
-//            if (task.isSuccessful()) {
-//                FirebaseUser use=mAuth.getCurrentUser();
-//                use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                HashMap<String,Object> map=new HashMap<>();
-//                map.put("name",getName());
-//                map.put("email",getEmail());
-//                map.put("mobile", getMobile());
-//                map.put("password", getPass());
-//                map.put("id",mAuth.getCurrentUser().getUid());
-//                map.put("height",getHeight());
-//                map.put("weight",getWeight());
-//                map.put("age",getAge());
-//
-//                FirebaseDatabase.getInstance().getReference("USERS")
-//                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                        .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-////                            register1.setVisibility(VISIBLE);
-////                            progressBar.setVisibility(INVISIBLE);
-//                            Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
-//
-//
-//
-//                        } else {
-//                            Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-////                            progressBar.setVisibility(GONE);
-//
-//                        }
-//                    }
-//                });
-//                Intent i=new Intent(getContext(), MainActivity.class);
-//                startActivity(i);
-////                finish();
-//
-//
-//
-//
-//            } else {
-//                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-////                progressBar.setVisibility(GONE);
-//            }
-//        }
-//    });
-}
+    private void registerUser() {
 
-    private void displayCalories(Double calorie) {
+        Email = getEmail();
+        Password = getPass();
+
+
+
+    }
+
+    public void displayCalories(Double calorie) {
         calories.setText(calorie.toString());
     }
 

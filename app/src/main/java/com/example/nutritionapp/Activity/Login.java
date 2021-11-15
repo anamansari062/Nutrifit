@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.Register.ViewPagerMain;
+import com.example.nutritionapp.Register1;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -64,7 +65,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(Login.this, ViewPagerMain.class);
+                intent = new Intent(Login.this, Register1.class);
                 startActivity(intent);
                 finish();
             }
