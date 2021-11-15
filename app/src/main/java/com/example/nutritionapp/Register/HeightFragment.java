@@ -3,6 +3,7 @@ package com.example.nutritionapp.Register;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,59 +12,21 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.nutritionapp.R;
+import com.example.nutritionapp.databinding.FragmentEmailBinding;
+import com.example.nutritionapp.databinding.FragmentHeightBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HeightFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HeightFragment extends Fragment {
+    private FragmentHeightBinding binding;
+    private SharedViewModel sharedViewModel;
     TextView currentheight;
     SeekBar heightbar;
+    private FloatingActionButton next;
 
     int currentProgress;
     String mintProgress="160";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HeightFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HeightFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HeightFragment newInstance(String param1, String param2) {
-        HeightFragment fragment = new HeightFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,6 +35,7 @@ public class HeightFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_height, container, false);
         currentheight=rootView.findViewById(R.id.fragment_height_currentHeight);
         heightbar=(SeekBar) rootView.findViewById(R.id.fragment_height_heightBar);
+        next= rootView.findViewById(R.id.height_next);
 
         heightbar.setMax(300);
         heightbar.setProgress(160);
@@ -91,6 +55,14 @@ public class HeightFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+                sharedViewModel.setHeight(currentheight.getText().toString());
             }
         });
 

@@ -2,7 +2,6 @@ package com.example.nutritionapp.ui.update;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,9 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.nutritionapp.Calculate;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentUpdateBinding;
 
@@ -41,7 +38,8 @@ public class UpdateFragment extends Fragment {
     ImageView mincrementage,mincrementweight,mdecrementage,mdecrementweight;
     SeekBar mheightbar;
     RelativeLayout mmale,mfemale;
-   Spinner spinner;
+    Spinner spinner;
+    Double a;
 //    AutoCompleteTextView auto_activity;
     ArrayList<String> arrayList_activity;
     ArrayAdapter<String> arrayAdapter_activity;
@@ -53,14 +51,12 @@ public class UpdateFragment extends Fragment {
     int weight=70;
     String weight2="70";
     String typeOfUser="0";
-    double mcalorie,fcalorie;
+    double calorie;
     int heightc,weightc,agec;
     String value;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        updateViewModel = new ViewModelProvider(this).get(UpdateViewModel.class);
-
         binding = FragmentUpdateBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         mcalculate = root.findViewById(R.id.fragment_update_UpdateBtn);
@@ -210,7 +206,7 @@ public class UpdateFragment extends Fragment {
 //                    intent.putExtra("Weight",weight2);
 //                    intent.putExtra("Age",age2);
 //                    startActivity(intent);
-                    calculate();
+                    calculate(heightc, weightc, agec, typeOfUser, value);
 //                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
                    alertDialog();
                 }
@@ -228,45 +224,24 @@ public class UpdateFragment extends Fragment {
         return root;
     }
 
-    private void calculate() {
-        weightc = Integer.parseInt(weight2);
-        heightc = Integer.parseInt(mintProgress);
-        agec = Integer.parseInt(age2);
-        if(typeOfUser.equals("MALE")&&value.equals("Low Physical Activity"))
-        {
-            mcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.2;
-        }
-        else if(typeOfUser.equals("MALE")&&value.equals("Average Physical Activity"))
-        {
-            mcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.375;
-        }
-        else if(typeOfUser.equals("MALE")&&value.equals("High Physical Activity"))
-        {
-            mcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.55;
-        }
-        else if(typeOfUser.equals("FEMALE")&&value.equals("Low Physical Activity"))
-        {
-            fcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.2;
-        }
-        else if(typeOfUser.equals("FEMALE")&&value.equals("Average Physical Activity"))
-        {
-            fcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.375;
-        }
-        else if(typeOfUser.equals("FEMALE")&&value.equals("High Physical Activity"))
-        {
-            fcalorie = (int) ((66.5 + 13.8*weightc + 5*heightc)-(6.8*agec))*1.55;
-        }
+    private void calculate(int height, int weight, int age, String gender, String active) {
+        if(active.equals("Light"))
+            a= 1.2;
+        else if(active.equals("Moderate"))
+            a= 1.55;
+        else
+            a= 1.9;
+        if(gender.equals("Male"))
+            calorie= (66.5 + 13.8 * weightc + 5* heightc ) - (6.8 * agec) * a;
+        else
+            calorie= (655.1 + 9.5 * weightc + 1.8* heightc ) - (4.6* agec) * a;
+
     }
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
         if(typeOfUser.equals("MALE")) {
             dialog.setMessage("Your details have been updated successfully , The number of " +
-                    "calories you need are : " + mcalorie + " cal");
-        }
-        else if(typeOfUser.equals("FEMALE"))
-        {
-            dialog.setMessage("Your details have been updated successfully , The number of " +
-                    "calories you need are : " + fcalorie + " cal");
+                    "calories you need are : " + calorie + " cal");
         }
         dialog.setTitle("Successful");
         dialog.setPositiveButton("Ok",

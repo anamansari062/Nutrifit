@@ -94,4 +94,13 @@
 
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/age_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="115dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_arrow_forward_24" />
+
 </RelativeLayout>

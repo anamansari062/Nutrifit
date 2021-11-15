@@ -121,13 +121,14 @@
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/gobtn"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/active_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="135dp"
-        android:text="Button" />
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_arrow_forward_24" />
 </RelativeLayout>

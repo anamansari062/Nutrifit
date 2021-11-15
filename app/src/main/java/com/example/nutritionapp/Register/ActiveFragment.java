@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,65 +16,61 @@ import android.widget.RelativeLayout;
 
 import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.R;
+import com.example.nutritionapp.databinding.FragmentActiveBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ActiveFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.zip.DeflaterOutputStream;
+
+
 public class ActiveFragment extends Fragment {
     RelativeLayout lactive,mactive,hactive;
-    Button start;
+    private FragmentActiveBinding binding;
+    private SharedViewModel sharedViewModel;
+    private FloatingActionButton next;
+    String active;
+    String height, weight, age, gender;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ActiveFragment() {
-        // Required empty public constructor
+    public void setHeight(String height) {
+        this.height = height;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ActiveFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ActiveFragment newInstance(String param1, String param2) {
-        ActiveFragment fragment = new ActiveFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_active, container, false);
+        binding= FragmentActiveBinding.inflate(inflater, container, false);
+        View rootView = binding.getRoot();
         lactive=rootView.findViewById(R.id.fragment_active_light);
         mactive=rootView.findViewById(R.id.fragment_active_moderate);
         hactive=rootView.findViewById(R.id.fragment_active_high);
-        start=rootView.findViewById(R.id.gobtn);
+        next= rootView.findViewById(R.id.active_next);
 
         lactive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +78,7 @@ public class ActiveFragment extends Fragment {
                 lactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
                 mactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
                 hactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                active= "Light";
 
             }
         });
@@ -89,7 +88,7 @@ public class ActiveFragment extends Fragment {
                 mactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
                 lactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
                 hactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
-
+                active= "Moderate";
             }
         });
         hactive.setOnClickListener(new View.OnClickListener() {
@@ -98,20 +97,28 @@ public class ActiveFragment extends Fragment {
                 hactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
                 lactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
                 mactive.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
-
+                active= "Highly";
             }
         });
 
-        start.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MainActivity.class);
-                startActivity(i);
+                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+                sharedViewModel.setActive(active);
+                calorieSet();
             }
         });
 
-
-
         return rootView;
+    }
+
+    //This function sets the calorie i.e calculates it.
+    public void calorieSet(){
+        sharedViewModel.getGender().observe(getViewLifecycleOwner(), String -> setGender(String));
+        sharedViewModel.getAge().observe(getViewLifecycleOwner(), String -> setAge(String));
+        sharedViewModel.getWeight().observe(getViewLifecycleOwner(), String -> setWeight(String));
+        sharedViewModel.getHeight().observe(getViewLifecycleOwner(), String -> setHeight(String));
+        sharedViewModel.setCalories(getHeight(), getWeight(), getAge(), getGender(), active);
     }
 }

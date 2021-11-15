@@ -110,4 +110,15 @@
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/weight_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weightcard"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-299dp"
+        android:layout_marginEnd="355dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_arrow_forward_24" />
 </RelativeLayout>
