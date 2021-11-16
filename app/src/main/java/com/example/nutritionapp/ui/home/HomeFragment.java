@@ -303,7 +303,7 @@ public class HomeFragment extends Fragment {
 
     private void setDinnerCalories(Float calories) {
         if(calories!= null)
-            dinnerCalories.setText(String.format("Calories: %sCal", calories.toString()));
+            dinnerCalories.setText(String.format("%sCal", calories.toString()));
         else
             dinnerCalories.setText("");
 
@@ -311,7 +311,7 @@ public class HomeFragment extends Fragment {
 
     private void setSnacksCalories(Float calories){
         if(calories!= null)
-            snacksCalories.setText(String.format("Calories: %sCal", calories.toString()));
+            snacksCalories.setText(String.format("%sCal", calories.toString()));
         else
             snacksCalories.setText("");
 
@@ -319,7 +319,7 @@ public class HomeFragment extends Fragment {
 
     private void setLunchCalories(Float calories) {
         if(calories!= null)
-            lunchCalories.setText(String.format("Calories: %sCal", calories.toString()));
+            lunchCalories.setText(String.format("%sCal", calories.toString()));
         else
             lunchCalories.setText("");
 
@@ -327,7 +327,7 @@ public class HomeFragment extends Fragment {
 
     private void setBreakfastCalories(Float calories) {
         if(calories!= null)
-            breakfastCalories.setText(String.format("Calories: %sCal", calories.toString()));
+            breakfastCalories.setText(String.format("%sCal", calories.toString()));
         else
             breakfastCalories.setText("");
 
@@ -335,7 +335,7 @@ public class HomeFragment extends Fragment {
 
     private void setTotalCalories(Object calories) {
         if(calories!= null)
-            totalCalories.setText(String.format("%s \nCal", String.format("%.1f",calories)));
+            totalCalories.setText(String.format("%s \nCal", String.format("%.1f", calories)));
         }
 
     @Override

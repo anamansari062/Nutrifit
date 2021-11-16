@@ -1,19 +1,13 @@
 package com.example.nutritionapp.Register;
 
-import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -25,8 +19,6 @@ import android.widget.Toast;
 
 import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.R;
-import com.example.nutritionapp.Register1;
-import com.example.nutritionapp.databinding.FragmentBlogBinding;
 import com.example.nutritionapp.databinding.FragmentCalorieBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,15 +33,12 @@ import java.util.HashMap;
 
 
 public class FragmentCalorie extends Fragment {
-    private SharedViewModel sharedViewModel;
     TextView calories, textEmail, textMobile, textName, textPass;
     FragmentCalorieBinding binding;
     Button register;
     String height, weight, age, gender, active, name, pass, email, mobile;
     String Email,Password;
     private FirebaseAuth mAuth;
-
-    FirebaseAuth mAuth;
 
 
     public void setName(String name) {
@@ -139,7 +128,7 @@ public class FragmentCalorie extends Fragment {
         textPass= rootView.findViewById(R.id.display_pass);
 
 
-        sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+        SharedViewModel sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         sharedViewModel.getEmail().observe(getViewLifecycleOwner(), this::setEmail);
         sharedViewModel.getMobile().observe(getViewLifecycleOwner(), this::setMobile);
         sharedViewModel.getPass().observe(getViewLifecycleOwner(), this::setPass);
@@ -152,95 +141,86 @@ public class FragmentCalorie extends Fragment {
         sharedViewModel.getCalories().observe(getViewLifecycleOwner(), Double-> displayCalories(Double));
 
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Here register function will come use get functions for taking data eg: for gender do getGender()
-                mAuth= FirebaseAuth.getInstance();
-                registerUser();
-            }
+        register.setOnClickListener(view -> {
+            //Here register function will come use get functions for taking data eg: for gender do getGender()
+            mAuth= FirebaseAuth.getInstance();
+            registerUser();
         });
 
         return rootView;
     }
 
 
-    private void registerUser() {
+//    private void registerUser() {
+//
+//        Email = getEmail();
+//        Password = getPass();
+//
+//
+//
+//    }
 
-        Email = getEmail();
-        Password = getPass();
-
-
-
-    }
-
-    public void displayCalories(Double calorie) {
-
-    private void displayEmail(String string) {
-        textEmail.setText(string);
-    }
+//    public void displayCalories(Double calorie) {
+//
+//    private void displayEmail(String string) {
+//        textEmail.setText(string);
+//    }
+//}
 
     private void registerUser(){
     mAuth.createUserWithEmailAndPassword(getEmail().trim(), getPass().trim())
-            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()) {
-                FirebaseUser use=mAuth.getCurrentUser();
-                use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show();
-
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser use=mAuth.getCurrentUser();
+                    if (use != null) {
+                        use.sendEmailVerification().addOnSuccessListener(unused -> Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show()).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                HashMap<String,Object> map=new HashMap<>();
-                map.put("name",getName().trim());
-                map.put("email",getEmail().trim());
-                map.put("mobile", getMobile().trim());
-                map.put("password", getPass().trim());
-                map.put("id",mAuth.getCurrentUser().getUid());
-                map.put("height",getHeight().trim());
-                map.put("weight",getWeight().trim());
-                map.put("age",getAge().trim());
-
-                FirebaseDatabase.getInstance().getReference("USERS")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-//                            register1.setVisibility(VISIBLE);
-//                            progressBar.setVisibility(INVISIBLE);
-                            Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
-
-
-
-                        } else {
-                            Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-//                            progressBar.setVisibility(GONE);
-
+                    HashMap<String,Object> map=new HashMap<>();
+                    map.put("name",getName().trim());
+                    map.put("email",getEmail().trim());
+                    map.put("mobile", getMobile().trim());
+                    map.put("password", getPass().trim());
+                    map.put("id",mAuth.getCurrentUser().getUid());
+                    map.put("height",getHeight().trim());
+                    map.put("weight",getWeight().trim());
+                    map.put("age",getAge().trim());
+    
+                    FirebaseDatabase.getInstance().getReference("USERS")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+    //                            register1.setVisibility(VISIBLE);
+    //                            progressBar.setVisibility(INVISIBLE);
+                                Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
+    
+    
+    
+                            } else {
+                                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+    //                            progressBar.setVisibility(GONE);
+    
+                            }
                         }
-                    }
-                });
-                Intent i=new Intent(getContext(), MainActivity.class);
-                startActivity(i);
-//                finish();
-
-
-
-
-            } else {
-                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-//                progressBar.setVisibility(GONE);
-            }
-        }
-    });
+                    });
+                    Intent i=new Intent(getContext(), MainActivity.class);
+                    startActivity(i);
+    //                finish();
+    
+    
+    
+    
+                } else {
+                    Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+    //                progressBar.setVisibility(GONE);
+                }
+            });
 }
 
     private void displayCalories(Double calorie) {

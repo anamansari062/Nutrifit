@@ -53,48 +53,40 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+//    foodViewModel[0].deleteAllFoods();
+//    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putInt("key", 0);
+//                editor.apply();
+//
+//    Intent intent = new Intent(getApplicationContext(), Login.class);
+//    startActivity(intent);
+//    finish();
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_logout: {
-                Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
-                FoodViewModel foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
-                foodViewModel.deleteAllFoods();
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("key", 0);
-                editor.apply();
-
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-              
-        if (item.getItemId() == R.id.action_logout) {
+//                Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+                final FoodViewModel[] foodViewModel = {new ViewModelProvider(this).get(FoodViewModel.class)};
+                if (item.getItemId() == R.id.action_logout) {
 
 
-            AlertDialog.Builder builder= new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure you want to logout?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    foodViewModel = new ViewModelProvider(MainActivity.this).get(FoodViewModel.class);
-                    foodViewModel.deleteAllFoods();
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt("key", 0);
-                    editor.apply();
-                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                    startActivity(intent);
-                    finish();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("Are you sure you want to logout?").setPositiveButton("Yes", (dialogInterface, i) -> {
+                        foodViewModel[0] = new ViewModelProvider(MainActivity.this).get(FoodViewModel.class);
+                        foodViewModel[0].deleteAllFoods();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("key", 0);
+                        editor.apply();
+                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        startActivity(intent);
+                        finish();
+                    })
+                            .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
+                    return true;
                 }
-            })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-            AlertDialog alertDialog= builder.create();
-            alertDialog.show();
-
-                return true;
             }
             case R.id.nav_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
