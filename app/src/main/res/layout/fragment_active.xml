@@ -39,7 +39,7 @@
         android:layout_marginEnd="37dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="431dp"
-        android:background="@drawable/malefemalenotfocus">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="40dp"
@@ -57,7 +57,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="108dp"
             android:text="Lightly Active"
-            android:textColor="#F6F5F5"
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </RelativeLayout>
 
@@ -71,14 +71,14 @@
         android:layout_marginEnd="37dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="345dp"
-        android:background="@drawable/malefemalenotfocus">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_lowactive" />
+            android:src="@drawable/ic_moderate" />
 
         <TextView
             android:id="@+id/moderate_active_text"
@@ -87,7 +87,7 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="15dp"
             android:text="Moderately Active"
-            android:textColor="#ECE1E1"
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </RelativeLayout>
 
@@ -101,14 +101,14 @@
         android:layout_marginEnd="37dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="243dp"
-        android:background="@drawable/malefemalenotfocus">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/ic_lowactive" />
+            android:src="@drawable/ic_high" />
 
         <TextView
             android:id="@+id/high_active_text"
@@ -117,18 +117,35 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="15dp"
             android:text="Highly Active"
-            android:textColor="#FFF7F7"
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/active_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="164dp"
+        android:layout_marginEnd="90dp"
         android:layout_marginBottom="135dp"
+        android:text="NEXT"
+        android:gravity="center"
+        android:backgroundTint="@color/primaryColor"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_arrow_forward_24" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/active_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="135dp"
+        android:text="BACK"
+        android:backgroundTint="@color/primaryColor"
+        android:gravity="center"
         android:clickable="true"
         android:src="@drawable/ic_baseline_arrow_forward_24" />
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -13,17 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentEmailBinding;
 import com.example.nutritionapp.databinding.FragmentWeightBinding;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class WeightFragment extends Fragment {
     private FragmentWeightBinding binding;
     private SharedViewModel sharedViewModel;
-    private FloatingActionButton next;
+    private ExtendedFloatingActionButton next,back;
     TextView weight;
     ImageView incweight,decweight;
     int weight1=70;
@@ -40,6 +43,7 @@ public class WeightFragment extends Fragment {
         incweight=rootView.findViewById(R.id.fragment_weight_incrementWeight);
         decweight=rootView.findViewById(R.id.fragment_weight_decrementWeight);
         next= rootView.findViewById(R.id.weight_next);
+        back=rootView.findViewById(R.id.weight_back);
 
         incweight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +75,27 @@ public class WeightFragment extends Fragment {
 //                sharedViewModel.setWeight(weight.getText().toString());
                 myEdit.putString("weight", weight.getText().toString());
                 myEdit.commit();
+                Boolean valid = true;
+                if(weight2.equals("0"))
+                {
+                    Toast.makeText(getContext(), "Weight cannot be 0", Toast.LENGTH_SHORT).show();
+                    valid=false;
+                }
+                if(valid) {
+                    FragmentTransaction fr = getParentFragmentManager().beginTransaction();
+                    fr.replace(R.id.register_container, new HeightFragment());
+//                fr.addToBackStack(null);
+                    fr.commit();
+                }
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
+                fragmentManager.replace(R.id.register_container, new AgeFragment()).addToBackStack(null);
+                fragmentManager.commit();
+
             }
         });
 
