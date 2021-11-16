@@ -3,10 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#000000" />
+
         <TextView
             android:id="@+id/home_recycler_meal_name"
             android:layout_width="wrap_content"

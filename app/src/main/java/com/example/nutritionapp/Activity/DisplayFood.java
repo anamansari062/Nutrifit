@@ -65,5 +65,19 @@ public class DisplayFood extends AppCompatActivity {
 
             }
         }).attachToRecyclerView(recyclerView);
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                foodViewModel.delete(adapter.getFoodAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(DisplayFood.this, "Food Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 }
