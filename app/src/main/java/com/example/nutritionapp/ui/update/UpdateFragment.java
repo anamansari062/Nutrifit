@@ -215,19 +215,29 @@ public class UpdateFragment extends Fragment {
 //                    intent.putExtra("Age",age2);
 //                    startActivity(intent);
                     calculate(heightc, weightc, agec, typeOfUser, value);
+                    database=FirebaseDatabase.getInstance();
+                    databaseReference=database.getReference();
+                    databaseReference.child("USERS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            snapshot.getRef().child("gender").setValue(typeOfUser);
+                            snapshot.getRef().child("height").setValue(mcurrentheight.getText().toString().trim());
+                            snapshot.getRef().child("weight").setValue(mcurrentweight.getText().toString().trim());
+                            snapshot.getRef().child("age").setValue(mcurrentage.getText().toString().trim());
+                            snapshot.getRef().child("activity").setValue(value);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+
+
+                    });
 //                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
                    alertDialog();
                 }
-//               database=FirebaseDatabase.getInstance();
- //               databaseReference=database.getReference();
-//                databaseReference.child("USERS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-  //                  @Override
-    //                public void onDataChange(@NonNull DataSnapshot snapshot) {
-      //                  snapshot.getRef().child("gender").setValue(typeOfUser);
-        //            }
 
-
-//                });
 
 
             }
