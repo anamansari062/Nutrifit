@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.Register.ViewPagerMain;
 import com.example.nutritionapp.Register1;
+import com.example.nutritionapp.Reset;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -35,7 +36,7 @@ public class Login extends AppCompatActivity {
     //    com.google.android.gms.common.SignInButton SignIn;
 //    GoogleSignInClient googleSignInClient;
 //    GoogleSignInAccount googleSignInAccount;
-    TextView register;
+    TextView register,reset;
     Button login;
     //    TextView forgot;
     EditText Passwd, emailid;
@@ -54,6 +55,7 @@ public class Login extends AppCompatActivity {
 //        forgot=findViewById(R.id.textView2);
         Passwd = findViewById(R.id.Password1);
         emailid = findViewById(R.id.emailid);
+        reset=findViewById(R.id.reset);
         mAuth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
         int j = sharedPreferences.getInt("key", 0);
@@ -68,6 +70,14 @@ public class Login extends AppCompatActivity {
                 intent = new Intent(Login.this, ViewPagerMain.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(Login.this, Reset.class);
+                startActivity(intent);
             }
         });
         login.setOnClickListener(new View.OnClickListener() {

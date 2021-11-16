@@ -169,7 +169,6 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                             map.put("name",Name);
                             map.put("email",Email);
                             map.put("mobile",Mobile);
-                            map.put("password",Password);
                             map.put("id",mAuth.getCurrentUser().getUid());
                             map.put("height",Height);
                             map.put("weight",Weight);
