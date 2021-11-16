@@ -23,8 +23,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentUpdateBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class UpdateFragment extends Fragment {
 
@@ -38,16 +46,17 @@ public class UpdateFragment extends Fragment {
     RelativeLayout mmale,mfemale;
     Spinner spinner;
     Double a;
+    DatabaseReference databaseReference;
 //    AutoCompleteTextView auto_activity;
     ArrayList<String> arrayList_activity;
     ArrayAdapter<String> arrayAdapter_activity;
 
     int currentProgress;
     String mintProgress="160";
-    int age=18;
-    String age2="18";
-    int weight=70;
-    String weight2="70";
+    int age;
+    String age2;
+    int weight;
+    String weight2;
     String typeOfUser="0";
     double calorie;
     int heightc,weightc,agec;
@@ -69,6 +78,32 @@ public class UpdateFragment extends Fragment {
         mmale=root.findViewById(R.id.fragment_update_maleLogo);
         mfemale=root.findViewById(R.id.fragment_update_femaleLogo);
         spinner=root.findViewById(R.id.fragment_update_spinner1);
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
+        if(user !=null){
+            databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Map<String, String> map= (Map<String, String>) snapshot.getValue();
+                    age2=map.get("age");
+                    age=Integer.parseInt(age2);
+                    mcurrentage.setText(age2);
+                    weight2=map.get("weight");
+                    weight=Integer.parseInt(weight2);
+                    mcurrentweight.setText(weight2);
+                    mintProgress=map.get("height");
+                    currentProgress=Integer.parseInt(mintProgress);
+                    mcurrentheight.setText(mintProgress);
+                    value=map.get("activity");
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         arrayList_activity = new ArrayList<>();
         arrayList_activity.add(0,"How active are you?") ;
         arrayList_activity.add("Low Physical Activity");
@@ -204,10 +239,27 @@ public class UpdateFragment extends Fragment {
 //                    intent.putExtra("Weight",weight2);
 //                    intent.putExtra("Age",age2);
 //                    startActivity(intent);
+                    databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            snapshot.getRef().child("age").setValue(age2);
+                            snapshot.getRef().child("activity").setValue(value);
+                            String Calories=Double.toString(calorie);
+                            snapshot.getRef().child("calories").setValue(Calories);
+                            snapshot.getRef().child("gender").setValue(typeOfUser);
+                            snapshot.getRef().child("height").setValue(mintProgress);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     calculate(heightc, weightc, agec, typeOfUser, value);
 //                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
                    alertDialog();
                 }
+
             }
         });
 
