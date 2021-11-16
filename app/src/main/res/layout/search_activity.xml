@@ -7,18 +7,18 @@
     android:layout_height="match_parent"
     android:id="@+id/search_layout">
     <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".ui.search.SearchActivity">
-
-    <EditText
-        android:id="@+id/textSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Search Food..."
-        android:inputType="textPersonName" />
+        android:orientation="vertical"
+        tools:context=".ui.search.SearchActivity">
+
+        <EditText
+            android:id="@+id/textSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Search Food..."
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/textServe"
@@ -34,7 +34,7 @@
             android:id="@+id/buttonSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+            android:layout_marginTop="80dp"
             android:text="Search" />
 
         <ProgressBar
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="gone">
-    </ProgressBar>
+        </ProgressBar>
 
 
         <androidx.cardview.widget.CardView
@@ -425,8 +425,8 @@
                 android:layout_margin="0dp"
                 android:alpha="0.54"
                 android:gravity="center"
-                android:text="sorry we couldn't find any \n food with that name" />
+                android:text="@string/search_no_food_found" />
 
         </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
 </ScrollView>

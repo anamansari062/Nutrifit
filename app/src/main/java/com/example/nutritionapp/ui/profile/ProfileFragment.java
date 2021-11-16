@@ -1,9 +1,11 @@
 package com.example.nutritionapp.ui.profile;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,47 +28,51 @@ public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
     TextView nametxt,emailtxt,gender,height,age,weight,mobile;
     DatabaseReference databaseReference;
+    ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        nametxt=(TextView) root.findViewById(R.id.nametxt);
-        emailtxt=(TextView) root.findViewById(R.id.emailtxt);
-        gender=(TextView) root.findViewById(R.id.gendertxt);
-        height=(TextView) root.findViewById(R.id.heighttxt);
-        age=(TextView) root.findViewById(R.id.agetxt);
-        mobile=(TextView) root.findViewById(R.id.mobiletxt);
-        weight=(TextView) root.findViewById(R.id.weighttxt);
+        nametxt= root.findViewById(R.id.nametxt);
+        emailtxt= root.findViewById(R.id.emailtxt);
+        gender= root.findViewById(R.id.gendertxt);
+        height= root.findViewById(R.id.heighttxt);
+        age= root.findViewById(R.id.agetxt);
+        mobile= root.findViewById(R.id.mobiletxt);
+        weight= root.findViewById(R.id.weighttxt);
+        progressBar= root.findViewById(R.id.progress_bar);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
-        databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Map<String, String> map= (Map<String, String>) snapshot.getValue();
-                String name= map.get("name");
-                String email= map.get("email");
-                String Gender= map.get("gender");
-                String Height= map.get("height");
-                String Weight= map.get("weight");
-                String Age=map.get("age");
-                String Mobile= map.get("mobile");
-                nametxt.setText(name);
-                emailtxt.setText(email);
-                gender.setText(Gender);
-                height.setText(Height);
-                age.setText(Age);
-                mobile.setText(Mobile);
-                weight.setText(Weight);
-            }
+        if (user != null )
+        {
+            timer();
+            databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Map<String, String> map= (Map<String, String>) snapshot.getValue();
+                    String name= map.get("name");
+                    String email= map.get("email");
+                    String Gender= map.get("gender");
+                    String Height= map.get("height");
+                    String Weight= map.get("weight");
+                    String Age=map.get("age");
+                    String Mobile= map.get("mobile");
+                    nametxt.setText(name);
+                    emailtxt.setText(email);
+                    gender.setText(Gender);
+                    height.setText(String.format("%scm", Height));
+                    age.setText(Age);
+                    mobile.setText(Mobile);
+                    weight.setText(Weight);
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }
         return root;
     }
 
@@ -74,6 +80,19 @@ public class ProfileFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+    public void timer() {
+        new CountDownTimer(1500, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+
+            public void onFinish() {
+                progressBar.setVisibility(View.GONE);
+            }
+
+        }.start();
     }
 
 }
