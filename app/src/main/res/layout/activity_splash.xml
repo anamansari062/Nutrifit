@@ -12,10 +12,10 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="177dp"
+        android:layout_height="174dp"
         android:layout_centerInParent="true"
-        android:src="@mipmap/ic_launcher_foreground" />
+        android:src="@drawable/logo" />
 
 
 

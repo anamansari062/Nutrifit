@@ -19,9 +19,18 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -33,7 +42,9 @@ public class DashboardActivity extends AppCompatActivity {
     TextView dashboardCalorieIntakePercentageText, dashboardCalorieIntakeGoalShow, dashboardProteinIntake, dashboardCarbsIntake, dashboardFatsIntake, dashboardFibreIntake, dashboardSodiumIntake, dashboardPotassiumIntake, dashboardSugarIntake, dashboardCholesterolIntake, dashboardFatSaturatedIntake;
     Date currentDate;
     SimpleDateFormat dateFormat;
+    DatabaseReference databaseReference;
     String dateOnly;
+    int calorieGoal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +66,8 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardSugarIntake = findViewById(R.id.dashboard_sugar_intake);
         dashboardCholesterolIntake = findViewById(R.id.dashboard_cholesterol_intake);
         dashboardFatSaturatedIntake = findViewById(R.id.dashboard_fat_saturated_intake);
+
+
 
         currentDate = new Date();
         dateFormat= new SimpleDateFormat("yyyy-MM-dd");
@@ -116,8 +129,24 @@ public class DashboardActivity extends AppCompatActivity {
     }
     private void updateTotalCaloriesProgressBar(Object calories) {
         if (calories != null) {
+//            FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+//            databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
+//            databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    Map<String, String> map= (Map<String, String>) snapshot.getValue();
+//                    String mcalorie= map.get("calories");
+//                    calorieGoal =  Float.parseFloat(mcalorie);
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+
             float totalCaloriesEaten = (Float) calories;
-            int calorieGoal = 800;
+            calorieGoal= 800;
             int dashboardCalorieIntakePercentage = (int) ((totalCaloriesEaten / calorieGoal) * 100);
             dashboardCalorieIntakePercentageText.setText(dashboardCalorieIntakePercentage + "% done");
 
