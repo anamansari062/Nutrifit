@@ -46,8 +46,11 @@ public class FragmentCalorie extends Fragment {
     FragmentCalorieBinding binding;
     Button register;
     String height, weight, age, gender, active, name, pass, email, mobile;
+    String Email,Password;
+    private FirebaseAuth mAuth;
 
     FirebaseAuth mAuth;
+
 
     public void setName(String name) {
         this.name = name;
@@ -128,6 +131,8 @@ public class FragmentCalorie extends Fragment {
         View rootView = binding.getRoot();
         calories= rootView.findViewById(R.id.display_calories);
         register= rootView.findViewById(R.id.button_register);
+
+        mAuth=FirebaseAuth.getInstance();
         textEmail= rootView.findViewById(R.id.display_email);
         textMobile= rootView.findViewById(R.id.display_mobile);
         textName= rootView.findViewById(R.id.display_name);
@@ -146,6 +151,7 @@ public class FragmentCalorie extends Fragment {
         sharedViewModel.getActive().observe(getViewLifecycleOwner(), this::setActive);
         sharedViewModel.getCalories().observe(getViewLifecycleOwner(), Double-> displayCalories(Double));
 
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,6 +163,18 @@ public class FragmentCalorie extends Fragment {
 
         return rootView;
     }
+
+
+    private void registerUser() {
+
+        Email = getEmail();
+        Password = getPass();
+
+
+
+    }
+
+    public void displayCalories(Double calorie) {
 
     private void displayEmail(String string) {
         textEmail.setText(string);

@@ -40,7 +40,7 @@
             android:hint="Name"
             android:imeOptions="actionNext"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/Email"
@@ -69,7 +69,7 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/Height"
@@ -84,7 +84,7 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:textColor="@color/yellow"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/Weight"
@@ -99,7 +99,7 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:textColor="@color/yellow"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <EditText
            android:id="@+id/age"
@@ -114,8 +114,35 @@
             android:gravity="center"
             android:imeOptions="actionNext"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/activity"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg"
+            android:hint="Activity(low or moderate or high"
 
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg"
+            android:gravity="center"
+            android:hint="gender(M OR F)"
+            android:imeOptions="actionNext"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
         <EditText
             android:id="@+id/Password"
             android:layout_width="match_parent"
@@ -129,7 +156,7 @@
             android:gravity="center"
             android:imeOptions="actionNext"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
 
 
@@ -146,7 +173,7 @@
             android:gravity="center"
             android:imeOptions="actionNext"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
 
 

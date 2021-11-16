@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.nutritionapp.Activity.Login;
 import com.example.nutritionapp.Register.ViewPagerMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,9 +29,10 @@ import java.util.HashMap;
 
 public class Register1 extends AppCompatActivity implements OnClickListener {
     private Button register1;
-    private EditText name, email, mobile, passwd, cmpasswd,height,weight,age;
+    private EditText name, email, mobile, passwd, cmpasswd,height,weight,age,gender,activity;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private double a, calorie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         height = (EditText) findViewById(R.id.Height);
         weight = (EditText) findViewById(R.id.Weight);
         age = (EditText) findViewById(R.id.age);
+        gender=(EditText) findViewById(R.id.gender);
+        activity=(EditText) findViewById(R.id.activity);
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
         cmpasswd=findViewById(R.id.cmpasswd);
 
@@ -70,6 +74,10 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         String Height = height.getText().toString().trim();
         String Weight = weight.getText().toString().trim();
         String Age = age.getText().toString().trim();
+        String Gender=gender.getText().toString().trim();
+
+        String Act=activity.getText().toString().trim();
+
 
 
 
@@ -98,6 +106,16 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
             age.requestFocus();
             return;
         }
+//        if (Gender.toLowerCase() !="m" || Gender.toLowerCase() !="f") {
+//            gender.setError("valid option is required");
+//            gender.requestFocus();
+//            return;
+//        }
+ //       if (Act.toLowerCase()!="low" || Act.toLowerCase()!="moderate" || Act.toLowerCase()!="high") {
+//            activity.setError("valid option is required");
+//            activity.requestFocus();
+//            return;
+//        }
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
             email.setError("Please provide valid email");
             email.requestFocus();
@@ -118,7 +136,18 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
             cmpasswd.requestFocus();
             return;
         }
+        if(Act.equals("low"))
+            a= 1.2;
+        else if(Act.toLowerCase().equals("moderate"))
+            a= 1.55;
+        else
+            a= 1.9;
+        if(Gender.toLowerCase().equals("m"))
+            calorie= (66.5 + 13.8 * Integer.parseInt(Weight) + 5* Integer.parseInt(Height) ) - (6.8 * Integer.parseInt(Age)) * a;
+        else
+            calorie= (655.1 + 9.5 * Integer.parseInt(Weight) + 1.8* Integer.parseInt(Height) ) - (4.6* Integer.parseInt(Age)) * a;
 
+        String Calorie=Double.toString(calorie);
 
 
         mAuth.createUserWithEmailAndPassword(Email, Password)
@@ -148,6 +177,9 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                             map.put("height",Height);
                             map.put("weight",Weight);
                             map.put("age",Age);
+                            map.put("gender",Gender);
+                            map.put("activity",Act);
+                            map.put("calories",Calorie);
 
                             FirebaseDatabase.getInstance().getReference("USERS")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -168,7 +200,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                                     }
                                 }
                             });
-                            Intent i=new Intent(Register1.this, ViewPagerMain.class);
+                            Intent i=new Intent(Register1.this, Login.class);
                             startActivity(i);
                             finish();
 
