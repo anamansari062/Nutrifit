@@ -1,138 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.profile.ProfileFragment">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_show_nutrition"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+        <ProgressBar
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Name :  "
-            android:textSize="20sp"/>
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/profile_info_heading"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/your_profile_info_heading"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="20dp"
+            android:background="#D3D3D3" />
+
+        <TextView
+            android:id="@+id/name_text_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/nametxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Email :  "
-            android:textSize="20sp"/>
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="60dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+        <TextView
+            android:id="@+id/email_text_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/emailtxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Mobile :  "
-            android:textSize="20sp"/>
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="100dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
         <TextView
-            android:id="@+id/mobiletxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
+            android:id="@+id/gender_text_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Gender :  "
-            android:textSize="20sp"/>
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="180dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/gender"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/gendertxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Height :  "
-            android:textSize="20sp"/>
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="180dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+        <TextView
+            android:id="@+id/height_text_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="260dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/height"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/heighttxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Weight :  "
-            android:textSize="20sp"/>
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="260dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+        <TextView
+            android:id="@+id/age_text_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="220dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/age"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/agetxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="220dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+        <TextView
+            android:id="@+id/mobile_text_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="140dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/mobile"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/mobiletxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="140dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/weight_text_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="300dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/weight"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/weighttxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Age :  "
-            android:textSize="20sp"/>
-        <TextView
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="300dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+    </androidx.cardview.widget.CardView>
 
-            android:id="@+id/agetxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-
-    </LinearLayout>
+</RelativeLayout>
 

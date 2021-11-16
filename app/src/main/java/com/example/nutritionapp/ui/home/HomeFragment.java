@@ -34,6 +34,7 @@ import com.example.nutritionapp.ui.search.SearchActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -67,7 +68,8 @@ public class HomeFragment extends Fragment {
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
 
         currentDate = new Date();
-        dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat=  new SimpleDateFormat("yyyy-MM-dd",
+                Locale.getDefault());
         dateOnly = dateFormat.format(currentDate);
         //To intent to search activity
 
