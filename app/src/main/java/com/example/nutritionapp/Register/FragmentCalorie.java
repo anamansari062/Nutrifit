@@ -42,11 +42,12 @@ import java.util.HashMap;
 
 public class FragmentCalorie extends Fragment {
     private SharedViewModel sharedViewModel;
-    TextView calories;
+    TextView calories, textEmail, textMobile, textName, textPass;
     FragmentCalorieBinding binding;
     Button register;
     String height, weight, age, gender, active, name, pass, email, mobile;
-    private FirebaseAuth mAuth;
+
+    FirebaseAuth mAuth;
 
     public void setName(String name) {
         this.name = name;
@@ -127,6 +128,11 @@ public class FragmentCalorie extends Fragment {
         View rootView = binding.getRoot();
         calories= rootView.findViewById(R.id.display_calories);
         register= rootView.findViewById(R.id.button_register);
+        textEmail= rootView.findViewById(R.id.display_email);
+        textMobile= rootView.findViewById(R.id.display_mobile);
+        textName= rootView.findViewById(R.id.display_name);
+        textPass= rootView.findViewById(R.id.display_pass);
+
 
         sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         sharedViewModel.getEmail().observe(getViewLifecycleOwner(), this::setEmail);
@@ -144,6 +150,7 @@ public class FragmentCalorie extends Fragment {
             @Override
             public void onClick(View view) {
                 //Here register function will come use get functions for taking data eg: for gender do getGender()
+                mAuth= FirebaseAuth.getInstance();
                 registerUser();
             }
         });
@@ -151,67 +158,71 @@ public class FragmentCalorie extends Fragment {
         return rootView;
     }
 
+    private void displayEmail(String string) {
+        textEmail.setText(string);
+    }
+
     private void registerUser(){
-//    mAuth.createUserWithEmailAndPassword(getEmail(), getPass())
-//            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//        @Override
-//        public void onComplete(@NonNull Task<AuthResult> task) {
-//            if (task.isSuccessful()) {
-//                FirebaseUser use=mAuth.getCurrentUser();
-//                use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                HashMap<String,Object> map=new HashMap<>();
-//                map.put("name",getName());
-//                map.put("email",getEmail());
-//                map.put("mobile", getMobile());
-//                map.put("password", getPass());
-//                map.put("id",mAuth.getCurrentUser().getUid());
-//                map.put("height",getHeight());
-//                map.put("weight",getWeight());
-//                map.put("age",getAge());
-//
-//                FirebaseDatabase.getInstance().getReference("USERS")
-//                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                        .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-////                            register1.setVisibility(VISIBLE);
-////                            progressBar.setVisibility(INVISIBLE);
-//                            Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
-//
-//
-//
-//                        } else {
-//                            Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-////                            progressBar.setVisibility(GONE);
-//
-//                        }
-//                    }
-//                });
-//                Intent i=new Intent(getContext(), MainActivity.class);
-//                startActivity(i);
-////                finish();
-//
-//
-//
-//
-//            } else {
-//                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-////                progressBar.setVisibility(GONE);
-//            }
-//        }
-//    });
+    mAuth.createUserWithEmailAndPassword(getEmail().trim(), getPass().trim())
+            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            if (task.isSuccessful()) {
+                FirebaseUser use=mAuth.getCurrentUser();
+                use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                HashMap<String,Object> map=new HashMap<>();
+                map.put("name",getName().trim());
+                map.put("email",getEmail().trim());
+                map.put("mobile", getMobile().trim());
+                map.put("password", getPass().trim());
+                map.put("id",mAuth.getCurrentUser().getUid());
+                map.put("height",getHeight().trim());
+                map.put("weight",getWeight().trim());
+                map.put("age",getAge().trim());
+
+                FirebaseDatabase.getInstance().getReference("USERS")
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+//                            register1.setVisibility(VISIBLE);
+//                            progressBar.setVisibility(INVISIBLE);
+                            Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
+
+
+
+                        } else {
+                            Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+//                            progressBar.setVisibility(GONE);
+
+                        }
+                    }
+                });
+                Intent i=new Intent(getContext(), MainActivity.class);
+                startActivity(i);
+//                finish();
+
+
+
+
+            } else {
+                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+//                progressBar.setVisibility(GONE);
+            }
+        }
+    });
 }
 
     private void displayCalories(Double calorie) {

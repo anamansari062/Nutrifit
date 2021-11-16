@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nutritionapp.R;
@@ -20,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class FragmentEmail extends Fragment {
     private FragmentEmailBinding binding;
     private SharedViewModel sharedViewModel;
-    TextView textEmail, textMobile;
+    EditText textEmail, textMobile;
     FloatingActionButton add;
 
     @Nullable
@@ -38,7 +39,7 @@ public class FragmentEmail extends Fragment {
             @Override
             public void onClick(View view) {
                 sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                if(textEmail.getText()!=null & textMobile.getText()!= null)
+                if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null)
                     sharedViewModel.setEmailMobile(textEmail.getText().toString(), textMobile.getText().toString());
             }
         });
