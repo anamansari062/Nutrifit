@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -57,11 +60,16 @@ public class GenderFragment extends Fragment {
             }
         });
 
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                sharedViewModel.setGender(typeOfUser);
+//                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+//                sharedViewModel.setGender(typeOfUser);
+                myEdit.putString("gender", typeOfUser);
+                myEdit.commit();
             }
         });
 

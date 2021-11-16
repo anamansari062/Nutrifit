@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -35,12 +38,20 @@ public class FragmentEmail extends Fragment {
         textMobile= root.findViewById(R.id.text_mobile);
         add= root.findViewById(R.id.email_next);
 
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
                 if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null)
-                    sharedViewModel.setEmailMobile(textEmail.getText().toString(), textMobile.getText().toString());
+//                    sharedViewModel.setEmailMobile(textEmail.getText().toString(), textMobile.getText().toString());
+                    myEdit.putString("email", textEmail.getText().toString());
+                    myEdit.putString("mobile", textMobile.getText().toString());
+                    myEdit.commit();
+
+
             }
         });
 

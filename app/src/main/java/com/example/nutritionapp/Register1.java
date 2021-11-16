@@ -5,7 +5,9 @@ import static android.view.View.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -79,8 +81,6 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         String Act=activity.getText().toString().trim();
 
 
-
-
         if (Name.isEmpty()) {
             name.setError("Name is required");
             name.requestFocus();
@@ -111,7 +111,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
 //            gender.requestFocus();
 //            return;
 //        }
- //       if (Act.toLowerCase()!="low" || Act.toLowerCase()!="moderate" || Act.toLowerCase()!="high") {
+//        if (Act.toLowerCase()!="low" || Act.toLowerCase()!="moderate" || Act.toLowerCase()!="high") {
 //            activity.setError("valid option is required");
 //            activity.requestFocus();
 //            return;
@@ -147,9 +147,6 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
         else
             calorie= (655.1 + 9.5 * Integer.parseInt(Weight) + 1.8* Integer.parseInt(Height) ) - (4.6* Integer.parseInt(Age)) * a;
 
-        String Calorie=Double.toString(calorie);
-
-
         mAuth.createUserWithEmailAndPassword(Email, Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -179,7 +176,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                             map.put("age",Age);
                             map.put("gender",Gender);
                             map.put("activity",Act);
-                            map.put("calories",Calorie);
+                            map.put("calories",calorie);
 
                             FirebaseDatabase.getInstance().getReference("USERS")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -195,7 +192,7 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
 
                                     } else {
                                         Toast.makeText(Register1.this, "failed to register", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(GONE);
+                                       progressBar.setVisibility(GONE);
 
                                     }
                                 }
@@ -203,9 +200,6 @@ public class Register1 extends AppCompatActivity implements OnClickListener {
                             Intent i=new Intent(Register1.this, Login.class);
                             startActivity(i);
                             finish();
-
-
-
 
                         } else {
                             Toast.makeText(Register1.this, "failed to register", Toast.LENGTH_SHORT).show();

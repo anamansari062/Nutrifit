@@ -1,6 +1,10 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -28,7 +32,23 @@ public class ActiveFragment extends Fragment {
     private SharedViewModel sharedViewModel;
     private FloatingActionButton next;
     String active;
-    String height, weight, age, gender;
+    String email, mobile, pass, name, gender, age, height, weight;
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setHeight(String height) {
         this.height = height;
@@ -40,6 +60,22 @@ public class ActiveFragment extends Fragment {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setGender(String gender) {
@@ -101,24 +137,53 @@ public class ActiveFragment extends Fragment {
             }
         });
 
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                sharedViewModel.setActive(active);
-                calorieSet();
+
+//                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+//                sharedViewModel.setActive(active);
+                myEdit.putString("active", active);
+                myEdit.commit();
+//                calorieSet();
+//                dataSet();
             }
         });
 
         return rootView;
     }
 
+//    private void dataSet() {
+//        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
+//        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+//
+//        myEdit.putString("email", "aksjdsk");
+//        myEdit.putString("mobile", getMobile());
+//        myEdit.putString("pass", getPass());
+//        myEdit.putString("name", getName());
+//        myEdit.putString("mobile", getMobile());
+//        myEdit.putString("mobile", getMobile());
+//        myEdit.putString("mobile", getMobile());
+//        myEdit.putString("mobile", getMobile());
+//        myEdit.putString("mobile", getMobile());
+//
+// Once the changes have been made,
+// we need to commit to apply those changes made,
+// otherwise, it will throw an error
+//        myEdit.commit();
+//    }
+
     //This function sets the calorie i.e calculates it.
-    public void calorieSet(){
-        sharedViewModel.getGender().observe(getViewLifecycleOwner(), String -> setGender(String));
-        sharedViewModel.getAge().observe(getViewLifecycleOwner(), String -> setAge(String));
-        sharedViewModel.getWeight().observe(getViewLifecycleOwner(), String -> setWeight(String));
-        sharedViewModel.getHeight().observe(getViewLifecycleOwner(), String -> setHeight(String));
-        sharedViewModel.setCalories(getHeight(), getWeight(), getAge(), getGender(), active);
-    }
+//    public void calorieSet(){
+//        sharedViewModel.getGender().observe(getViewLifecycleOwner(), String -> setGender(String));
+//        sharedViewModel.getAge().observe(getViewLifecycleOwner(), String -> setAge(String));
+//        sharedViewModel.getWeight().observe(getViewLifecycleOwner(), String -> setWeight(String));
+//        sharedViewModel.getHeight().observe(getViewLifecycleOwner(), String -> setHeight(String));
+//        sharedViewModel.setCalories(getHeight(), getWeight(), getAge(), getGender(), active);
+//
+//
+//    }
 }

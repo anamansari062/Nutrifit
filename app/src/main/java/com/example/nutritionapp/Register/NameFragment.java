@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -29,6 +32,9 @@ public class NameFragment extends Fragment {
         username = root.findViewById(R.id.editTextTextPersonName);
         next= root.findViewById(R.id.name_next);
 
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,8 +44,10 @@ public class NameFragment extends Fragment {
                     username.setError("name is required");
                 }
                 else{
-                    sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                    sharedViewModel.setName(username.getText().toString());
+//                    sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+//                    sharedViewModel.setName(username.getText().toString());
+                    myEdit.putString("name", username.getText().toString());
+                    myEdit.commit();
                 }
             }
         });
