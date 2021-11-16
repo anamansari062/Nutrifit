@@ -221,7 +221,7 @@ public class SearchActivity extends AppCompatActivity {
      private void showNutritionInfo(FoodEntity item){
             nutritionInfoServingSize.setText(String.format("Serving Size: %s", Float.parseFloat(totalServing.toString())));
                 nutritionInfoCalories.setText(("Calories " + round(calculateGrams(item.getCalories()), 2) + " Cal"));
-            nutritionInfoProteinCalories.setText(String.valueOf((calculateGrams(item.getProtein_g()))));
+            nutritionInfoProteinCalories.setText(String.valueOf(round(calculateGrams(item.getProtein_g()),2)));
             nutritionInfoFatsCalories.setText(String.valueOf(round(calculateGrams(item.getFat_total_g()), 2)));
             nutritionInfoCarbsCalories.setText(String.valueOf(round(calculateGrams(item.getCarbohydrates_total_g()), 2)));
             nutritionInfoFibreCalories.setText(String.valueOf(round(calculateGrams(item.getFiber_g()), 2)));
