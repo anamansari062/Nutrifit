@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentPasswordBinding;
@@ -34,6 +35,7 @@ public class FragmentPassword extends Fragment {
             @Override
             public void onClick(View view) {
                 sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+                if(textPass.getText().toString()!= null)
                 sharedViewModel.setPass(textPass.getText().toString());
             }
         });

@@ -32,7 +32,7 @@ public class NameFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(username.getText()))
+                if(username.getText().toString()==null)
                 {
 //            Toast.makeText(getContext(), "F", Toast.LENGTH_SHORT).show();
                     username.setError("name is required");
