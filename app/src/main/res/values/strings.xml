@@ -52,4 +52,23 @@
     <string name="home_dinner">dinner</string>
     <string name="NoFoodEatenHomeFragment">No Food Added yet!</string>
     <string name="today_insights">Click here to see the insights</string>
+    <string name="dashboard_no_food_added">You haven\'t added any food yet</string>
+    <string name="dashboard_track_insights">Track to get the insights on your nutrient intake</string>
+    <string name="dashboard_start_tracking">START TRACKING</string>
+    <string name="dashboardfood_log_analysis">Food Log Analysis</string>
+    <string name="dashboard_sub_heading_food_analysis">See your Daily Calorie and Nutrient intake here</string>
+    <string name="dashboard_your_calorie_intake">Your Calorie Intake</string>
+    <string name="dashboard_big_macronutrients_list">Big macronutrients List</string>
+    <string name="dashboard_protein">Protein</string>
+    <string name="dashboard_carbs">Carbs</string>
+    <string name="dashboard_fats">Fats</string>
+    <string name="dashboard_fibre">Fibre</string>
+    <string name="dashboard_small_macronutrients_list">Small macronutrients List</string>
+    <string name="dashboard_fat_saturated">Fat Saturated</string>
+    <string name="dashboard_sodium">Sodium</string>
+    <string name="dashboard_cholesterol">Cholesterol</string>
+    <string name="dashboard_potassium">Potassium</string>
+    <string name="nutrition_info">Nutrition Info</string>
+    <string name="dashboard_sugar">Sugar</string>
+    <string name="share">Share</string>
 </resources>
