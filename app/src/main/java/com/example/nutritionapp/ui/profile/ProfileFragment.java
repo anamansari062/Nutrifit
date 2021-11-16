@@ -24,7 +24,7 @@ import java.util.Map;
 public class ProfileFragment extends Fragment {
     private ProfileViewModel profileViewModel;
     private FragmentProfileBinding binding;
-    TextView nametxt,emailtxt;
+    TextView nametxt,emailtxt,gender,height,age,weight,mobile;
     DatabaseReference databaseReference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,6 +35,11 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
         nametxt=(TextView) root.findViewById(R.id.nametxt);
         emailtxt=(TextView) root.findViewById(R.id.emailtxt);
+        gender=(TextView) root.findViewById(R.id.gendertxt);
+        height=(TextView) root.findViewById(R.id.heighttxt);
+        age=(TextView) root.findViewById(R.id.agetxt);
+        mobile=(TextView) root.findViewById(R.id.mobiletxt);
+        weight=(TextView) root.findViewById(R.id.weighttxt);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
         databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
@@ -43,8 +48,18 @@ public class ProfileFragment extends Fragment {
                 Map<String, String> map= (Map<String, String>) snapshot.getValue();
                 String name= map.get("name");
                 String email= map.get("email");
+                String Gender= map.get("gender");
+                String Height= map.get("height");
+                String Weight= map.get("weight");
+                String Age=map.get("age");
+                String Mobile= map.get("mobile");
                 nametxt.setText(name);
                 emailtxt.setText(email);
+                gender.setText(Gender);
+                height.setText(Height);
+                age.setText(Age);
+                mobile.setText(Mobile);
+                weight.setText(Weight);
             }
 
             @Override
