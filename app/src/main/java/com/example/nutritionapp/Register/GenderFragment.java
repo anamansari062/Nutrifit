@@ -26,7 +26,7 @@ public class GenderFragment extends Fragment {
     private FragmentGenderBinding binding;
     String typeOfUser;
     private FloatingActionButton next;
-    private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
     RelativeLayout male,female;
 
     @Override
@@ -34,9 +34,6 @@ public class GenderFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentGenderBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
-//        male = rootView.findViewById(R.id.malecard);
-//        female = rootView.findViewById(R.id.femalecard);
-//        trans = rootView.findViewById(R.id.transcard);
         male = rootView.findViewById(R.id.fragment_gender_maleLogo);
         female = rootView.findViewById(R.id.fragment_gender_femaleLogo);
         next= rootView.findViewById(R.id.gender_next);
@@ -60,33 +57,16 @@ public class GenderFragment extends Fragment {
             }
         });
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-//                sharedViewModel.setGender(typeOfUser);
-                myEdit.putString("gender", typeOfUser);
-                myEdit.commit();
+                viewPagerMain.myEdit.putString("gender", typeOfUser);
+                viewPagerMain.myEdit.commit();
             }
         });
 
-
-//        male.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent event) {
-//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    // set color here
-//                    male.setCardBackgroundColor(R.drawable.malefemalefocus);
-//                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-//                    // set other color here
-//
-//                }
-//                return true;
-//            }
-//        });
                 return rootView;
     }
 }

@@ -21,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NameFragment extends Fragment {
     private FragmentNameBinding binding;
     private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
     private FloatingActionButton next;
     EditText username;
 
@@ -32,22 +33,18 @@ public class NameFragment extends Fragment {
         username = root.findViewById(R.id.editTextTextPersonName);
         next= root.findViewById(R.id.name_next);
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(username.getText().toString()==null)
                 {
-//            Toast.makeText(getContext(), "F", Toast.LENGTH_SHORT).show();
                     username.setError("name is required");
                 }
                 else{
-//                    sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-//                    sharedViewModel.setName(username.getText().toString());
-                    myEdit.putString("name", username.getText().toString());
-                    myEdit.commit();
+                    viewPagerMain.myEdit.putString("name", username.getText().toString());
+                    viewPagerMain.myEdit.commit();
                 }
             }
         });

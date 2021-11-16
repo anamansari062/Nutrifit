@@ -29,74 +29,9 @@ import java.util.zip.DeflaterOutputStream;
 public class ActiveFragment extends Fragment {
     RelativeLayout lactive,mactive,hactive;
     private FragmentActiveBinding binding;
-    private SharedViewModel sharedViewModel;
     private FloatingActionButton next;
+    ViewPagerMain viewPagerMain;
     String active;
-    String email, mobile, pass, name, gender, age, height, weight;
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,53 +72,17 @@ public class ActiveFragment extends Fragment {
             }
         });
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-//                sharedViewModel.setActive(active);
-                myEdit.putString("active", active);
-                myEdit.commit();
-//                calorieSet();
-//                dataSet();
+                viewPagerMain.myEdit.putString("active", active);
+                viewPagerMain.myEdit.commit();
             }
         });
 
         return rootView;
     }
 
-//    private void dataSet() {
-//        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-//        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//
-//        myEdit.putString("email", "aksjdsk");
-//        myEdit.putString("mobile", getMobile());
-//        myEdit.putString("pass", getPass());
-//        myEdit.putString("name", getName());
-//        myEdit.putString("mobile", getMobile());
-//        myEdit.putString("mobile", getMobile());
-//        myEdit.putString("mobile", getMobile());
-//        myEdit.putString("mobile", getMobile());
-//        myEdit.putString("mobile", getMobile());
-//
-// Once the changes have been made,
-// we need to commit to apply those changes made,
-// otherwise, it will throw an error
-//        myEdit.commit();
-//    }
-
-    //This function sets the calorie i.e calculates it.
-//    public void calorieSet(){
-//        sharedViewModel.getGender().observe(getViewLifecycleOwner(), String -> setGender(String));
-//        sharedViewModel.getAge().observe(getViewLifecycleOwner(), String -> setAge(String));
-//        sharedViewModel.getWeight().observe(getViewLifecycleOwner(), String -> setWeight(String));
-//        sharedViewModel.getHeight().observe(getViewLifecycleOwner(), String -> setHeight(String));
-//        sharedViewModel.setCalories(getHeight(), getWeight(), getAge(), getGender(), active);
-//
-//
-//    }
 }

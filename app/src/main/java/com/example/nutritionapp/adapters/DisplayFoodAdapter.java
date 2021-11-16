@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,7 @@ public class DisplayFoodAdapter extends RecyclerView.Adapter<DisplayFoodAdapter.
         holder.textDisplayFood.setText(upperString);
         holder.textDisplayCalories.setText(String.valueOf(round(currentFoodEntity.getCalories(), 2) + "Cal"));
 
+
     }
 
     public FoodEntity getFoodAt(int position){
@@ -54,7 +56,7 @@ public class DisplayFoodAdapter extends RecyclerView.Adapter<DisplayFoodAdapter.
     }
     @Override
     public int getItemCount() {
-        return foodEntity.size();
+            return foodEntity.size();
     }
 
     public class DisplayFoodViewHolder extends RecyclerView.ViewHolder {
@@ -65,6 +67,8 @@ public class DisplayFoodAdapter extends RecyclerView.Adapter<DisplayFoodAdapter.
             textDisplayFood= itemView.findViewById(R.id.text_display_name);
             textDisplayCalories= itemView.findViewById(R.id.text_display_calories);
             imageDisplayFOod = itemView.findViewById(R.id.text_display_image);
+
+
         }
     }
 

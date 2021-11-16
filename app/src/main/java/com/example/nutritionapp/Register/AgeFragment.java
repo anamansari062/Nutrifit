@@ -24,7 +24,7 @@ public class AgeFragment extends Fragment {
     ImageView incage,decage;
     private FloatingActionButton next;
     private FragmentAgeBinding binding;
-    private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
 
     int age1=18;
     String age2="18";
@@ -59,18 +59,13 @@ public class AgeFragment extends Fragment {
             }
         });
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-//                sharedViewModel.setAge(age.getText().toString());
-                myEdit.putString("age", age.getText().toString());
-                myEdit.commit();
+                viewPagerMain.myEdit.putString("age", age.getText().toString());
+                viewPagerMain.myEdit.commit();
             }
         });
 

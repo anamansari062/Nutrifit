@@ -22,10 +22,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class WeightFragment extends Fragment {
     private FragmentWeightBinding binding;
-    private SharedViewModel sharedViewModel;
     private FloatingActionButton next;
     TextView weight;
     ImageView incweight,decweight;
+    ViewPagerMain viewPagerMain;
     int weight1=70;
     String weight2="70";
 
@@ -61,16 +61,13 @@ public class WeightFragment extends Fragment {
             }
         });
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-//                sharedViewModel.setWeight(weight.getText().toString());
-                myEdit.putString("weight", weight.getText().toString());
-                myEdit.commit();
+                viewPagerMain.myEdit.putString("weight", weight.getText().toString());
+                viewPagerMain.myEdit.commit();
             }
         });
 

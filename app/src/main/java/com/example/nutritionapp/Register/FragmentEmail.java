@@ -23,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FragmentEmail extends Fragment {
     private FragmentEmailBinding binding;
-    private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
     EditText textEmail, textMobile;
     FloatingActionButton add;
 
@@ -38,18 +38,15 @@ public class FragmentEmail extends Fragment {
         textMobile= root.findViewById(R.id.text_mobile);
         add= root.findViewById(R.id.email_next);
 
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
                 if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null)
-//                    sharedViewModel.setEmailMobile(textEmail.getText().toString(), textMobile.getText().toString());
-                    myEdit.putString("email", textEmail.getText().toString());
-                    myEdit.putString("mobile", textMobile.getText().toString());
-                    myEdit.commit();
+                    viewPagerMain.myEdit.putString("email", textEmail.getText().toString());
+                    viewPagerMain.myEdit.putString("mobile", textMobile.getText().toString());
+                    viewPagerMain.myEdit.commit();
 
 
             }
