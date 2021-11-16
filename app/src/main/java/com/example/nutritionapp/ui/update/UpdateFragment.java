@@ -25,6 +25,12 @@ import androidx.lifecycle.Observer;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentUpdateBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -40,6 +46,8 @@ public class UpdateFragment extends Fragment {
     RelativeLayout mmale,mfemale;
     Spinner spinner;
     Double a;
+    FirebaseDatabase database;
+    DatabaseReference databaseReference;
 //    AutoCompleteTextView auto_activity;
     ArrayList<String> arrayList_activity;
     ArrayAdapter<String> arrayAdapter_activity;
@@ -210,17 +218,23 @@ public class UpdateFragment extends Fragment {
 //                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
                    alertDialog();
                 }
+//               database=FirebaseDatabase.getInstance();
+ //               databaseReference=database.getReference();
+//                databaseReference.child("USERS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+  //                  @Override
+    //                public void onDataChange(@NonNull DataSnapshot snapshot) {
+      //                  snapshot.getRef().child("gender").setValue(typeOfUser);
+        //            }
+
+
+//                });
+
+
             }
         });
 
 //        final TextView textView = binding.textCalculate;
-        updateViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
 
-            }
-        });
         return root;
     }
 
@@ -262,7 +276,7 @@ public class UpdateFragment extends Fragment {
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
                     }
-                }
+}
 
 
 //    @Override
