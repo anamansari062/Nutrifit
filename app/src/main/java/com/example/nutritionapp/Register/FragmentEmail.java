@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -20,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FragmentEmail extends Fragment {
     private FragmentEmailBinding binding;
-    private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
     EditText textEmail, textMobile;
     FloatingActionButton add;
 
@@ -35,12 +38,17 @@ public class FragmentEmail extends Fragment {
         textMobile= root.findViewById(R.id.text_mobile);
         add= root.findViewById(R.id.email_next);
 
+        viewPagerMain= (ViewPagerMain) getActivity();
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
                 if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null)
-                    sharedViewModel.setEmailMobile(textEmail.getText().toString(), textMobile.getText().toString());
+                    viewPagerMain.myEdit.putString("email", textEmail.getText().toString());
+                    viewPagerMain.myEdit.putString("mobile", textMobile.getText().toString());
+                    viewPagerMain.myEdit.commit();
+
+
             }
         });
 

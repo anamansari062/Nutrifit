@@ -25,12 +25,6 @@ import androidx.lifecycle.Observer;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentUpdateBinding;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -46,8 +40,6 @@ public class UpdateFragment extends Fragment {
     RelativeLayout mmale,mfemale;
     Spinner spinner;
     Double a;
-    FirebaseDatabase database;
-    DatabaseReference databaseReference;
 //    AutoCompleteTextView auto_activity;
     ArrayList<String> arrayList_activity;
     ArrayAdapter<String> arrayAdapter_activity;
@@ -215,36 +207,11 @@ public class UpdateFragment extends Fragment {
 //                    intent.putExtra("Age",age2);
 //                    startActivity(intent);
                     calculate(heightc, weightc, agec, typeOfUser, value);
-                    database=FirebaseDatabase.getInstance();
-                    databaseReference=database.getReference();
-                    databaseReference.child("USERS").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            snapshot.getRef().child("gender").setValue(typeOfUser);
-                            snapshot.getRef().child("height").setValue(mcurrentheight.getText().toString().trim());
-                            snapshot.getRef().child("weight").setValue(mcurrentweight.getText().toString().trim());
-                            snapshot.getRef().child("age").setValue(mcurrentage.getText().toString().trim());
-                            snapshot.getRef().child("activity").setValue(value);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-
-
-                    });
 //                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
                    alertDialog();
                 }
-
-
-
             }
         });
-
-
-//        final TextView textView = binding.textCalculate;
 
 
         return root;
@@ -288,7 +255,7 @@ public class UpdateFragment extends Fragment {
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
                     }
-}
+                }
 
 
 //    @Override

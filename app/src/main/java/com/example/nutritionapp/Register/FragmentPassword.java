@@ -1,5 +1,9 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_APPEND;
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class FragmentPassword extends Fragment {
     FragmentPasswordBinding binding;
     EditText textPass, textPassC;
+    ViewPagerMain viewPagerMain;
     private FloatingActionButton next;
     private SharedViewModel sharedViewModel;
 
@@ -31,12 +36,16 @@ public class FragmentPassword extends Fragment {
         textPassC= root.findViewById(R.id.text_passc);
         next= root.findViewById(R.id.pass_next);
 
+        viewPagerMain= (ViewPagerMain) getActivity();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                if(textPass.getText().toString()!= null)
-                sharedViewModel.setPass(textPass.getText().toString());
+                if(textPass.getText().toString()!= null){
+                    viewPagerMain.myEdit.putString("pass", textPass.getText().toString());
+                    viewPagerMain.myEdit.commit();
+               }
             }
         });
 
@@ -44,6 +53,6 @@ public class FragmentPassword extends Fragment {
 
 
 
-        return inflater.inflate(R.layout.fragment_password, container, false);
+        return root;
     }
 }

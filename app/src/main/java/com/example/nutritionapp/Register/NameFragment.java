@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NameFragment extends Fragment {
     private FragmentNameBinding binding;
     private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
     private FloatingActionButton next;
     EditText username;
 
@@ -29,17 +33,18 @@ public class NameFragment extends Fragment {
         username = root.findViewById(R.id.editTextTextPersonName);
         next= root.findViewById(R.id.name_next);
 
+        viewPagerMain= (ViewPagerMain) getActivity();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(username.getText().toString()==null)
                 {
-//            Toast.makeText(getContext(), "F", Toast.LENGTH_SHORT).show();
                     username.setError("name is required");
                 }
                 else{
-                    sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                    sharedViewModel.setName(username.getText().toString());
+                    viewPagerMain.myEdit.putString("name", username.getText().toString());
+                    viewPagerMain.myEdit.commit();
                 }
             }
         });

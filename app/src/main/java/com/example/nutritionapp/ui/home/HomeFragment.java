@@ -138,6 +138,8 @@ public class HomeFragment extends Fragment {
         recyclerBreakfast.setAdapter(adapterBreakfast);
         foodViewModel.getAllBreakfast(dateOnly).observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
         fixedBreakfast.setOnClickListener(view -> {
+            if(breakfastCalories.getText().toString()=="")
+                Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenBreakfast.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardBreakfast,
                         new AutoTransition());
@@ -167,6 +169,8 @@ public class HomeFragment extends Fragment {
         recyclerLunch.setAdapter(adapterLunch);
         foodViewModel.getAllLunch(dateOnly).observe(getViewLifecycleOwner(), adapterLunch::setFoods);
         fixedLunch.setOnClickListener(view -> {
+            if(breakfastCalories.getText().toString()=="")
+                Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenLunch.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardLunch,
                         new AutoTransition());
@@ -195,6 +199,8 @@ public class HomeFragment extends Fragment {
         recyclerSnacks.setAdapter(adapterSnacks);
         foodViewModel.getAllSnacks(dateOnly).observe(getViewLifecycleOwner(), adapterSnacks::setFoods);
         fixedSnacks.setOnClickListener(view -> {
+            if(breakfastCalories.getText().toString()=="")
+                Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenSnacks.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardSnacks,
                         new AutoTransition());
@@ -223,6 +229,8 @@ public class HomeFragment extends Fragment {
         recyclerDinner.setAdapter(adapterDinner);
         foodViewModel.getAllDinner(dateOnly).observe(getViewLifecycleOwner(), adapterDinner::setFoods);
         fixedDinner.setOnClickListener(view -> {
+            if(breakfastCalories.getText().toString()=="")
+                Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenDinner.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardDinner,
                         new AutoTransition());

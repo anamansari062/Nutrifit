@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,7 +24,7 @@ public class AgeFragment extends Fragment {
     ImageView incage,decage;
     private FloatingActionButton next;
     private FragmentAgeBinding binding;
-    private SharedViewModel sharedViewModel;
+    ViewPagerMain viewPagerMain;
 
     int age1=18;
     String age2="18";
@@ -56,13 +59,13 @@ public class AgeFragment extends Fragment {
             }
         });
 
-
+        viewPagerMain= (ViewPagerMain) getActivity();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                sharedViewModel.setAge(age.getText().toString());
+                viewPagerMain.myEdit.putString("age", age.getText().toString());
+                viewPagerMain.myEdit.commit();
             }
         });
 

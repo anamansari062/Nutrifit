@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,10 +22,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class WeightFragment extends Fragment {
     private FragmentWeightBinding binding;
-    private SharedViewModel sharedViewModel;
     private FloatingActionButton next;
     TextView weight;
     ImageView incweight,decweight;
+    ViewPagerMain viewPagerMain;
     int weight1=70;
     String weight2="70";
 
@@ -58,11 +61,13 @@ public class WeightFragment extends Fragment {
             }
         });
 
+        viewPagerMain= (ViewPagerMain) getActivity();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                sharedViewModel.setWeight(weight.getText().toString());
+                viewPagerMain.myEdit.putString("weight", weight.getText().toString());
+                viewPagerMain.myEdit.commit();
             }
         });
 

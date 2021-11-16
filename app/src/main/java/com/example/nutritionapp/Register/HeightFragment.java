@@ -1,5 +1,8 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -23,7 +26,7 @@ public class HeightFragment extends Fragment {
     TextView currentheight;
     SeekBar heightbar;
     private FloatingActionButton next;
-
+    ViewPagerMain viewPagerMain;
     int currentProgress;
     String mintProgress="160";
 
@@ -31,8 +34,8 @@ public class HeightFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_height, container, false);
+        binding= FragmentHeightBinding.inflate(inflater, container, false);
+        View rootView = binding.getRoot();
         currentheight=rootView.findViewById(R.id.fragment_height_currentHeight);
         heightbar=(SeekBar) rootView.findViewById(R.id.fragment_height_heightBar);
         next= rootView.findViewById(R.id.height_next);
@@ -58,11 +61,13 @@ public class HeightFragment extends Fragment {
             }
         });
 
+        viewPagerMain= (ViewPagerMain) getActivity();
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                sharedViewModel.setHeight(currentheight.getText().toString());
+                viewPagerMain.myEdit.putString("height", currentheight.getText().toString());
+                viewPagerMain.myEdit.commit();
             }
         });
 
