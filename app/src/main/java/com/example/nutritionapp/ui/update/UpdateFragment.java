@@ -233,7 +233,9 @@ public class UpdateFragment extends Fragment {
             }
         });
 
+
 //        final TextView textView = binding.textCalculate;
+
 
         return root;
     }

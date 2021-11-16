@@ -131,6 +131,9 @@ public class HomeFragment extends Fragment {
         recyclerBreakfast.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerBreakfast.setHasFixedSize(true);
 
+
+        // TODO: add a toast for meal which are not yet tracked
+        // i.e. eg. lunch without food then say no foods added yet, click on add to track :)
         final DisplayFoodAdapter adapterBreakfast = new DisplayFoodAdapter();
         recyclerBreakfast.setAdapter(adapterBreakfast);
         foodViewModel.getAllBreakfast(dateOnly).observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
@@ -144,6 +147,7 @@ public class HomeFragment extends Fragment {
                 TransitionManager.beginDelayedTransition(cardBreakfast,
                         new AutoTransition());
                 hiddenBreakfast.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -299,39 +303,39 @@ public class HomeFragment extends Fragment {
 
     private void setDinnerCalories(Float calories) {
         if(calories!= null)
-            dinnerCalories.setText(calories.toString());
-//            dinnerCalories.setText("0");
-//        else
+            dinnerCalories.setText(String.format("%sCal", calories.toString()));
+        else
+            dinnerCalories.setText("");
 
     }
 
-    private void setSnacksCalories(Float calories) {
+    private void setSnacksCalories(Float calories){
         if(calories!= null)
-            snacksCalories.setText(calories.toString());
-//            snacksCalories.setText("0");
-//        else
+            snacksCalories.setText(String.format("%sCal", calories.toString()));
+        else
+            snacksCalories.setText("");
 
     }
 
     private void setLunchCalories(Float calories) {
         if(calories!= null)
-            lunchCalories.setText(calories.toString());
-//            lunchCalories.setText("0");
-//        else
+            lunchCalories.setText(String.format("%sCal", calories.toString()));
+        else
+            lunchCalories.setText("");
 
     }
 
     private void setBreakfastCalories(Float calories) {
         if(calories!= null)
-            breakfastCalories.setText(calories.toString());
-//            breakfastCalories.setText("0");
-//        else
+            breakfastCalories.setText(String.format("%sCal", calories.toString()));
+        else
+            breakfastCalories.setText("");
 
     }
 
     private void setTotalCalories(Object calories) {
         if(calories!= null)
-            totalCalories.setText(String.format("%s \nCal", String.format("%.1f",calories)));
+            totalCalories.setText(String.format("%s \nCal", String.format("%.1f", calories)));
         }
 
     @Override

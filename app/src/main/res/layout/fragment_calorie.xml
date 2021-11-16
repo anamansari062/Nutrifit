@@ -7,14 +7,56 @@
     tools:context=".Register.FragmentCalorie">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/display_calories"
-        android:layout_width="345dp"
-        android:layout_height="193dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="313dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <TextView
+        android:id="@+id/display_email"
+        android:layout_width="313dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37" />
+
+    <TextView
+        android:id="@+id/display_mobile"
+        android:layout_width="313dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <TextView
+        android:id="@+id/display_name"
+        android:layout_width="313dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609" />
+
+    <TextView
+        android:id="@+id/display_pass"
+        android:layout_width="313dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.718" />
 
     <Button
         android:id="@+id/button_register"
