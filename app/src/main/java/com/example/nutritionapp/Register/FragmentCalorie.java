@@ -169,67 +169,58 @@ public class FragmentCalorie extends Fragment {
 
     private void registerUser(){
     mAuth.createUserWithEmailAndPassword(getEmail().trim(), getPass().trim())
-            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()) {
-                FirebaseUser use=mAuth.getCurrentUser();
-                if (use != null) {
-                    use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser use=mAuth.getCurrentUser();
+                    if (use != null) {
+                        use.sendEmailVerification().addOnSuccessListener(unused -> Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show()).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    HashMap<String,Object> map=new HashMap<>();
+                    map.put("name",getName().trim());
+                    map.put("email",getEmail().trim());
+                    map.put("mobile", getMobile().trim());
+                    map.put("password", getPass().trim());
+                    map.put("id",mAuth.getCurrentUser().getUid());
+                    map.put("height",getHeight().trim());
+                    map.put("weight",getWeight().trim());
+                    map.put("age",getAge().trim());
+    
+                    FirebaseDatabase.getInstance().getReference("USERS")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show();
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getContext(),"failed",Toast.LENGTH_SHORT).show();
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+    //                            register1.setVisibility(VISIBLE);
+    //                            progressBar.setVisibility(INVISIBLE);
+                                Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
+    
+    
+    
+                            } else {
+                                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+    //                            progressBar.setVisibility(GONE);
+    
+                            }
                         }
                     });
+                    Intent i=new Intent(getContext(), MainActivity.class);
+                    startActivity(i);
+    //                finish();
+    
+    
+    
+    
+                } else {
+                    Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+    //                progressBar.setVisibility(GONE);
                 }
-                HashMap<String,Object> map=new HashMap<>();
-                map.put("name",getName().trim());
-                map.put("email",getEmail().trim());
-                map.put("mobile", getMobile().trim());
-                map.put("password", getPass().trim());
-                map.put("id",mAuth.getCurrentUser().getUid());
-                map.put("height",getHeight().trim());
-                map.put("weight",getWeight().trim());
-                map.put("age",getAge().trim());
-
-                FirebaseDatabase.getInstance().getReference("USERS")
-                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-//                            register1.setVisibility(VISIBLE);
-//                            progressBar.setVisibility(INVISIBLE);
-                            Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
-
-
-
-                        } else {
-                            Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-//                            progressBar.setVisibility(GONE);
-
-                        }
-                    }
-                });
-                Intent i=new Intent(getContext(), MainActivity.class);
-                startActivity(i);
-//                finish();
-
-
-
-
-            } else {
-                Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
-//                progressBar.setVisibility(GONE);
-            }
-        }
-    });
+            });
 }
 
     private void displayCalories(Double calorie) {

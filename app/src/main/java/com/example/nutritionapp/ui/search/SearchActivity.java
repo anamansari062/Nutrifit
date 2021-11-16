@@ -102,11 +102,9 @@ public class SearchActivity extends AppCompatActivity {
             if (textSearch.getText().toString().length() == 0) {
                 textSearch.setError("Please enter the food name");
                 textSearch.requestFocus();
-//                    Toast.makeText(SearchActivity.this, "Please enter the food name", Toast.LENGTH_SHORT).show();
             } else if (textServe.getText().toString().length() == 0) {
                 textServe.setError("Please enter the food name");
                 textServe.requestFocus();
-//                    Toast.makeText(SearchActivity.this, "Please enter the serving size", Toast.LENGTH_SHORT).show();
             } else {
                 hideKeyboard();
                 cardShowNutrition.setVisibility(View.INVISIBLE);
