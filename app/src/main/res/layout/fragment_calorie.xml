@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,71 +8,69 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/display_calories"
-        android:layout_width="313dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="60dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
 
-    <TextView
-        android:id="@+id/display_email"
-        android:layout_width="313dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="60dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+    <RelativeLayout
+        android:id="@+id/fragment_active_light"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/registermalefemalenotfocus">
 
-    <TextView
-        android:id="@+id/display_mobile"
-        android:layout_width="313dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        <!--        <ImageView-->
+        <!--            android:layout_width="40dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_marginStart="10dp"-->
+        <!--            android:layout_marginTop="5dp"-->
+        <!--            android:src="@drawable/ic_lowactive" />-->
 
-    <TextView
-        android:id="@+id/display_name"
-        android:layout_width="313dp"
-        android:textSize="20dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+        <TextView
+            android:id="@+id/low_active_text"
+            android:layout_width="286dp"
+            android:layout_height="41dp"
+            android:layout_centerInParent="true"
+            android:text="Welcome to NutriFit"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/display_pass"
-        android:layout_width="313dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="60dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/fragment"-->
+<!--        android:layout_width="340dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="130dp"-->
+<!--        android:background="@drawable/registermalefemalenotfocus">-->
+
+<!--        &lt;!&ndash;        <ImageView&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_width="40dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_height="40dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_marginStart="10dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_marginTop="5dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:src="@drawable/ic_lowactive" />&ndash;&gt;-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/display_calories"-->
+<!--            android:layout_width="286dp"-->
+<!--            android:layout_height="41dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:text=""-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp" />-->
+<!--    </RelativeLayout>-->
+
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REGISTER"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="400dp"
+        android:backgroundTint="@color/primaryColor"
         android:gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
+        android:text="REGISTER" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

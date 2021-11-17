@@ -107,7 +107,7 @@ public class UpdateFragment extends Fragment {
         arrayList_activity = new ArrayList<>();
         arrayList_activity.add(0,"How active are you?") ;
         arrayList_activity.add("Low Physical Activity");
-        arrayList_activity.add("Average Physical Activity");
+        arrayList_activity.add("Moderate Physical Activity");
         arrayList_activity.add("High Physical Activity");
 
 
@@ -124,7 +124,7 @@ public class UpdateFragment extends Fragment {
                 }
                 else
                 {
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
 //                    ((TextView) adapterView.getChildAt(0)).setTextSize(5);
                      value = adapterView.getItemAtPosition(i).toString();
                 }
@@ -140,8 +140,8 @@ public class UpdateFragment extends Fragment {
         mmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
+                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
                 typeOfUser="MALE";
             }
         });
@@ -149,8 +149,8 @@ public class UpdateFragment extends Fragment {
         mfemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
+                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
                 typeOfUser="FEMALE";
             }
         });
@@ -268,13 +268,13 @@ public class UpdateFragment extends Fragment {
     }
 
     private void calculate(int height, int weight, int age, String gender, String active) {
-        if(active.equals("Light"))
+        if(value.equals("Low Physical Activity"))
             a= 1.2;
-        else if(active.equals("Moderate"))
+        else if(value.equals("Moderate Physical Activity"))
             a= 1.55;
         else
             a= 1.9;
-        if(gender.equals("Male"))
+        if(typeOfUser.equals("MALE"))
             calorie= (66.5 + 13.8 * weightc + 5* heightc ) - (6.8 * agec) * a;
         else
             calorie= (655.1 + 9.5 * weightc + 1.8* heightc ) - (4.6* agec) * a;
@@ -282,10 +282,10 @@ public class UpdateFragment extends Fragment {
     }
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
-        if(typeOfUser.equals("MALE")) {
+
             dialog.setMessage("Your details have been updated successfully , The number of " +
                     "calories you need are : " + calorie + " cal");
-        }
+        
         dialog.setTitle("Successful");
         dialog.setPositiveButton("Ok",
                 new DialogInterface.OnClickListener() {
