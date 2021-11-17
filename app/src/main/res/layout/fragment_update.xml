@@ -146,7 +146,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
-            android:text="70"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25sp"
@@ -225,7 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
-            android:text="18"
+
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25sp"
@@ -301,7 +300,6 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="54dp"
-            android:text="180"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold">
