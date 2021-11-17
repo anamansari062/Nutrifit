@@ -5,9 +5,7 @@ import static android.view.View.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.nutritionapp.Activity.Login;
-import com.example.nutritionapp.Register.ViewPagerMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

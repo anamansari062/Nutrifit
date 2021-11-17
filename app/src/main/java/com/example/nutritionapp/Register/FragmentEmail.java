@@ -1,31 +1,26 @@
 package com.example.nutritionapp.Register;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentEmailBinding;
-import com.example.nutritionapp.databinding.FragmentHomeBinding;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FragmentEmail extends Fragment {
     private FragmentEmailBinding binding;
-    ViewPagerMain viewPagerMain;
+    RegisterMain registerMain;
     EditText textEmail, textMobile;
-    FloatingActionButton add;
+    ExtendedFloatingActionButton add,back;
 
     @Nullable
     @Override
@@ -38,16 +33,35 @@ public class FragmentEmail extends Fragment {
         textMobile= root.findViewById(R.id.text_mobile);
         add= root.findViewById(R.id.email_next);
 
-        viewPagerMain= (ViewPagerMain) getActivity();
+
+        registerMain = (RegisterMain) getActivity();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null)
-                    viewPagerMain.myEdit.putString("email", textEmail.getText().toString());
-                    viewPagerMain.myEdit.putString("mobile", textMobile.getText().toString());
-                    viewPagerMain.myEdit.commit();
+                if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null) {
+                    registerMain.myEdit.putString("email", textEmail.getText().toString());
+                    registerMain.myEdit.putString("mobile", textMobile.getText().toString());
+                    registerMain.myEdit.commit();
+                }
 
+                Boolean valid = true;
+                if (textEmail.length() == 0) {
+                    textEmail.setError("Please provide a valid email");
+                    valid = false;
+
+                }
+                if (textMobile.length() == 0||textMobile.length()<10) {
+                    textMobile.setError("Please provide a valid Mobile number");
+                    valid = false;
+
+                }
+                if(valid) {
+                    FragmentTransaction fr = getParentFragmentManager().beginTransaction();
+                    fr.replace(R.id.register_container, new FragmentPassword());
+//                fr.addToBackStack(null);
+                    fr.commit();
+                }
 
             }
         });

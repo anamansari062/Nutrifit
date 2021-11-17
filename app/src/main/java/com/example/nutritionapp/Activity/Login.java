@@ -16,15 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nutritionapp.R;
-import com.example.nutritionapp.Register.ViewPagerMain;
-import com.example.nutritionapp.Register1;
+import com.example.nutritionapp.Register.RegisterMain;
 import com.example.nutritionapp.Reset;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -67,7 +60,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent;
-                intent = new Intent(Login.this, ViewPagerMain.class);
+                intent = new Intent(Login.this, RegisterMain.class);
                 startActivity(intent);
                 finish();
             }
