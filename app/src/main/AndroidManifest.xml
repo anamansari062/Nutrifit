@@ -19,7 +19,7 @@
             android:name=".Activity.DisplayFood"
             android:exported="false" />
         <activity
-            android:name=".Register.ViewPagerMain"
+            android:name=".Register.RegisterMain"
             android:exported="false" />
         <activity
             android:name=".Activity.Login"

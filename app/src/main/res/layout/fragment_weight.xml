@@ -111,14 +111,31 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/weight_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/weightcard"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="-299dp"
-        android:layout_marginEnd="355dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="85dp"
+        android:backgroundTint="@color/primaryColor"
         android:clickable="true"
-        android:src="@drawable/ic_baseline_arrow_forward_24" />
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        android:text="NEXT" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/weight_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="215dp"
+        android:layout_marginBottom="85dp"
+        android:backgroundTint="@color/primaryColor"
+        android:clickable="true"
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
+        android:text="BACK" />
 </RelativeLayout>
