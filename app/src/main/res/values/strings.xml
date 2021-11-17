@@ -8,6 +8,7 @@
     <string name="action_logout">Logout</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="achieve_goal">To achieve your goal we recommend you to:</string>
 
     <string name="menu_update">Update</string>
     <string name="menu_blog">Read Blogs</string>

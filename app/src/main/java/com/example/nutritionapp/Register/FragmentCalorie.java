@@ -45,17 +45,17 @@ public class FragmentCalorie extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentCalorieBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
-        calories= rootView.findViewById(R.id.display_calories);
+//        calories= rootView.findViewById(R.id.display_calories);
         register= rootView.findViewById(R.id.button_register);
+//
+////        textEmail= rootView.findViewById(R.id.display_email);
+//        textMobile= rootView.findViewById(R.id.display_mobile);
 
-        textEmail= rootView.findViewById(R.id.display_email);
-        textMobile= rootView.findViewById(R.id.display_mobile);
-        textName= rootView.findViewById(R.id.display_name);
-        textPass= rootView.findViewById(R.id.display_pass);
 
         register.setOnClickListener(view -> {
             //Here register function will come use get functions for taking data eg: for gender do getGender()
             registerUser();
+//            calories.setText(mcalorie.toString());
 
         });
 
@@ -85,9 +85,9 @@ public class FragmentCalorie extends Fragment {
         else
             mcalorie= (655.1 + 9.5 * Integer.parseInt(weight) + 1.8* Integer.parseInt(height) ) - (4.6* Integer.parseInt(age)) * a;
 
-        displayCalories(mcalorie);
 
-        textEmail.setText(email + " " + mobile);
+
+//        textEmail.setText(email + " " + mobile);
         mAuth= FirebaseAuth.getInstance();
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(getContext(), "Email not valiied", Toast.LENGTH_LONG).show();
@@ -148,10 +148,6 @@ public class FragmentCalorie extends Fragment {
                 });
     }
 
-
-    private void displayCalories(Double calorie) {
-        calories.setText(calorie.toString());
-    }
 
 
 }

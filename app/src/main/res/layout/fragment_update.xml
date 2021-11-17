@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+
     >
 
 
@@ -36,8 +36,8 @@
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:text=""
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -50,7 +50,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@id/centerverticalline"
-        android:background="@drawable/malefemalenotfocus">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="150px"
@@ -58,7 +58,7 @@
             android:layout_above="@+id/textmale"
             android:layout_centerInParent="true"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/male">
+            android:src="@drawable/maleicon">
 
         </ImageView>
 
@@ -70,7 +70,7 @@
             android:layout_marginBottom="10dp"
             android:text="Male"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold">
 
@@ -87,7 +87,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="21dp"
         android:layout_toEndOf="@id/centerverticalline"
-        android:background="@drawable/malefemalenotfocus">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="150px"
@@ -95,7 +95,7 @@
             android:layout_above="@+id/textfemale"
             android:layout_centerInParent="true"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/female">
+            android:src="@drawable/femaleicon">
 
         </ImageView>
 
@@ -107,7 +107,7 @@
             android:layout_marginBottom="10dp"
             android:text="Female"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold">
 
@@ -124,7 +124,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@id/centerverticalline"
-        android:background="@drawable/default_background">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <TextView
             android:id="@+id/textWeight"
@@ -134,8 +134,8 @@
             android:layout_marginBottom="25dp"
             android:text="Weight"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="15sp"
-            android:textColor="@color/white"
             android:textStyle="bold">
 
         </TextView>
@@ -147,7 +147,7 @@
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold">
 
@@ -202,7 +202,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toEndOf="@id/centerverticalline"
-        android:background="@drawable/default_background">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <TextView
             android:id="@+id/textAge"
@@ -212,9 +212,9 @@
             android:layout_marginBottom="25dp"
             android:text="Age"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
+            android:textStyle="bold">
 
         </TextView>
 
@@ -223,10 +223,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="30dp"
 
+            android:layout_marginBottom="30dp"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold">
 
@@ -243,8 +243,8 @@
                 android:id="@+id/fragment_update_decrementAge"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/minus"
-                android:background="@drawable/plusminus">
+                android:background="@drawable/plusminus"
+                android:src="@drawable/minus">
 
             </ImageView>
         </RelativeLayout>
@@ -261,8 +261,8 @@
                 android:id="@+id/fragment_update_incrementAge"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/add"
-                android:background="@drawable/plusminus">
+                android:background="@drawable/plusminus"
+                android:src="@drawable/add">
 
             </ImageView>
         </RelativeLayout>
@@ -279,7 +279,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="-37dp"
-        android:background="@drawable/default_background">
+        android:background="@drawable/registermalefemalenotfocus">
 
         <TextView
             android:layout_width="match_parent"
@@ -288,7 +288,7 @@
             android:layout_marginBottom="10dp"
             android:text="Height"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -300,7 +300,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="54dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold">
 
@@ -313,7 +313,7 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/fragment_update_currentHeight"
             android:text="cm"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <SeekBar
@@ -360,18 +360,17 @@
     <LinearLayout
         android:layout_width="340dp"
         android:layout_height="50dp"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
         android:layout_above="@id/fragment_update_UpdateBtn"
-        android:layout_marginTop="20dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
         <Spinner
             android:id="@+id/fragment_update_spinner1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/default_background"
             android:layout_marginBottom="20dp"
-            >
+            android:background="@drawable/registermalefemalenotfocus">
 
         </Spinner>
     </LinearLayout>
@@ -382,6 +381,7 @@
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
+        android:backgroundTint="@color/primaryColor"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="55dp"
         android:text="Update"
