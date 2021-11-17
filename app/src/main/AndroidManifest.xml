@@ -22,9 +22,6 @@
             android:name=".Register.RegisterMain"
             android:exported="false" />
         <activity
-            android:name=".DisplayResult"
-            android:exported="false" />
-        <activity
             android:name=".Activity.Login"
             android:exported="true"
             android:noHistory="true" />
@@ -33,12 +30,6 @@
             android:exported="true" />
         <activity
             android:name=".Otp"
-            android:exported="true" />
-        <activity
-            android:name=".Calculate"
-            android:exported="true" />
-        <activity
-            android:name=".Register2"
             android:exported="true" />
         <activity
             android:name=".ui.search.SearchActivity"

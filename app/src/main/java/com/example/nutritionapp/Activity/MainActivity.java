@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nutritionapp.Food.FoodViewModel;
@@ -22,7 +24,19 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.nutritionapp.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
+    TextView name, email;
+    DatabaseReference databaseReference;
 
     private AppBarConfiguration mAppBarConfiguration;
     SharedPreferences sharedPreferences;
@@ -37,6 +51,29 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        View headerView = navigationView.getHeaderView(0);
+
+        name= headerView.findViewById(R.id.username);
+        email= headerView.findViewById(R.id.email_id);
+
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
+        databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map<String, String> map= (Map<String, String>) snapshot.getValue();
+                String nameF= map.get("name");
+                String emailF= map.get("email");
+                name.setText(nameF);
+                email.setText(emailF);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
