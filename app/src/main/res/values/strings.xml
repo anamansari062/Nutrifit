@@ -8,7 +8,6 @@
     <string name="action_logout">Logout</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="achieve_goal">To achieve your goal we recommend you to:</string>
 
     <string name="menu_update">Update</string>
     <string name="menu_blog">Read Blogs</string>
@@ -81,5 +80,15 @@
     <string name="mobile">Mobile No:</string>
     <string name="weight">Weight</string>
     <string name="search_no_food_found">sorry we couldn\'t find any \n food with that name</string>
+    <string name="Blog1">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
+    <string name="Blog2">https://www.runtastic.com/blog/en/fat/</string>
+    <string name="Blog3">https://www.runtastic.com/blog/en/best-muscle-building-foods/</string>
+    <string name="Blog4">https://www.runtastic.com/blog/en/perfect-race-day-nutrition-plan/</string>
+    <string name="Blog5">https://www.runtastic.com/blog/en/fall-running-what-you-eat-can-make-you-faster/</string>
+    <string name="Blog6">https://www.runtastic.com/blog/en/nutrition-tips-increase-mileage/"</string>
+    <string name="Blog7">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
+    <string name="Blog8">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
+    <string name="Blog9">https://www.verywellfit.com/top-healthy-food-blogs-4570841"</string>
+    <string name="Blog10">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
 </resources>
 
