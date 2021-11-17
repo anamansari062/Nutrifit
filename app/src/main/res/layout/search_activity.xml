@@ -28,7 +28,7 @@
             android:ems="10"
             android:hint="Serving in grams..."
             android:inputType="number"
-            android:maxLength = "4" />
+            android:maxLength="4" />
 
         <Button
             android:id="@+id/buttonSearch"

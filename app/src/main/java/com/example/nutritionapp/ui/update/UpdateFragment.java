@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -44,8 +45,10 @@ public class UpdateFragment extends Fragment {
     ImageView mincrementage,mincrementweight,mdecrementage,mdecrementweight;
     SeekBar mheightbar;
     RelativeLayout mmale,mfemale;
+    EditText editName;
     Spinner spinner;
     Double a;
+    String name;
     DatabaseReference databaseReference;
 //    AutoCompleteTextView auto_activity;
     ArrayList<String> arrayList_activity;
@@ -78,6 +81,7 @@ public class UpdateFragment extends Fragment {
         mmale=root.findViewById(R.id.fragment_update_maleLogo);
         mfemale=root.findViewById(R.id.fragment_update_femaleLogo);
         spinner=root.findViewById(R.id.fragment_update_spinner1);
+        editName= root.findViewById(R.id.editTextTextPersonName);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
         if(user !=null){
@@ -94,6 +98,9 @@ public class UpdateFragment extends Fragment {
                     mintProgress=map.get("height");
                     currentProgress=Integer.parseInt(mintProgress);
                     mcurrentheight.setText(mintProgress);
+                    name= map.get("name");
+                    editName.setText(name);
+
                     value=map.get("activity");
 
                 }
@@ -107,7 +114,7 @@ public class UpdateFragment extends Fragment {
         arrayList_activity = new ArrayList<>();
         arrayList_activity.add(0,"How active are you?") ;
         arrayList_activity.add("Low Physical Activity");
-        arrayList_activity.add("Moderate Physical Activity");
+        arrayList_activity.add("Average Physical Activity");
         arrayList_activity.add("High Physical Activity");
 
 
@@ -124,7 +131,7 @@ public class UpdateFragment extends Fragment {
                 }
                 else
                 {
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
 //                    ((TextView) adapterView.getChildAt(0)).setTextSize(5);
                      value = adapterView.getItemAtPosition(i).toString();
                 }
@@ -140,18 +147,18 @@ public class UpdateFragment extends Fragment {
         mmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
-                typeOfUser="MALE";
+                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
+                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                typeOfUser="Male";
             }
         });
 
         mfemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
-                typeOfUser="FEMALE";
+                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
+                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                typeOfUser="Female";
             }
         });
 
@@ -239,12 +246,15 @@ public class UpdateFragment extends Fragment {
 //                    intent.putExtra("Weight",weight2);
 //                    intent.putExtra("Age",age2);
 //                    startActivity(intent);
+                    calorie= calculate(Integer.parseInt(mcurrentheight.getText().toString()), Integer.parseInt(mcurrentweight.getText().toString()),Integer.parseInt(mcurrentage.getText().toString()), typeOfUser, value);
                     databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             snapshot.getRef().child("age").setValue(age2);
                             snapshot.getRef().child("activity").setValue(value);
                             String Calories=Double.toString(calorie);
+                            snapshot.getRef().child("name").setValue(editName.getText().toString());
+
                             snapshot.getRef().child("calories").setValue(Calories);
                             snapshot.getRef().child("gender").setValue(typeOfUser);
                             snapshot.getRef().child("height").setValue(mintProgress);
@@ -255,7 +265,7 @@ public class UpdateFragment extends Fragment {
 
                         }
                     });
-                    calculate(heightc, weightc, agec, typeOfUser, value);
+
 //                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
                    alertDialog();
                 }
@@ -267,25 +277,27 @@ public class UpdateFragment extends Fragment {
         return root;
     }
 
-    private void calculate(int height, int weight, int age, String gender, String active) {
-        if(value.equals("Low Physical Activity"))
+    private double calculate(int height, int weight, int age, String gender, String active) {
+        Double calorie;
+        if(active.equals("Light"))
             a= 1.2;
-        else if(value.equals("Moderate Physical Activity"))
+        else if(active.equals("Moderate"))
             a= 1.55;
         else
             a= 1.9;
-        if(typeOfUser.equals("MALE"))
-            calorie= (66.5 + 13.8 * weightc + 5* heightc ) - (6.8 * agec) * a;
+        if(gender.equals("Male"))
+            calorie= (66.5 + (13.8 * weight) + (5* height) ) - (6.8 * age) * a;
         else
-            calorie= (655.1 + 9.5 * weightc + 1.8* heightc ) - (4.6* agec) * a;
+            calorie= (655.1 + (9.5 * weight) + (1.8* height) ) - (4.6* age) * a;
+        return calorie;
 
     }
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
-
+        if(typeOfUser.equals("MALE")) {
             dialog.setMessage("Your details have been updated successfully , The number of " +
                     "calories you need are : " + calorie + " cal");
-        
+        }
         dialog.setTitle("Successful");
         dialog.setPositiveButton("Ok",
                 new DialogInterface.OnClickListener() {

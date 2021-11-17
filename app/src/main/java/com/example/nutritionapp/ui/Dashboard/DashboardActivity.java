@@ -44,7 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
     SimpleDateFormat dateFormat;
     DatabaseReference databaseReference;
     String dateOnly;
-    int calorieGoal;
+    Float calorieGoal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,20 @@ public class DashboardActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
+        databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map<String, String> map= (Map<String, String>) snapshot.getValue();
+                calorieGoal =  Float.parseFloat(map.get("calories"));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         progressTotalCaloriesBar = (ProgressBar) findViewById(R.id.progress_total_calories_horizontal);
         foodViewModel.getTotalTodayCalories(dateOnly).observe(this, Float -> updateTotalCaloriesProgressBar(Float));
 
@@ -129,24 +143,10 @@ public class DashboardActivity extends AppCompatActivity {
     }
     private void updateTotalCaloriesProgressBar(Object calories) {
         if (calories != null) {
-//            FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-//            databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
-//            databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    Map<String, String> map= (Map<String, String>) snapshot.getValue();
-//                    String mcalorie= map.get("calories");
-//                    calorieGoal =  Float.parseFloat(mcalorie);
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
+
 
             float totalCaloriesEaten = (Float) calories;
-            calorieGoal= 800;
+//            calorieGoal= 800;
             int dashboardCalorieIntakePercentage = (int) ((totalCaloriesEaten / calorieGoal) * 100);
             dashboardCalorieIntakePercentageText.setText(dashboardCalorieIntakePercentage + "% done");
 
