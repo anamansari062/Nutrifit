@@ -17,12 +17,13 @@
         app:cardMaxElevation="5dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true">
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/profile_info_heading"
@@ -68,6 +69,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/email_text_heading"
             android:layout_width="wrap_content"
@@ -91,6 +93,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/gender_text_heading"
             android:layout_width="wrap_content"
@@ -114,6 +117,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/height_text_heading"
             android:layout_width="wrap_content"
@@ -137,6 +141,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/age_text_heading"
             android:layout_width="wrap_content"
@@ -160,6 +165,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:translationY="-0.52sp" />
+
         <TextView
             android:id="@+id/mobile_text_heading"
             android:layout_width="wrap_content"
@@ -207,6 +213,55 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:translationY="-0.52sp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="340dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Activity"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="340dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="380dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Calories"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/calorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="380dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp" />
+
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

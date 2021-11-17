@@ -26,7 +26,7 @@ import java.util.Map;
 public class ProfileFragment extends Fragment {
     private ProfileViewModel profileViewModel;
     private FragmentProfileBinding binding;
-    TextView nametxt,emailtxt,gender,height,age,weight,mobile;
+    TextView nametxt,emailtxt,gender,height,age,weight,mobile,activity,calories;
     DatabaseReference databaseReference;
     ProgressBar progressBar;
 
@@ -41,6 +41,8 @@ public class ProfileFragment extends Fragment {
         age= root.findViewById(R.id.agetxt);
         mobile= root.findViewById(R.id.mobiletxt);
         weight= root.findViewById(R.id.weighttxt);
+        activity= root.findViewById(R.id.act);
+        calories=root.findViewById(R.id.calorie);
         progressBar= root.findViewById(R.id.progress_bar);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
@@ -58,6 +60,8 @@ public class ProfileFragment extends Fragment {
                     String Weight= map.get("weight");
                     String Age=map.get("age");
                     String Mobile= map.get("mobile");
+                    String Act= map.get("activity");
+                    String Calories= map.get("calories");
                     nametxt.setText(name);
                     emailtxt.setText(email);
                     gender.setText(Gender);
@@ -65,6 +69,8 @@ public class ProfileFragment extends Fragment {
                     age.setText(Age);
                     mobile.setText(Mobile);
                     weight.setText(Weight);
+                    activity.setText(Act);
+                    calories.setText(Calories);
                 }
 
                 @Override
