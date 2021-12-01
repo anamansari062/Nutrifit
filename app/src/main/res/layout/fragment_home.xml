@@ -8,16 +8,17 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_today_home"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         app:cardElevation="3dp"
         app:cardCornerRadius="20dp"
         app:cardBackgroundColor="@color/white"
         app:cardMaxElevation="3dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        app:strokeColor="@color/primaryColor">
 
         <TextView
             android:id="@+id/today"
@@ -49,8 +50,9 @@
             android:focusable="true" />
         <RelativeLayout
             android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="270dp">
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp">
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -75,7 +77,7 @@
                 android:textSize="15sp"
                 android:translationY="-0.52sp" />
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -85,8 +87,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<!--            This is breakfast-->
-            <androidx.cardview.widget.CardView
+            <!--            This is breakfast-->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_breakfast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,7 +106,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/base_breakfast"
                     tools:layout_editor_absoluteX="-55dp">
 
-<!--                    This is the fixed one-->
+                    <!--                    This is the fixed one-->
                     <RelativeLayout
                         android:id="@+id/fixed_breakfast"
                         android:layout_width="match_parent"
@@ -112,40 +114,35 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-                    <RelativeLayout android:id="@+id/home_breakfast_text_layout"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
+                        <RelativeLayout android:id="@+id/home_breakfast_text_layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
 
-                        <TextView
-                            android:id="@+id/home_breakfast"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="61dp"
-                            android:layout_marginTop="30dp"
-                            android:lineSpacingExtra="1sp"
-                            android:text="@string/home_breakfast"
-                            android:textAppearance="@style/today"
-                            android:textSize="20sp"
-                            android:translationY="-0.52sp" />
-                    </RelativeLayout>
-                    <RelativeLayout android:id="@+id/home_breakfast_add_layout"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
+                            <TextView
+                                android:id="@+id/home_breakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="61dp"
+                                android:lineSpacingExtra="1sp"
+                                android:text="@string/home_breakfast"
+                                android:textAppearance="@style/today"
+                                android:textSize="20sp"
+                                android:translationY="-0.52sp" />
+                        </RelativeLayout>
+                        <RelativeLayout android:id="@+id/home_breakfast_add_layout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="end">
 
-                        <ImageButton
-                            android:id="@+id/home_breakfast_add"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="330dp"
-                            android:layout_marginTop="30dp"
-                            android:background="@drawable/ic_plus_icon" />
-                    </RelativeLayout>
+                            <ImageButton
+                                android:id="@+id/home_breakfast_add"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="12dp"
+                                android:background="@drawable/ic_plus_icon" />
+                        </RelativeLayout>
 
                         <RelativeLayout
                             android:id="@+id/home_breakfast_image_layout"
@@ -174,16 +171,9 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-
-
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-
                     </RelativeLayout>
 
-<!--                    This is display one which is hidden-->
+                    <!--                    This is display one which is hidden-->
                     <LinearLayout
                         android:id="@+id/hidden_breakfast"
                         android:layout_width="match_parent"
@@ -194,18 +184,18 @@
                         app:layout_constraintTop_toBottomOf="@+id/fixed_breakfast"
                         android:visibility="gone">
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recycler_breakfast"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_breakfast"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-<!--            This is lunch-->
-            <androidx.cardview.widget.CardView
+            <!--            This is lunch-->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_lunch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -231,11 +221,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-
                         <RelativeLayout android:id="@+id/home_lunch_text_layout"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
@@ -245,7 +230,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="61dp"
-                                android:layout_marginTop="30dp"
                                 android:lineSpacingExtra="1sp"
                                 android:text="@string/home_lunch"
                                 android:textAppearance="@style/today"
@@ -254,15 +238,15 @@
                         </RelativeLayout>
                         <RelativeLayout android:id="@+id/home_lunch_add_layout"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:gravity="end">
 
                             <ImageButton
                                 android:id="@+id/home_lunch_add"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="330dp"
-                                android:layout_marginTop="30dp"
+                                android:layout_marginEnd="12dp"
                                 android:background="@drawable/ic_plus_icon" />
                         </RelativeLayout>
 
@@ -294,11 +278,6 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-
                     </RelativeLayout>
 
                     <!--This is display one which is hidden-->
@@ -319,11 +298,11 @@
 
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
             <!--            This is Snacks-->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_snacks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -349,11 +328,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-
                         <RelativeLayout android:id="@+id/home_snacks_text_layout"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
@@ -363,7 +337,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="61dp"
-                                android:layout_marginTop="30dp"
                                 android:lineSpacingExtra="1sp"
                                 android:text="@string/home_snacks"
                                 android:textAppearance="@style/today"
@@ -372,15 +345,15 @@
                         </RelativeLayout>
                         <RelativeLayout android:id="@+id/home_snacks_add_layout"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:gravity="end">
 
                             <ImageButton
                                 android:id="@+id/home_snacks_add"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="330dp"
-                                android:layout_marginTop="30dp"
+                                android:layout_marginEnd="12dp"
                                 android:background="@drawable/ic_plus_icon" />
                         </RelativeLayout>
 
@@ -412,10 +385,6 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
                     </RelativeLayout>
 
                     <!--This is display one which is hidden-->
@@ -436,9 +405,9 @@
 
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
             <!--            This is dinner-->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/base_dinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -464,21 +433,16 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-
                         <RelativeLayout android:id="@+id/home_dinner_text_layout"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
+
                             <TextView
                                 android:id="@+id/home_dinner"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="61dp"
-                                android:layout_marginTop="30dp"
                                 android:lineSpacingExtra="1sp"
                                 android:text="@string/home_dinner"
                                 android:textAppearance="@style/today"
@@ -487,16 +451,17 @@
                         </RelativeLayout>
                         <RelativeLayout android:id="@+id/home_dinner_add_layout"
                             android:layout_width="fill_parent"
-                            android:layout_height="fill_parent">
+                            android:layout_height="fill_parent"
+                            android:gravity="end">
 
                             <ImageButton
                                 android:id="@+id/home_dinner_add"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="330dp"
-                                android:layout_marginTop="30dp"
+                                android:layout_marginEnd="12dp"
                                 android:background="@drawable/ic_plus_icon" />
+
                         </RelativeLayout>
                         <RelativeLayout android:id="@+id/home_dinner_image_layout"
                             android:layout_width="fill_parent"
@@ -524,11 +489,6 @@
                             android:textSize="20sp"
                             android:translationY="-0.52sp" />
 
-<!--                        <View-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="2dp"-->
-<!--                            android:background="#000000" />-->
-
                     </RelativeLayout>
 
                     <!--This is display one which is hidden-->
@@ -549,9 +509,7 @@
 
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-y
-
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 

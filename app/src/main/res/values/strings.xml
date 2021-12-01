@@ -55,7 +55,7 @@
     <string name="dashboard_no_food_added">You haven\'t added any food yet</string>
     <string name="dashboard_track_insights">Track to get the insights on your nutrient intake</string>
     <string name="dashboard_start_tracking">START TRACKING</string>
-    <string name="dashboardfood_log_analysis">Food Log Analysis</string>
+    <string name="dashboard_food_log_analysis">Food Log Analysis</string>
     <string name="dashboard_sub_heading_food_analysis">See your Daily Calorie and Nutrient intake here</string>
     <string name="dashboard_your_calorie_intake">Your Calorie Intake</string>
     <string name="dashboard_big_macronutrients_list">Big macronutrients List</string>
@@ -69,7 +69,7 @@
     <string name="dashboard_cholesterol">Cholesterol</string>
     <string name="dashboard_potassium">Potassium</string>
     <string name="nutrition_info">Nutrition Info</string>
-    <string name="dashboard_sugar">Sugar</string>
+    <string name="dashboard_sugar_text">Sugar</string>
     <string name="share">Share</string>
     <string name="name">Name:  </string>
     <string name="your_profile_info_heading">Your Profile Info</string>
