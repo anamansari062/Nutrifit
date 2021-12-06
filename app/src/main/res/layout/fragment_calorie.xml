@@ -14,7 +14,7 @@
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/registermalefemalenotfocus">
 
         <!--        <ImageView-->
@@ -29,48 +29,119 @@
             android:layout_width="286dp"
             android:layout_height="41dp"
             android:layout_centerInParent="true"
-            android:text="Welcome to NutriFit"
             android:gravity="center"
-            android:textStyle="bold"
+            android:text="Welcome to NutriFit"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/fragment_water"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="411dp"
+        android:background="@drawable/registermalefemalenotfocus">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_water" />
+
+        <TextView
+            android:layout_width="400dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="-2dp"
+            android:text="Drink 10 glasses of water everyday"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_walk"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="340dp"
+        android:background="@drawable/registermalefemalenotfocus">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_walk" />
+
+        <TextView
+            android:layout_width="400dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="15dp"
+            android:text="Walk 10,000 steps everyday"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </RelativeLayout>
 
 <!--    <RelativeLayout-->
-<!--        android:id="@+id/fragment"-->
-<!--        android:layout_width="340dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="130dp"-->
-<!--        android:background="@drawable/registermalefemalenotfocus">-->
-
-<!--        &lt;!&ndash;        <ImageView&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_width="40dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_height="40dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_marginStart="10dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_marginTop="5dp"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:src="@drawable/ic_lowactive" />&ndash;&gt;-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="100dp">-->
 
 <!--        <TextView-->
-<!--            android:id="@+id/display_calories"-->
-<!--            android:layout_width="286dp"-->
-<!--            android:layout_height="41dp"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:text=""-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="16sp" />-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="150dp"-->
+<!--            android:layout_marginLeft="20dp"-->
+
+<!--            android:text="dddi" />-->
 <!--    </RelativeLayout>-->
+
+
+
+
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="400dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="145dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/primaryColor"
-        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_arrow_forward_24"
         android:text="REGISTER" />
 
+<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--        android:id="@+id/button_back"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="65dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:backgroundTint="@color/primaryColor"-->
+<!--        android:clickable="true"-->
+<!--        android:gravity="center"-->
+<!--        android:src="@drawable/ic_baseline_arrow_forward_24"-->
+<!--        android:text="BACK" />-->
 </RelativeLayout>

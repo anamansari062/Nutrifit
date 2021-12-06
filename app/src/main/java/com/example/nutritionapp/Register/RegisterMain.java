@@ -9,14 +9,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.nutritionapp.adapters.FragmentAdapter;
+
 import com.example.nutritionapp.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class RegisterMain extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 pager2;
-    FragmentAdapter adapter;
+
     SharedPreferences.Editor myEdit;
 
     @Override
