@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,11 +22,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class WeightFragment extends Fragment {
     private FragmentWeightBinding binding;
     private ExtendedFloatingActionButton next,back;
-    TextView weight;
+    EditText weight;
     ImageView incweight,decweight;
     RegisterMain registerMain;
-    int weight1=50;
-    String weight2="50";
+    int weight1;
+    String weight2;
 
 
     @Override
@@ -43,7 +44,10 @@ public class WeightFragment extends Fragment {
         incweight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                weight1+=1;
+                if(weight.getText().toString().equals(""))
+                    weight1= 1;
+                else
+                    weight1= Integer.parseInt(weight.getText().toString()) + 1;
                 weight2=String.valueOf(weight1);
                 weight.setText(weight2);
             }
@@ -53,8 +57,8 @@ public class WeightFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(weight1>0) {
-                    weight1 -= 1;
-                    weight2 = String.valueOf(weight1);
+                    weight1= Integer.parseInt(weight.getText().toString()) - 1;
+                    weight2=String.valueOf(weight1);
                     weight.setText(weight2);
                 }
             }
@@ -66,7 +70,8 @@ public class WeightFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Boolean valid = true;
-                if(weight2.equals("0"))
+                weight2= weight.getText().toString();
+                if(weight2.equals("0") || weight2.equals(""))
                 {
                     Toast.makeText(getContext(), "Weight cannot be 0", Toast.LENGTH_SHORT).show();
                     valid=false;

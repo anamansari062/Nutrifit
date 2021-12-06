@@ -55,7 +55,7 @@ public class UpdateFragment extends Fragment {
     ArrayAdapter<String> arrayAdapter_activity;
 
     int currentProgress;
-    String mintProgress="160";
+    String mintProgress;
     int age;
     String age2;
     int weight;
@@ -100,8 +100,17 @@ public class UpdateFragment extends Fragment {
                     mcurrentheight.setText(mintProgress);
                     name= map.get("name");
                     editName.setText(name);
-
                     value=map.get("activity");
+                    typeOfUser= map.get("gender");
+                    if(typeOfUser.equals("Female")){
+                        mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
+                        mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                    }
+                    else{
+                        mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
+                        mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                    }
+
 
                 }
 
@@ -116,7 +125,6 @@ public class UpdateFragment extends Fragment {
         arrayList_activity.add("Low Physical Activity");
         arrayList_activity.add("Average Physical Activity");
         arrayList_activity.add("High Physical Activity");
-
 
         arrayAdapter_activity = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,arrayList_activity);
         spinner.setAdapter(arrayAdapter_activity);
@@ -186,7 +194,10 @@ public class UpdateFragment extends Fragment {
         mincrementage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                age+=1;
+                if(mcurrentage.getText().toString().equals(""))
+                    age = 1;
+                else
+                    age= Integer.parseInt(mcurrentage.getText().toString()) + 1;
                 age2=String.valueOf(age);
                 mcurrentage.setText(age2);
             }
@@ -194,7 +205,10 @@ public class UpdateFragment extends Fragment {
         mincrementweight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                weight+=1;
+                if(mcurrentweight.getText().toString().equals(""))
+                    weight= 1;
+                else
+                    weight= Integer.parseInt(mcurrentweight.getText().toString()) + 1;
                 weight2=String.valueOf(weight);
                 mcurrentweight.setText(weight2);
             }
@@ -202,6 +216,10 @@ public class UpdateFragment extends Fragment {
         mdecrementage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mcurrentage.getText().toString().equals(""))
+                    age = 1;
+                else
+                    age= Integer.parseInt(mcurrentage.getText().toString()) - 1;
                 if(age>0) {
                     age -= 1;
                     age2 = String.valueOf(age);
@@ -212,6 +230,10 @@ public class UpdateFragment extends Fragment {
         mdecrementweight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mcurrentweight.getText().toString().equals(""))
+                    weight= 1;
+                else
+                    weight= Integer.parseInt(mcurrentweight.getText().toString()) + 1;
                 if(weight>0) {
                     weight -= 1;
                     weight2 = String.valueOf(weight);
@@ -226,17 +248,24 @@ public class UpdateFragment extends Fragment {
         mcalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mintProgress = mcurrentheight.getText().toString();
+                age2= mcurrentage.getText().toString();
+                weight2= mcurrentweight.getText().toString();
+
                 if(typeOfUser.equals("0"))
                 {
                     Toast.makeText(getContext(), "Select Your Gender", Toast.LENGTH_SHORT).show();
                 }
-                else if(mintProgress.equals("0"))
+                else if(mintProgress.equals("0") || mintProgress.equals(""))
                 {
                     Toast.makeText(getContext(), "Select Your Height", Toast.LENGTH_SHORT).show();
                 }
-                else if(age==0 || age<0)
+                else if(age2.equals("0") || age2.equals(""))
                 {
                     Toast.makeText(getContext(), "Age is incorrect", Toast.LENGTH_SHORT).show();
+                }
+                else if(weight2.equals("0") || weight2.equals("")){
+                    Toast.makeText(getContext(), "Weight is incorrect", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

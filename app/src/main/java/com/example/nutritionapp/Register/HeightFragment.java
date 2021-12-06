@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class HeightFragment extends Fragment {
     private FragmentHeightBinding binding;
     private SharedViewModel sharedViewModel;
-    TextView currentheight;
+    EditText currentheight;
     SeekBar heightbar;
     private ExtendedFloatingActionButton next,back;
     RegisterMain registerMain;
@@ -66,7 +67,8 @@ public class HeightFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Boolean valid = true;
-                if(mintProgress.equals("0"))
+                mintProgress= currentheight.getText().toString();
+                if(mintProgress.equals("0") || mintProgress.equals(""))
                 {
                     Toast.makeText(getContext(), "Height cannot be 0", Toast.LENGTH_SHORT).show();
                     valid=false;

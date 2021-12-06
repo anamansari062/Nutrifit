@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_update" />
 
     <fragment
-        android:id="@+id/nav_blog"
-        android:name="com.example.nutritionapp.ui.blog.BlogFragment"
-        android:label="@string/menu_blog"
-        tools:layout="@layout/fragment_blog" />
-
-    <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.nutritionapp.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"

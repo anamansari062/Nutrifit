@@ -39,7 +39,7 @@
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true">
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_height_currentHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,11 +49,13 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="54dp"
             android:text="180"
+            android:background="@null"
+            android:inputType="number"
             android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold">
 
-        </TextView>
+        </com.google.android.material.textfield.TextInputEditText>
 
         <TextView
             android:layout_width="wrap_content"

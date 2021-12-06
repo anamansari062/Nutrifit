@@ -19,14 +19,14 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AgeFragment extends Fragment {
-    TextView age;
+    EditText age;
     ImageView incage,decage;
     private ExtendedFloatingActionButton next,back;
     private FragmentAgeBinding binding;
     RegisterMain registerMain;
 
-    int age1=18;
-    String age2="18";
+    int age1;
+    String age2;
 
 
     @Override
@@ -40,10 +40,14 @@ public class AgeFragment extends Fragment {
         next= rootView.findViewById(R.id.age_next);
         back=rootView.findViewById(R.id.age_back);
 
+
         incage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                age1+=1;
+                if(age.getText().toString().equals(""))
+                    age1 = 1;
+                else
+                    age1= Integer.parseInt(age.getText().toString()) + 1;
                 age2=String.valueOf(age1);
                 age.setText(age2);
             }
@@ -52,8 +56,8 @@ public class AgeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(age1>0) {
-                    age1 -= 1;
-                    age2 = String.valueOf(age1);
+                    age1= Integer.parseInt(age.getText().toString()) - 1;
+                    age2=String.valueOf(age1);
                     age.setText(age2);
                 }
             }
@@ -65,7 +69,8 @@ public class AgeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Boolean valid = true;
-                if(age2.equals("0"))
+                age2=age.getText().toString();
+                if(age2.equals("0") || age2.equals(""))
                 {
                     Toast.makeText(getContext(), "Age cannot be 0", Toast.LENGTH_SHORT).show();
                     valid=false;

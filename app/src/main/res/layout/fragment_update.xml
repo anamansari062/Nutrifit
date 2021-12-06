@@ -140,18 +140,20 @@
 
         </TextView>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_update_currentWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
             android:textAlignment="center"
+            android:background="@null"
+            android:inputType="number"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold">
 
-        </TextView>
+        </com.google.android.material.textfield.TextInputEditText>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -218,18 +220,20 @@
 
         </TextView>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_update_currentAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:background="@null"
+            android:inputType="number"
             android:layout_marginBottom="30dp"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold">
 
-        </TextView>
+        </com.google.android.material.textfield.TextInputEditText>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -291,19 +295,21 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_update_currentHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
+            android:background="@null"
+            android:inputType="number"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="54dp"
             android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold">
 
-        </TextView>
+        </com.google.android.material.textfield.TextInputEditText>
 
         <TextView
             android:layout_width="wrap_content"
