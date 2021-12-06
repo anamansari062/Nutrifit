@@ -24,8 +24,8 @@ public class WeightFragment extends Fragment {
     TextView weight;
     ImageView incweight,decweight;
     RegisterMain registerMain;
-    int weight1=70;
-    String weight2="70";
+    int weight1=50;
+    String weight2="50";
 
 
     @Override

@@ -55,7 +55,7 @@ public class FragmentPassword extends Fragment {
                 }
                 if(valid) {
                     FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                    fr.replace(R.id.register_container, new NameFragment());
+                    fr.replace(R.id.register_container, new GenderFragment());
 //                fr.addToBackStack(null);
                     fr.commit();
                 }
