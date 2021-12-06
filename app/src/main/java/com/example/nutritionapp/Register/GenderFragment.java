@@ -79,7 +79,7 @@ public class GenderFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
-                fragmentManager.replace(R.id.register_container, new NameFragment()).addToBackStack(null);
+                fragmentManager.replace(R.id.register_container, new FragmentPassword()).addToBackStack(null);
                 fragmentManager.commit();
 
             }

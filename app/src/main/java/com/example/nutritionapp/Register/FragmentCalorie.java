@@ -90,7 +90,7 @@ public class FragmentCalorie extends Fragment {
 //        textEmail.setText(email + " " + mobile);
         mAuth= FirebaseAuth.getInstance();
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(getContext(), "Email not valiied", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Email not valid", Toast.LENGTH_LONG).show();
         }
 
         mAuth.createUserWithEmailAndPassword(email.trim(), pass.trim())
@@ -102,7 +102,7 @@ public class FragmentCalorie extends Fragment {
                             use.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
-                                    Toast.makeText(getContext(),"verification link sent",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"Verification Link Sent",Toast.LENGTH_SHORT).show();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -130,9 +130,9 @@ public class FragmentCalorie extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(getContext(), "user has been registerd", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getContext(), "You have successfully Registered", Toast.LENGTH_LONG).show();
                                     } else {
-                                        Toast.makeText(getContext(), "failed to register", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Failed to Register", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -141,7 +141,7 @@ public class FragmentCalorie extends Fragment {
 
                         }
                         else {
-                            Toast.makeText(getContext(), "failed to register12", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Failed to Register", Toast.LENGTH_SHORT).show();
 
                         }
                     }

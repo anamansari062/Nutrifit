@@ -127,11 +127,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="85dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/primaryColor"
         android:clickable="true"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_24"
         android:text="NEXT" />
 
@@ -139,13 +140,13 @@
         android:id="@+id/active_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="215dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/primaryColor"
         android:clickable="true"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_24"
         android:text="BACK" />
 </RelativeLayout>

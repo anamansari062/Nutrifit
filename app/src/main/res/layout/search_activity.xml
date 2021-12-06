@@ -281,7 +281,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="325dp"
                 android:lineSpacingExtra="1sp"
-                android:text="@string/dashboard_sugar"
+                android:text="@string/dashboard_sugar_text"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:translationY="-0.52sp"
