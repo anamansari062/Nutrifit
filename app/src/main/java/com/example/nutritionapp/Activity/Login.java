@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class Login extends AppCompatActivity {
     Button login;
     //    TextView forgot;
     EditText Passwd, emailid;
+    ProgressBar progressBar;
     FirebaseAuth mAuth;
     SharedPreferences sharedPreferences;
     //    DataModal dm;
@@ -48,6 +50,7 @@ public class Login extends AppCompatActivity {
 //        forgot=findViewById(R.id.textView2);
         Passwd = findViewById(R.id.Password1);
         emailid = findViewById(R.id.emailid);
+        progressBar=findViewById(R.id.progress_login);
         reset=findViewById(R.id.reset);
         mAuth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
@@ -76,12 +79,18 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                login.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
                 if (emailid.getText().toString().contentEquals("")) {
                     emailid.setError("email can't be empty");
                     emailid.requestFocus();
+                    login.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                 } else if (Passwd.getText().toString().contentEquals("")) {
                     Passwd.setError("password can't be empty");
                     Passwd.requestFocus();
+                    login.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 String Email = emailid.getText().toString();
@@ -107,16 +116,18 @@ public class Login extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    if (Password.length() < 6) {
-                                        Toast.makeText(Login.this, "error", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Toast.makeText(Login.this, "f", Toast.LENGTH_LONG).show();
-                                    }
+                                    login.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.GONE);
+
+                                    Toast.makeText(Login.this, "LOGIN FAILED", Toast.LENGTH_LONG).show();
+
                                 } else {
                                     autosave = 1;
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putInt("key", autosave);
                                     editor.apply();
+                                    login.setVisibility(View.GONE);
+                                    progressBar.setVisibility(View.VISIBLE);
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -184,4 +195,3 @@ public class Login extends AppCompatActivity {
 
     }
 }
-
