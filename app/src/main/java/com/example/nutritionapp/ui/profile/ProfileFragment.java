@@ -65,12 +65,16 @@ public class ProfileFragment extends Fragment {
                     nametxt.setText(name);
                     emailtxt.setText(email);
                     gender.setText(Gender);
-                    height.setText(String.format("%scm", Height));
-                    age.setText(Age);
+                    height.setText(String.format("%s cm", Height));
+                    age.setText(String.format("%s yrs", Age));
                     mobile.setText(Mobile);
-                    weight.setText(Weight);
+                    weight.setText(String.format("%sKg", Weight));
                     activity.setText(Act);
-                    calories.setText(Calories);
+                    float totalCaloriesEaten = 0;
+                    if (Calories != null) {
+                        totalCaloriesEaten = Float.parseFloat(Calories);
+                    }
+                    calories.setText( String.valueOf(round(totalCaloriesEaten, 2)));
                 }
 
                 @Override
@@ -100,5 +104,8 @@ public class ProfileFragment extends Fragment {
 
         }.start();
     }
-
+    private static double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
 }

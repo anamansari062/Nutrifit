@@ -80,6 +80,7 @@
     <string name="mobile">Mobile No:</string>
     <string name="weight">Weight</string>
     <string name="search_no_food_found">sorry we couldn\'t find any \n food with that name</string>
+    <string name="no_food_logs_found">You have not added any food today \n click on this button to start tracking your food for today</string>
     <string name="Blog1">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
     <string name="Blog2">https://www.runtastic.com/blog/en/fat/</string>
     <string name="Blog3">https://www.runtastic.com/blog/en/best-muscle-building-foods/</string>

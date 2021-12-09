@@ -24,4 +24,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp" />
+
+    <LinearLayout
+        android:id="@+id/no_food_logs_found_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_gravity="center"
+            android:layout_margin="40dp"
+            android:alpha="0.24"
+            android:src="@drawable/img_no_food_found" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="0dp"
+            android:alpha="0.54"
+            android:gravity="center"
+            android:text="@string/no_food_logs_found" />
+
+        <Button
+            android:id="@+id/start_tracking_meal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/primaryColor"
+            android:text="@string/dashboard_start_tracking" />
+    </LinearLayout>
 </RelativeLayout>
