@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.nutritionapp.Food.FoodViewModel;
@@ -24,7 +27,8 @@ public class DisplayFood extends AppCompatActivity {
     Date currentDate;
     SimpleDateFormat dateFormat;
     String dateOnly;
-
+    Button startTracking;
+    LinearLayout noFoodLogs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +38,9 @@ public class DisplayFood extends AppCompatActivity {
         Intent intent= getIntent();
         type= intent.getStringExtra("type");
 
-
-
         RecyclerView recyclerView = findViewById(R.id.recycler_view_food);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-
 
         final DisplayFoodAdapter adapter = new DisplayFoodAdapter();
         recyclerView.setAdapter(adapter);
@@ -50,8 +51,21 @@ public class DisplayFood extends AppCompatActivity {
 
         foodViewModel = new ViewModelProvider(this).get(FoodViewModel.class);
 
-        foodViewModel.getAllFoodData(dateOnly).observe(this, foodEntity -> adapter.setFoods(foodEntity));
+        foodViewModel.getAllFoodData(dateOnly).observe(this, adapter::setFoods);
 
+        noFoodLogs = findViewById(R.id.no_food_logs_found_layout);
+        System.out.println(adapter.getItemCount());
+        if(adapter.getItemCount()==0)
+        {
+            noFoodLogs.setVisibility(View.VISIBLE);
+        }
+        if(adapter.getItemCount()>0){
+            noFoodLogs.setVisibility(View.INVISIBLE);
+        }
+        startTracking = findViewById(R.id.start_tracking_meal_button);
+        startTracking.setOnClickListener(v -> {
+            Intent intent1 = new Intent(DisplayFood.this, MainActivity.class); intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();
+        });
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {

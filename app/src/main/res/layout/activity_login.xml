@@ -35,38 +35,64 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <EditText
-            android:id="@+id/Password1"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:inputType="textPassword"
+            app:passwordToggleEnabled="true"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/black"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.399"
-            app:layout_constraintWidth_percent=".8" />
+            app:layout_constraintWidth_percent=".8" >
 
-        <EditText
-            android:id="@+id/emailid"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Password1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:hint="Password"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etEmailLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/black"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.232"
-            app:layout_constraintWidth_percent=".8" />
+            app:layout_constraintWidth_percent=".8" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:imeOptions="actionNext"
+            android:importantForAutofill="no"
+            android:hint="Email" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/reset"
