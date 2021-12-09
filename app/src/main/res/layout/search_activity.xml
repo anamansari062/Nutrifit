@@ -58,436 +58,445 @@
             app:cardMaxElevation="5dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/textResult"
-                    android:layout_width="158dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textResult"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
 
-                <TextView
-                    android:id="@+id/nutrition_info_heading"
-                    android:layout_width="158dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="40dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/nutrition_info"
-                    android:textColor="@color/black"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
+        <TextView
+            android:id="@+id/nutrition_info_heading"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/nutrition_info"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
 
-                <TextView
-                    android:id="@+id/nutrition_info_serving_size"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="63dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="85dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:background="#D3D3D3" />
-
-                <TextView
-                    android:id="@+id/nutrition_info_amount_per_serving"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="90dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="Amount Per Serving"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/nutrition_info_calories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="90dp"
-                    android:layout_marginEnd="20dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="115dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:background="#D3D3D3" />
-
-                <TextView
-                    android:id="@+id/dashboard_big_macronutrients_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="120dp"
-                    android:lineSpacingExtra="1sp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:text="@string/dashboard_big_macronutrients_list"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_protein"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="150dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_protein"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/protein" />
-
-                <TextView
-                    android:id="@+id/dashboard_protein_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginTop="150dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_carbs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="180dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_carbs"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/carbs" />
-
-                <TextView
-                    android:id="@+id/dashboard_carbs_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="180dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_fats"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="210dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_fats"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/fat" />
-
-                <TextView
-                    android:id="@+id/dashboard_fats_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="210dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_fibre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="240dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_fibre"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/fibre" />
-
-                <TextView
-                    android:id="@+id/dashboard_fibre_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="240dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="280dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:background="#D3D3D3" />
-
-                <TextView
-                    android:id="@+id/dashboard_small_macronutrients_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="290dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_small_macronutrients_list"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_sugar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="325dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_sugar_text"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/protein" />
-
-                <TextView
-                    android:id="@+id/dashboard_sugar_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="325dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_fat_saturated"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="355dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_fat_saturated"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/protein" />
-
-                <TextView
-                    android:id="@+id/dashboard_fat_saturated_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="355dp"
-                    android:layout_marginEnd="80dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-
-                <TextView
-                    android:id="@+id/dashboard_sodium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="385dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_sodium"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/protein" />
-
-                <TextView
-                    android:id="@+id/dashboard_sodium_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="385dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_cholesterol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="415dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_cholesterol"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/protein" />
-
-                <TextView
-                    android:id="@+id/dashboard_cholesterol_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="415dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-
-                <TextView
-                    android:id="@+id/dashboard_potassium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="445dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text="@string/dashboard_potassium"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:translationY="-0.52sp"
-                    app:drawableLeftCompat="@drawable/protein" />
-
-                <TextView
-                    android:id="@+id/dashboard_potassium_intake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="445dp"
-                    android:lineSpacingExtra="1sp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:translationY="-0.52sp" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:id="@+id/no_food_found_layout"
+        <TextView
+            android:id="@+id/nutrition_info_serving_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_marginStart="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="63dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
 
-            <ImageView
-                android:layout_width="175dp"
-                android:layout_height="175dp"
-                android:layout_gravity="center"
-                android:layout_margin="40dp"
-                android:alpha="0.24"
-                android:src="@drawable/img_no_food_found" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="85dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:background="#D3D3D3" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="0dp"
-                android:alpha="0.54"
-                android:gravity="center"
-                android:text="@string/search_no_food_found" />
+        <TextView
+            android:id="@+id/nutrition_info_amount_per_serving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="90dp"
+            android:lineSpacingExtra="1sp"
+            android:text="Amount Per Serving"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/nutrition_info_calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="20dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="115dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:background="#D3D3D3" />
+
+        <TextView
+            android:id="@+id/dashboard_big_macronutrients_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="120dp"
+            android:lineSpacingExtra="1sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/dashboard_big_macronutrients_list"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="150dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_protein"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_protein_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_marginTop="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="180dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_carbs"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/carbs" />
+
+        <TextView
+            android:id="@+id/dashboard_carbs_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="180dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_fats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="210dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_fats"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/fat" />
+
+        <TextView
+            android:id="@+id/dashboard_fats_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="210dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_fibre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="240dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_fibre"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/fibre" />
+
+        <TextView
+            android:id="@+id/dashboard_fibre_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="240dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentEnd="true"
+            android:background="#D3D3D3" />
+
+        <TextView
+            android:id="@+id/dashboard_small_macronutrients_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="290dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_small_macronutrients_list"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_sugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="325dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_sugar_text"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_sugar_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="325dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_fat_saturated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="355dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_fat_saturated"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_fat_saturated_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="355dp"
+            android:layout_marginEnd="80dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+
+        <TextView
+            android:id="@+id/dashboard_sodium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="385dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_sodium"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_sodium_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="385dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_cholesterol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="415dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_cholesterol"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_cholesterol_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="415dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
+
+        <TextView
+            android:id="@+id/dashboard_potassium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="445dp"
+            android:lineSpacingExtra="1sp"
+            android:text="@string/dashboard_potassium"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:translationY="-0.52sp"
+            app:drawableLeftCompat="@drawable/protein" />
+
+        <TextView
+            android:id="@+id/dashboard_potassium_intake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="445dp"
+            android:lineSpacingExtra="1sp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:translationY="-0.52sp" />
     </RelativeLayout>
-</ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="20dp"
+        android:background="#D3D3D3" />
+
+</androidx.cardview.widget.CardView>
+
+<LinearLayout
+android:id="@+id/no_food_found_layout"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_centerInParent="true"
+android:orientation="vertical"
+android:visibility="gone">
+
+<ImageView
+    android:layout_width="175dp"
+    android:layout_height="175dp"
+    android:layout_gravity="center"
+    android:layout_margin="40dp"
+    android:alpha="0.24"
+    android:src="@drawable/img_no_food_found" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="0dp"
+    android:alpha="0.54"
+    android:gravity="center"
+    android:text="@string/search_no_food_found" />
+
+</LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
