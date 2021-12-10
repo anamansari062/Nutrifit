@@ -7,24 +7,10 @@
     tools:context=".Register.FragmentEmail">
 
     <!-- TODO: Update blank fragment layout -->
-    <!--    <TextView-->
-    <!--        android:id="@+id/textview10"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.498"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.283"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginLeft="150dp"-->
-    <!--        android:layout_marginTop="100dp"-->
-    <!--        android:text="Password"-->
-    <!--        android:textColor="#131313"-->
-    <!--        android:textSize="16sp" />-->
+
 
     <!--    <EditText-->
-    <!--        android:id="@+id/text_pass"-->
+    <!--        android:id="@+id/text_email"-->
     <!--        app:layout_constraintBottom_toBottomOf="parent"-->
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintHorizontal_bias="0.497"-->
@@ -39,77 +25,82 @@
     <!--        android:padding="10dp" />-->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/passLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:hint="Password"
-        app:passwordToggleEnabled="true"
-        android:layout_marginTop="150dp"
+        android:hint="Name"
+        android:id="@+id/nameLayout"
+        android:layout_marginTop="50dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_pass"
+            android:id="@+id/text_name"
+
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:cursorVisible="true"
             android:textSize="20dp"
-            android:inputType="textPassword"
+            android:cursorVisible="true"
+            android:inputType="text"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/confirmPassLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:hint="Confirm Password"
-        app:passwordToggleEnabled="true"
-        android:layout_marginTop="250dp"
+        android:hint="Email ID"
+        android:id="@+id/emailLayout"
+        android:layout_marginTop="200dp"
         android:textColorHint="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_passc"
+            android:id="@+id/text_email"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="71dp"
             android:cursorVisible="true"
             android:textSize="20dp"
-            android:inputType="textPassword"
+
+            android:inputType="textEmailAddress"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginBottom="180dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/passwordMessage"
-        android:textSize="16sp"/>
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/textview2"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.549"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Confirm Password"-->
-    <!--        android:textColor="#131313"-->
-    <!--        android:textSize="16sp" />-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="Mobile Number"
+        android:id="@+id/mobileLayout"
+        android:layout_marginTop="350dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:cursorVisible="true"
+            android:textSize="20dp"
+
+            android:inputType="number"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <!--    <EditText-->
-    <!--        android:id="@+id/text_passc"-->
+    <!--        android:id="@+id/text_mobile"-->
     <!--        app:layout_constraintBottom_toBottomOf="parent"-->
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintHorizontal_bias="0.497"-->
@@ -124,12 +115,12 @@
     <!--        android:padding="10dp" />-->
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/pass_next"
+        android:id="@+id/email_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="center_horizontal"
         android:layout_marginEnd="65dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/primaryColor"
@@ -139,7 +130,7 @@
         android:text="NEXT" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/pass_back"
+        android:id="@+id/email_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -151,4 +142,8 @@
         android:gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_24"
         android:text="BACK" />
+
+
+
+
 </RelativeLayout>
