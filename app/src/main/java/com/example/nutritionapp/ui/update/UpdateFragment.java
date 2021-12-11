@@ -131,7 +131,7 @@ public class UpdateFragment extends Fragment {
                 }
                 else
                 {
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
+                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
 //                    ((TextView) adapterView.getChildAt(0)).setTextSize(5);
                      value = adapterView.getItemAtPosition(i).toString();
                 }
@@ -147,8 +147,8 @@ public class UpdateFragment extends Fragment {
         mmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
+                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
                 typeOfUser="Male";
             }
         });
@@ -156,8 +156,8 @@ public class UpdateFragment extends Fragment {
         mfemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalefocus));
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.malefemalenotfocus));
+                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
+                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
                 typeOfUser="Female";
             }
         });
@@ -294,10 +294,10 @@ public class UpdateFragment extends Fragment {
     }
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
-        if(typeOfUser.equals("MALE")) {
+
             dialog.setMessage("Your details have been updated successfully , The number of " +
                     "calories you need are : " + calorie + " cal");
-        }
+
         dialog.setTitle("Successful");
         dialog.setPositiveButton("Ok",
                 new DialogInterface.OnClickListener() {
