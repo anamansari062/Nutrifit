@@ -31,10 +31,18 @@ import com.example.nutritionapp.adapters.DisplayFoodAdapter;
 import com.example.nutritionapp.databinding.FragmentHomeBinding;
 import com.example.nutritionapp.ui.Dashboard.DashboardActivity;
 import com.example.nutritionapp.ui.search.SearchActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -48,8 +56,10 @@ public class HomeFragment extends Fragment {
     TextView homeBreakfast,homeLunch,homeSnacks,homeDinner,breakfastCalories,lunchCalories,snacksCalories,dinnerCalories,totalCalories,todayInsights;
     ProgressBar progressBar;
     Date currentDate;
+    DatabaseReference databaseReference;
     SimpleDateFormat dateFormat;
     String dateOnly;
+    float calorieGoal;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -71,6 +81,24 @@ public class HomeFragment extends Fragment {
         dateFormat=  new SimpleDateFormat("yyyy-MM-dd",
                 Locale.getDefault());
         dateOnly = dateFormat.format(currentDate);
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
+        if(user !=null){
+            databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Map<String, String> map= (Map<String, String>) snapshot.getValue();
+                    String Calories= map.get("calories");
+                    calorieGoal=Float.parseFloat(Calories);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         //To intent to search activity
 
         breakfastAdd.setOnClickListener(view -> {
@@ -357,7 +385,7 @@ public class HomeFragment extends Fragment {
     private void updateProgressBar(Object calories) {
         if (calories != null) {
             float totalCaloriesEaten = (Float) calories;
-            int calorieGoal = 800;
+
 
             if (calorieGoal > totalCaloriesEaten)
                 progressBar.setProgress((int) ((totalCaloriesEaten / calorieGoal) * 100));
