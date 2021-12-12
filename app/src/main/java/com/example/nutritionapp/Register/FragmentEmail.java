@@ -18,8 +18,12 @@ import android.widget.EditText;
 import com.example.nutritionapp.Activity.Login;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentEmailBinding;
+
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class FragmentEmail extends Fragment {
     private FragmentEmailBinding binding;
@@ -163,7 +167,22 @@ public class FragmentEmail extends Fragment {
     }
     private boolean validateEmail() {
         String email = textEmail.getText().toString().trim();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        ;
+        //check email already exist or not.
+        if (!email.isEmpty()){
+            firebaseAuth.fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener(task -> {
+                        boolean isNewUser = Objects.requireNonNull(task.getResult().getSignInMethods()).isEmpty();
 
+                        if (isNewUser) {
+                            emailL.setError(null);
+                        } else {
+                            emailL.setError("User already exists");
+                        }
+                    });
+            return false;
+    }
         if (email.isEmpty()) {
             emailL.setError("Email is required");
             textEmail.setError(null);

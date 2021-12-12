@@ -278,11 +278,12 @@
         android:background="@drawable/registermalefemalenotfocus">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:text="Height"
+            android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
