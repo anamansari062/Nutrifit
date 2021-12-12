@@ -18,7 +18,7 @@ Apart from following those methods, you can also download NutriFit from this [li
 
 This android application allows you to add your food in given meal types likes BreakFast, Lunch, Snacks and Dinner
 
-This application was originally created by Dhiraj Chauhan, Anam Ansari, Ishir Agrawal, Aakash Chaurasiya.
+This application was originally created by [Dhiraj Chauhan](https://github.com/cdhiraj40), [Anam Ansari](https://github.com/anamansari062), [Ishir Agrawal](https://github.com/ishir21), [Aakash Chaurasiya](https://github.com/akki2021).
 
 ## Features
 
