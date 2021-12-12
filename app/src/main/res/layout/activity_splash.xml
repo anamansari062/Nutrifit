@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#8fa282"
+    android:background="@color/primaryColor"
     tools:context=".Activity.SplashActivity">
 
 
@@ -14,10 +14,9 @@
         android:id="@+id/logo"
         android:layout_width="177dp"
         android:layout_height="174dp"
-        android:layout_centerInParent="true"
         android:src="@drawable/logo" />
 
 
 
 
-</LinearLayout>
+</RelativeLayout>

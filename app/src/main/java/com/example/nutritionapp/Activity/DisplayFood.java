@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -55,13 +54,13 @@ public class DisplayFood extends AppCompatActivity {
 
         noFoodLogs = findViewById(R.id.no_food_logs_found_layout);
         System.out.println(adapter.getItemCount());
-        if(adapter.getItemCount()==0)
-        {
-            noFoodLogs.setVisibility(View.VISIBLE);
-        }
-        if(adapter.getItemCount()>0){
-            noFoodLogs.setVisibility(View.INVISIBLE);
-        }
+//        if(adapter.getItemCount()==0)
+//        {
+//            noFoodLogs.setVisibility(View.VISIBLE);
+//        }
+//        if(adapter.getItemCount()>0){
+//            noFoodLogs.setVisibility(View.INVISIBLE);
+//        }
         startTracking = findViewById(R.id.start_tracking_meal_button);
         startTracking.setOnClickListener(v -> {
             Intent intent1 = new Intent(DisplayFood.this, MainActivity.class); intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();

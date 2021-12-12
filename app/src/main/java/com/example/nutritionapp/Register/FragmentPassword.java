@@ -1,13 +1,14 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,7 @@ import android.widget.EditText;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentPasswordBinding;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FragmentPassword extends Fragment {
@@ -57,55 +55,71 @@ public class FragmentPassword extends Fragment {
 
         registerMain = (RegisterMain) getActivity();
 
+        boolean selectedMale = false;
+        boolean selectedFemale = false;
+        String active = "light";
+        int weight =50, age = 18, height = 180;
+        // tp get the data
+        Bundle bundle = this.getArguments();
+        if(bundle!=null) {
+            String passwd = bundle.getString("pass", "");
+            selectedMale = bundle.getBoolean("selectedMale", false);
+            selectedFemale = bundle.getBoolean("selectedFemale", false);
+            weight = bundle.getInt("weight", 50);
+            age = bundle.getInt("age", 18);
+            height = bundle.getInt("height", 180);
+            active = bundle.getString("active", "light");
 
+            // set the gotten data
+            textPass.setText(passwd);
+            textPassC.setText(passwd);
+        }
+        int tempAge = age;
+        boolean finalSelectedMale = selectedMale;
+        boolean finalSelectedFemale = selectedFemale;
+        int finalAge = age;
+        int finalWeight = weight;
+        int finalHeight = height;
+        String finalActive = active;
+        next.setOnClickListener(view -> {
+            Boolean valid = true;
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Boolean valid = true;
-                if(!validatePassword()){
-//                    textPass.setError("Password cannot be empty");
-                    valid=false;
-                }
-                if(textPassC.length()==0){
-                    confirmPasswordLayout.setError("Password cannot be empty");
-                    textPassC.setError(null);
-                    valid=false;
-                }
-                if(!(textPass.getText().toString().equals( textPassC.getText().toString())))
-                {
-                    confirmPasswordLayout.setError("Passwords do not match");
-                    textPassC.setError(null);
-                    valid = false;
-                }
-//                if(textPass.getText().toString().length()<8 && !isValidPassword(textPass.getText().toString()))
-//                {
-//                    textPass.setError("Please enter a valid password");
-//                    textPass.requestFocus();
-//                    valid=false;
-//                }
-                if(valid) {
-                    FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                    fr.replace(R.id.register_container, new GenderFragment());
-//                fr.addToBackStack(null);
-                    fr.commit();
-                }
-                sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
-                if(textPass.getText().toString()!= null){
-                    registerMain.myEdit.putString("pass", textPass.getText().toString());
-                    registerMain.myEdit.commit();
-                }
+            if(!validatePassword()){
+                valid=false;
+            }
+            if(textPassC.length()==0){
+                confirmPasswordLayout.setError("Password cannot be empty");
+                textPassC.setError(null);
+                valid=false;
+            }
+            if(!(textPass.getText().toString().equals( textPassC.getText().toString())))
+            {
+                confirmPasswordLayout.setError("Passwords do not match");
+                textPassC.setError(null);
+                valid = false;
+            }
+
+            if(valid) {
+                GenderFragment fragmentGender = new GenderFragment();
+                sendInfo(fragmentGender, finalSelectedMale, finalSelectedFemale, finalAge, finalWeight, finalHeight, finalActive);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.register_container, fragmentGender)
+                        .commit();
+            }
+            sharedViewModel= new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+            if(textPass.getText().toString()!= null){
+                registerMain.myEdit.putString("pass", textPass.getText().toString());
+                registerMain.myEdit.commit();
             }
         });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
-                fragmentManager.replace(R.id.register_container, new FragmentEmail()).addToBackStack(null);
-                fragmentManager.commit();
+        back.setOnClickListener(view -> {
+            FragmentEmail fragmentEmail = new FragmentEmail();
+            sendInfo(fragmentEmail, finalSelectedMale, finalSelectedFemale, finalAge, finalWeight, finalHeight, finalActive);
+            getFragmentManager().beginTransaction()
+            .replace(R.id.register_container, fragmentEmail)
+            .commit();
 
 
-            }
         });
         textPass.addTextChangedListener(new TextWatcher() {
             @Override
@@ -153,7 +167,8 @@ public class FragmentPassword extends Fragment {
             passwordLayout.setError("Password cannot be empty");
             textPass.setError(null);
             return false;
-        } else if (!PASSWORD_PATTERN.matcher(password).matches()) {
+        }
+        else if (!PASSWORD_PATTERN.matcher(password).matches()) {
             passwordLayout.setError("Password too weak");
             textPass.setError(null);
             return false;
@@ -162,16 +177,37 @@ public class FragmentPassword extends Fragment {
             return true;
         }
     }
-//    public static boolean isValidPassword(final String password) {
-//
-//        Pattern pattern;
-//        Matcher matcher;
-//        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
-//        pattern = Pattern.compile(PASSWORD_PATTERN);
-//        matcher = pattern.matcher(password);
-//
-//        return matcher.matches();
-//
-//    }
+
+    private void sendInfo(Fragment fragment,  boolean selectedMale, boolean selectedFemale, int age, int weight, int height, String active){
+
+        // get data from SharedPreferences if next/back is pressed
+        /** data  only gets stored in shared preferences if next is clicked
+         * other wise take data from editText
+         * */
+        SharedPreferences sh = requireActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        String name= sh.getString("name", "");
+        String email= sh.getString("email", "");
+        String mobile= sh.getString("mobile", "");
+
+
+        String passwd = textPass.getText().toString();
+        String confirmPasswd = textPassC.getText().toString();
+
+        // add data to bundle
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+        bundle.putString("email", email);
+        bundle.putString("mobile", mobile);
+        bundle.putString("pass", passwd);
+        bundle.putString("confirmPass", confirmPasswd);
+        bundle.putBoolean("selectedMale", selectedMale);
+        bundle.putBoolean("selectedFemale", selectedFemale);
+        bundle.putInt("age", age);
+        bundle.putInt("weight", weight);
+        bundle.putInt("height", height);
+        bundle.putString("active", active);
+        fragment.setArguments(bundle);
+
+    }
 
 }

@@ -1,9 +1,11 @@
 package com.example.nutritionapp.Register;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +17,13 @@ import android.widget.Toast;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentHeightBinding;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class HeightFragment extends Fragment {
     private FragmentHeightBinding binding;
     private SharedViewModel sharedViewModel;
-    TextView currentheight;
-    SeekBar heightbar;
+    TextView currentHeight;
+    SeekBar heightBar;
     private ExtendedFloatingActionButton next,back;
     RegisterMain registerMain;
     int currentProgress;
@@ -34,19 +35,19 @@ public class HeightFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding= FragmentHeightBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
-        currentheight=rootView.findViewById(R.id.fragment_height_currentHeight);
-        heightbar=(SeekBar) rootView.findViewById(R.id.fragment_height_heightBar);
+        currentHeight=rootView.findViewById(R.id.fragment_height_currentHeight);
+        heightBar=(SeekBar) rootView.findViewById(R.id.fragment_height_heightBar);
         next= rootView.findViewById(R.id.height_next);
         back=rootView.findViewById(R.id.height_back);
 
-        heightbar.setMax(300);
-        heightbar.setProgress(160);
-        heightbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        heightBar.setMax(300);
+        heightBar.setProgress(160);
+        heightBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 currentProgress=i;
                 mintProgress=String.valueOf(currentProgress);
-                currentheight.setText(mintProgress);
+                currentHeight.setText(mintProgress);
             }
 
             @Override
@@ -60,37 +61,91 @@ public class HeightFragment extends Fragment {
             }
         });
 
+        int bundleHeight = 180, age=18;
+        String active = "Light";
+        //  to get the data
+        Bundle bundle = this.getArguments();
+        if(bundle!=null) {
+            bundleHeight = bundle.getInt("height", 180);
+            active = bundle.getString("active", "Light");
+
+            heightBar.setProgress(bundleHeight);
+        }
+        if(bundle==null){
+            heightBar.setProgress(180);
+        }
+
         registerMain = (RegisterMain) getActivity();
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Boolean valid = true;
-                if(mintProgress.equals("0"))
-                {
-                    Toast.makeText(getContext(), "Height cannot be 0", Toast.LENGTH_SHORT).show();
-                    valid=false;
-                }
-                if(valid) {
-                    FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                    fr.replace(R.id.register_container, new ActiveFragment());
-//                fr.addToBackStack(null);
-                    fr.commit();
-                }
-                registerMain.myEdit.putString("height", currentheight.getText().toString());
-                registerMain.myEdit.commit();
+        String finalActive = active;
+        next.setOnClickListener(view -> {
+            Boolean valid = true;
+            if(mintProgress.equals("0"))
+            {
+                Toast.makeText(getContext(), "Height cannot be 0", Toast.LENGTH_SHORT).show();
+                valid=false;
             }
+            if(valid) {
+                ActiveFragment activeFragment = new ActiveFragment();
+                sendInfo(activeFragment, finalActive);
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.register_container, activeFragment)
+                        .commit();
+            }
+            registerMain.myEdit.putString("height", currentHeight.getText().toString());
+            registerMain.myEdit.commit();
         });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
-                fragmentManager.replace(R.id.register_container, new WeightFragment()).addToBackStack(null);
-                fragmentManager.commit();
+        back.setOnClickListener(view -> {
+            WeightFragment weightFragment = new WeightFragment();
+            sendInfo(weightFragment, finalActive);
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.register_container, weightFragment)
+                    .commit();
 
-            }
         });
 
         return rootView;
+    }
+
+    private void sendInfo(Fragment fragment, String active){
+
+        boolean selectedMale = false;
+        boolean selectedFemale = false;
+        int sendHeight  = heightBar.getProgress();
+
+        /** data  only gets stored in shared preferences if next is clicked
+         * other wise take data from editText
+         */
+
+        // get data from SharedPreferences if next/back is pressed
+        SharedPreferences sh = requireActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        String name= sh.getString("name", "");
+        String email= sh.getString("email", "");
+        String mobile= sh.getString("mobile", "");
+        String passwd= sh.getString("pass", "");
+        String age = sh.getString("age", "");
+        String gender = sh.getString("gender", "");
+        String weight = sh.getString("weight", "");
+
+        int intWeight = Integer.parseInt(weight);
+
+        if(gender.equals("Male"))
+            selectedMale = true;
+        else
+            selectedFemale= true;
+        int intAge = Integer.parseInt(age);
+        // add data to bundle
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+        bundle.putString("email", email);
+        bundle.putString("mobile", mobile);
+        bundle.putString("pass", passwd);
+        bundle.putBoolean("selectedMale", selectedMale);
+        bundle.putBoolean("selectedFemale", selectedFemale);
+        bundle.putInt("age", intAge);
+        bundle.putInt("weight", intWeight);
+        bundle.putInt("height", sendHeight);
+        bundle.putString("active", active);
+        fragment.setArguments(bundle);
     }
 }
