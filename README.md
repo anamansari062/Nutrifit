@@ -35,7 +35,7 @@ The android app lets you:
 [<img src="/assets/home.jpg" align="left"
 width="200"
     hspace="10" vspace="10">](/assets/home.png)
-[<img src="/assets/add_breakfast.jpg" align="center"
+[<img src="/assets/add_breakfast.jpeg" align="center"
 width="200"
     hspace="10" vspace="10">](/assets/add_breakfast.jpeg)  
 [<img src="/assets/dashboard.jpg" align="right"
