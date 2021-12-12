@@ -1,6 +1,7 @@
 package com.example.nutritionapp.ui.Dashboard;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class DashboardActivity extends AppCompatActivity {
@@ -67,7 +69,12 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardCholesterolIntake = findViewById(R.id.dashboard_cholesterol_intake);
         dashboardFatSaturatedIntake = findViewById(R.id.dashboard_fat_saturated_intake);
 
-
+        setTitle("Dashboard " );
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // set primary color to the action bar
+            Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primaryColor)));
+        }
 
         currentDate = new Date();
         dateFormat= new SimpleDateFormat("yyyy-MM-dd");
@@ -78,10 +85,6 @@ public class DashboardActivity extends AppCompatActivity {
             Intent intent = new Intent(DashboardActivity.this, MainActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();
 
         });
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         databaseReference= FirebaseDatabase.getInstance().getReference("USERS");
@@ -98,34 +101,34 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
         progressTotalCaloriesBar = (ProgressBar) findViewById(R.id.progress_total_calories_horizontal);
-        foodViewModel.getTotalTodayCalories(dateOnly).observe(this, Float -> updateTotalCaloriesProgressBar(Float));
+        foodViewModel.getTotalTodayCalories(dateOnly).observe(this, this::updateTotalCaloriesProgressBar);
 
         progressTotalProteinBar = (ProgressBar) findViewById(R.id.progress_protein_horizontal);
-        foodViewModel.getTotalProtein(dateOnly).observe(this, Float -> updateTotalProteinProgressBar(Float));
+        foodViewModel.getTotalProtein(dateOnly).observe(this, this::updateTotalProteinProgressBar);
 
         progressTotalCarbsBar = (ProgressBar) findViewById(R.id.progress_carbs_horizontal);
-        foodViewModel.getTotalCarb(dateOnly).observe(this, Float -> updateTotalCarbsProgressBar(Float));
+        foodViewModel.getTotalCarb(dateOnly).observe(this, this::updateTotalCarbsProgressBar);
 
         progressTotalFatsBar = (ProgressBar) findViewById(R.id.progress_fats_horizontal);
-        foodViewModel.getTotalFat(dateOnly).observe(this, Float -> updateTotalFatsProgressBar(Float));
+        foodViewModel.getTotalFat(dateOnly).observe(this, this::updateTotalFatsProgressBar);
 
         progressTotalFibreBar = (ProgressBar) findViewById(R.id.progress_fibre_horizontal);
-        foodViewModel.getTotalFiber(dateOnly).observe(this, Float -> updateTotalFibreProgressBar(Float));
+        foodViewModel.getTotalFiber(dateOnly).observe(this, this::updateTotalFibreProgressBar);
 
         progressTotalSodiumBar = (ProgressBar) findViewById(R.id.progress_sodium_horizontal);
-        foodViewModel.getTotalSodium(dateOnly).observe(this, Float -> updateTotalSodiumProgressBar(Float));
+        foodViewModel.getTotalSodium(dateOnly).observe(this, this::updateTotalSodiumProgressBar);
 
         progressTotalPotassiumBar = (ProgressBar) findViewById(R.id.progress_potassium_horizontal);
-        foodViewModel.getTotalPotassium(dateOnly).observe(this, Float -> updateTotalPotassiumProgressBar(Float));
+        foodViewModel.getTotalPotassium(dateOnly).observe(this, this::updateTotalPotassiumProgressBar);
 
         progressTotalSugarBar = (ProgressBar) findViewById(R.id.progress_sugar_horizontal);
-        foodViewModel.getTotalSugar(dateOnly).observe(this, Float -> updateTotalSugarProgressBar(Float));
+        foodViewModel.getTotalSugar(dateOnly).observe(this, this::updateTotalSugarProgressBar);
 
         progressTotalCholesterolBar = (ProgressBar) findViewById(R.id.progress_cholesterol_horizontal);
-        foodViewModel.getTotalCholesterol(dateOnly).observe(this, Float -> updateTotalCholesterolProgressBar(Float));
+        foodViewModel.getTotalCholesterol(dateOnly).observe(this, this::updateTotalCholesterolProgressBar);
 
         progressTotalFatSaturatedBar = (ProgressBar) findViewById(R.id.progress_fat_saturated_horizontal);
-        foodViewModel.getTotalFatSat(dateOnly).observe(this, Float -> updateTotalFatSaturationProgressBar(Float));
+        foodViewModel.getTotalFatSat(dateOnly).observe(this, this::updateTotalFatSaturationProgressBar);
 
         
 
@@ -143,14 +146,12 @@ public class DashboardActivity extends AppCompatActivity {
     }
     private void updateTotalCaloriesProgressBar(Object calories) {
         if (calories != null) {
-
-
             float totalCaloriesEaten = (Float) calories;
 //            calorieGoal= 800;
             int dashboardCalorieIntakePercentage = (int) ((totalCaloriesEaten / calorieGoal) * 100);
             dashboardCalorieIntakePercentageText.setText(dashboardCalorieIntakePercentage + "% done");
 
-            dashboardCalorieIntakeGoalShow.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "/" + calorieGoal);
+            dashboardCalorieIntakeGoalShow.setText(round(totalCaloriesEaten, 1) + "/" + calorieGoal);
             if (calorieGoal > totalCaloriesEaten)
                 progressTotalCaloriesBar.setProgress(dashboardCalorieIntakePercentage);
             else
@@ -167,7 +168,7 @@ public class DashboardActivity extends AppCompatActivity {
         if (calories != null) {
             float totalCaloriesEaten = (Float) calories;
             int calorieGoal = 50;
-            dashboardProteinIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "gm");
+            dashboardProteinIntake.setText(round(totalCaloriesEaten, 1) + "gm");
 
             if (calorieGoal > totalCaloriesEaten)
                 progressTotalProteinBar.setProgress((int) ((totalCaloriesEaten / calorieGoal) * 100));
@@ -232,7 +233,7 @@ public class DashboardActivity extends AppCompatActivity {
         if (calories != null) {
             float totalCaloriesEaten = (Float) calories;
             int calorieGoal = 50;
-            dashboardSodiumIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "gm");
+            dashboardSodiumIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "mg");
 
             if (calorieGoal > totalCaloriesEaten)
                 progressTotalSodiumBar.setProgress((int) ((totalCaloriesEaten / calorieGoal) * 100));
@@ -249,7 +250,7 @@ public class DashboardActivity extends AppCompatActivity {
         if (calories != null) {
             float totalCaloriesEaten = (Float) calories;
             int calorieGoal = 50;
-            dashboardPotassiumIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "gm");
+            dashboardPotassiumIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "mg");
 
             if (calorieGoal > totalCaloriesEaten)
                 progressTotalPotassiumBar.setProgress((int) ((totalCaloriesEaten / calorieGoal) * 100));
@@ -283,7 +284,7 @@ public class DashboardActivity extends AppCompatActivity {
         if (calories != null) {
             float totalCaloriesEaten = (Float) calories;
             int calorieGoal = 50;
-            dashboardCholesterolIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "gm");
+            dashboardCholesterolIntake.setText(String.valueOf(round(totalCaloriesEaten, 1)) + "mg");
 
             if (calorieGoal > totalCaloriesEaten)
                 progressTotalCholesterolBar.setProgress((int) ((totalCaloriesEaten / calorieGoal) * 100));

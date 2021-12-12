@@ -1,6 +1,7 @@
 package com.example.nutritionapp.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,6 +21,7 @@ import com.example.nutritionapp.adapters.DisplayFoodAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class DisplayFood extends AppCompatActivity {
     FoodViewModel foodViewModel;
@@ -44,6 +47,12 @@ public class DisplayFood extends AppCompatActivity {
         final DisplayFoodAdapter adapter = new DisplayFoodAdapter();
         recyclerView.setAdapter(adapter);
 
+        setTitle("Food Logs " );
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // set primary color to the action bar
+            Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primaryColor)));
+        }
         currentDate = new Date();
         dateFormat= new SimpleDateFormat("yyyy-MM-dd");
         dateOnly = dateFormat.format(currentDate);
