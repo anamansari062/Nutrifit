@@ -9,8 +9,8 @@ Unlike other food tracking app, NutriFit is free and open source.
 To use NutriFit, You will need a NutriFit account first, which you are going to use in this app.
 
 NutriFit will be available on the Google Play Store and F-Droid soon, so be excited to use it :)
-Talking about the usability of the app, you can try out beta version for now by using these methods.\
-
+Talking about the usability of the app, you can try out beta version for now by using these methods.
+  
 ## About
 
 NutriFit has been made for you to comfortably track your food and have no worry about those calories.
