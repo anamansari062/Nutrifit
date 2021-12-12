@@ -40,6 +40,21 @@ The android app lets you:
  <img src="/assets/food_logs.jpg" width="200" hspace="10" vspace="10">
 </p>
 
+## Getting Started
+1. Clone this repository 
+
+```bash
+git clone https://github.com/anamansari062/NutritionApp
+```
+2. Open Android Studio and import the project
+3. Steps to Import the project:  
+   A. File -> Import  
+   B. Go to the path where you cloned the Repo (usually the whole folder) and select it
+   
+At this point, you *should* be able to build and run the project in the Android device or emulator.
+
+if you are facing any problem in building, you can create an issue describing your problem or you can [mail](mailto:chauhandhiraj40@gmail.com) too.
+
 ## Permissions
 
 On Android versions, Nutrifit requires the following permissions:
@@ -52,5 +67,12 @@ Yes, that's all we need :)
 Nutrifit app is a free and open source project. Any contributions are welcome. Here are a few ways you can help:
  * [Report bugs and make suggestions.](https://github.com/anamansari062/NutritionApp/issues)
  * Write some code. Please follow the code style used in the project to make a review process faster.
+
+### Steps for contributing
+1. Fork it
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -m 'Add some feature')
+5. Push your branch (git push origin my-new-feature)
+6. Create a new Pull Request
 
 ## License
