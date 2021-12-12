@@ -12,7 +12,7 @@ NutriFit will be available on the Google Play Store and F-Droid soon, so be exci
 Talking about the usability of the app, you can try out beta version for now by using these methods.
 
 
-
+  
 ## About
 
 NutriFit has been made for you to comfortably track your food and have no worry about those calories.
