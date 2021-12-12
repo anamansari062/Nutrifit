@@ -18,7 +18,6 @@ import com.example.nutritionapp.R;
 import com.example.nutritionapp.Register.RegisterMain;
 import com.example.nutritionapp.Reset;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -51,6 +50,13 @@ public class LoginActivity extends AppCompatActivity {
         reset=findViewById(R.id.reset);
         passwordLayout = findViewById(R.id.etPasswordLayout);
         emailLayout = findViewById(R.id.etEmailLayout);
+
+        // hide toolbar
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
 
         mAuth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
