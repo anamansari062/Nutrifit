@@ -41,16 +41,19 @@ width="200"
 [<img src="/assets/dashboard.jpg" align="right"
 width="200"
     hspace="10" vspace="10">](/assets/dashboard.jpg)
-</br>
+    ![Screenshot](/assets/dashboard.jpg)
+![Screenshot](/assets/no_foood_dashboard.jpg)
+![Screenshot](/assets/food_logs.jpg)
+<!-- 
 [<img src="/assets/dashboard.jpg" align="left"
 width="200"
-    hspace="10" vspace="10">](/assets/dashboard.jpg)
-[<img src="/assets/no_foood_dashboard.jpg" align="center"
+    hspace="10" vspace="10">](/assets/dashboard.jpg) -->
+<!-- [<img src="/assets/no_foood_dashboard.jpg" align="center"
 width="200"
     hspace="10" vspace="10">](/assets/no_foood_dashboard.jpg)
 [<img src="/assets/food_logs.jpg" align="right"
 width="200"
-    hspace="10" vspace="10">](/assets/food_logs.jpg)
+    hspace="10" vspace="10">](/assets/food_logs.jpg) -->
 ## Permissions
 
 On Android versions, Nutrifit requires the following permissions:
