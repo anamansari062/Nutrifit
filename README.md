@@ -38,16 +38,17 @@ width="200"
 [<img src="/assets/add_breakfast.jpg" align="center"
 width="200"
     hspace="10" vspace="10">](/assets/add_breakfast.jpg)  
-[<img src="/assets/dashboard.jpg" align="center"
+[<img src="/assets/dashboard.jpg" align="right"
 width="200"
     hspace="10" vspace="10">](/assets/dashboard.jpg)
-[<img src="/assets/dashboard.jpg" align="center"
+</br>
+[<img src="/assets/dashboard.jpg" align="left"
 width="200"
     hspace="10" vspace="10">](/assets/dashboard.jpg)
 [<img src="/assets/no_foood_dashboard.jpg" align="center"
 width="200"
     hspace="10" vspace="10">](/assets/no_foood_dashboard.jpg)
-[<img src="/assets/food_logs.jpg" align="center"
+[<img src="/assets/food_logs.jpg" align="right"
 width="200"
     hspace="10" vspace="10">](/assets/food_logs.jpg)
 ## Permissions
