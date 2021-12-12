@@ -44,13 +44,12 @@ width="200"
 <!--     ![Screenshot](/assets/dashboard.jpg)
 ![Screenshot](/assets/no_foood_dashboard.jpg)
 ![Screenshot](/assets/food_logs.jpg) -->
-
 [<img src="/assets/dashboard.jpg" 
 width="200"
     hspace="10" vspace="10">](/assets/dashboard.jpg) 
-[<img src="/assets/no_foood_dashboard.jpg" 
+[<img src="/assets/no_food_dashboard.jpg" 
 width="200"
-    hspace="10" vspace="10">](/assets/no_foood_dashboard.jpg)
+    hspace="10" vspace="10">](/assets/no_food_dashboard.jpg)
 [<img src="/assets/food_logs.jpg" 
 width="200"
     hspace="10" vspace="10">](/assets/food_logs.jpg) 
