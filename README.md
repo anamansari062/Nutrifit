@@ -31,7 +31,11 @@ The android app lets you:
 - Switch between numerous themes. [Coming Soon]
 
 ## Screenshots
-
+<p float="left">
+  <img src="/assets/home.jpg" width="100" />
+  <img src="/assets/add_breakfast.jpg" width="100" /> 
+  <img src="/assets/dashboard.jpg" width="100" />
+</p>
 [<img src="/assets/home.jpg" align="left"
 width="200"
     hspace="10" vspace="10">](/assets/home.png)
@@ -41,9 +45,6 @@ width="200"
 [<img src="/assets/dashboard.jpg" align="right"
 width="200"
     hspace="10" vspace="10">](/assets/dashboard.jpg)
-<!--     ![Screenshot](/assets/dashboard.jpg)
-![Screenshot](/assets/no_foood_dashboard.jpg)
-![Screenshot](/assets/food_logs.jpg) -->
 [<img src="/assets/dashboard.jpg" 
 width="200"
     hspace="10" vspace="10">](/assets/dashboard.jpg) 
