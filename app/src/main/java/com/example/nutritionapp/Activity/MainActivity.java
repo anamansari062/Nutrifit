@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.R;
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("key", 0);
                         editor.apply();
-                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(intent);
                         finish();
                     })

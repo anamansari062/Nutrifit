@@ -16,12 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.nutritionapp.Activity.Login;
+import com.example.nutritionapp.Activity.LoginActivity;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.databinding.FragmentCalorieBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -109,7 +107,7 @@ public class FragmentCalorie extends Fragment {
                                         Toast.makeText(getContext(), "Failed to Register", Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                        Intent i=new Intent(getActivity(), Login.class);
+                        Intent i=new Intent(getActivity(), LoginActivity.class);
                         startActivity(i);
 
                     }

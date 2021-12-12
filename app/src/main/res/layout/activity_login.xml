@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Login"
-    android:background="@color/primaryColor">
+    tools:context=".Activity.LoginActivity"
+    android:background="@color/primaryColor"
+    android:id="@+id/parentLayout">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -70,8 +71,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etEmailLayout"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:imeOptions="actionNext"
+            android:layout_height="wrap_content"            android:imeOptions="actionNext"
             android:importantForAutofill="no"
             app:boxStrokeColor="@color/black"
             app:boxStrokeWidthFocused="2dp"
@@ -96,6 +96,7 @@
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:textColor="@color/black"
+            android:inputType="textEmailAddress"
             android:hint="Email" />
         </com.google.android.material.textfield.TextInputLayout>
 
