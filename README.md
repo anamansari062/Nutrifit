@@ -32,9 +32,9 @@ The android app lets you:
 
 ## Screenshots
 <p float="left">
-  <img src="/assets/home.jpg" width="100" />
-  <img src="/assets/add_breakfast.jpg" width="100" /> 
-  <img src="/assets/dashboard.jpg" width="100" />
+  <img src="/assets/home.jpg" width="200" />
+  <img src="/assets/add_breakfast.jpg" width="200" /> 
+  <img src="/assets/dashboard.jpg" width="200" />
 </p>
 [<img src="/assets/home.jpg" align="left"
 width="200"
