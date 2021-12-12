@@ -32,28 +32,14 @@ The android app lets you:
 
 ## Screenshots
 <p float="left">
-  <img src="/assets/home.jpg" width="200" />
-  <img src="/assets/add_breakfast.jpg" width="200" /> 
-  <img src="/assets/dashboard.jpg" width="200" />
+  <img src="/assets/home.jpg" width="200" hspace="10" vspace="10"/>
+  <img src="/assets/add_breakfast.jpeg" width="200" hspace="10" vspace="10"/> 
+  <img src="/assets/dashboard.jpg" width="200" hspace="10" vspace="10"/>
+ <img src="/assets/no_food_dashboard.jpg"  width="200" hspace="10" vspace="10"/>
+ <img src="/assets/food_logs.jpg" width="200" hspace="10" vspace="10">
+ <img src="/assets/food_logs.jpg" width="200" hspace="10" vspace="10">
 </p>
-[<img src="/assets/home.jpg" align="left"
-width="200"
-    hspace="10" vspace="10">](/assets/home.png)
-[<img src="/assets/add_breakfast.jpeg" align="center"
-width="200"
-    hspace="10" vspace="10">](/assets/add_breakfast.jpeg)  
-[<img src="/assets/dashboard.jpg" align="right"
-width="200"
-    hspace="10" vspace="10">](/assets/dashboard.jpg)
-[<img src="/assets/dashboard.jpg" 
-width="200"
-    hspace="10" vspace="10">](/assets/dashboard.jpg) 
-[<img src="/assets/no_food_dashboard.jpg" 
-width="200"
-    hspace="10" vspace="10">](/assets/no_food_dashboard.jpg)
-[<img src="/assets/food_logs.jpg" 
-width="200"
-    hspace="10" vspace="10">](/assets/food_logs.jpg) 
+
 ## Permissions
 
 On Android versions, Nutrifit requires the following permissions:
