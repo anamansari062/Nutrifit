@@ -21,10 +21,14 @@ public class SplashActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         pref = new PreferenceManager(this);
-        if (!pref.isSplashIn()) {
-            //Splash Screen Load
-            pref.setSplashIn(true);
-        } else {
+        // the below lines of code was causing the app to not go beyond the splash screen when the user
+        // installs and opens the app for the first time
+        // issue #51- Splash Bug
+
+//        if (!pref.isSplashIn()) {
+//            //Splash Screen Load
+//            pref.setSplashIn(true);
+//        } else {
             Thread td = new Thread() {
                 public void run() {
                     try {
@@ -41,4 +45,4 @@ public class SplashActivity extends AppCompatActivity {
             td.start();
         }
     }
-}
+//}
