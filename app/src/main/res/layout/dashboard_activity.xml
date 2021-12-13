@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:background="@color/white"
+    tools:context=".ui.Dashboard.DashboardActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,6 +38,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="60dp"
                 android:lineSpacingExtra="1sp"
+                android:textColor="@color/black"
                 android:text="@string/dashboard_track_insights"
                 android:textSize="18sp"
                 android:textStyle="normal"
@@ -98,6 +100,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="43dp"
                 android:lineSpacingExtra="1sp"
+                android:textColor="@color/black"
                 android:text="@string/dashboard_sub_heading_food_analysis"
                 android:textSize="18sp"
                 android:textStyle="normal"
@@ -159,7 +162,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="50dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_calorie_intake_percentage"
@@ -237,7 +241,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="165dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_carbs"
@@ -275,7 +280,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="195dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_fats"
@@ -312,7 +318,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="225dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_fibre"
@@ -349,7 +356,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="120dp"
                     android:layout_marginTop="255dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -409,7 +417,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="150dp"
                     android:layout_marginTop="355dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_fat_saturated"
@@ -447,7 +456,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="150dp"
                     android:layout_marginTop="385dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
 
                 <TextView
@@ -486,7 +496,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="150dp"
                     android:layout_marginTop="415dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_cholesterol"
@@ -524,7 +535,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="150dp"
                     android:layout_marginTop="445dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
 
                 <TextView
                     android:id="@+id/dashboard_potassium"
@@ -562,7 +574,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="150dp"
                     android:layout_marginTop="475dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="20dp"
+                    android:progressTint="@color/primaryColor"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

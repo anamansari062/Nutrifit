@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:id="@+id/search_layout">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:hint="Search Food..."
             android:inputType="textPersonName" />
 
@@ -26,6 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:ems="10"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:hint="Serving in grams..."
             android:inputType="number"
             android:maxLength = "4" />
@@ -35,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
+            android:backgroundTint="@color/primaryColor"
             android:text="Search" />
 
         <ProgressBar
@@ -486,6 +492,7 @@
                 android:layout_margin="0dp"
                 android:alpha="0.54"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="@string/search_no_food_found" />
 
         </LinearLayout>

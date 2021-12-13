@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Register.FragmentCalorie">
-
-    <!-- TODO: Update blank fragment layout -->
 
 
     <RelativeLayout
@@ -17,17 +16,11 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/registermalefemalenotfocus">
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="40dp"-->
-        <!--            android:layout_height="40dp"-->
-        <!--            android:layout_marginStart="10dp"-->
-        <!--            android:layout_marginTop="5dp"-->
-        <!--            android:src="@drawable/ic_lowactive" />-->
 
         <TextView
             android:id="@+id/low_active_text"
-            android:layout_width="286dp"
-            android:layout_height="41dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="Welcome to NutriFit"
@@ -51,17 +44,15 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_water" />
 
         <TextView
-            android:layout_width="400dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="-2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="Drink 10 glasses of water everyday"
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -82,15 +73,16 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
             android:src="@drawable/ic_walk" />
 
         <TextView
-            android:layout_width="400dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="115dp"
-            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="1150dp"
+            android:gravity="center"
             android:text="Walk 10,000 steps everyday"
             android:textColor="@color/black"
             android:textSize="15sp" />

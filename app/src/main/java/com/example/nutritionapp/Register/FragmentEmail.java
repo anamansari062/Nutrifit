@@ -1,34 +1,35 @@
 package com.example.nutritionapp.Register;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Patterns;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.nutritionapp.Activity.Login;
+import com.example.nutritionapp.Activity.LoginActivity;
 import com.example.nutritionapp.R;
+
 import com.example.nutritionapp.databinding.FragmentEmailBinding;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class FragmentEmail extends Fragment {
     private FragmentEmailBinding binding;
     RegisterMain registerMain;
-    EditText textEmail, textMobile,textName;
-    ExtendedFloatingActionButton add,back;
-    TextInputLayout nameL,emailL,mobileL;
+    EditText textEmail, textMobile, textName;
+    ExtendedFloatingActionButton next, back;
+    TextInputLayout nameL, emailL, mobileL;
+    final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Nullable
     @Override
@@ -37,66 +38,84 @@ public class FragmentEmail extends Fragment {
         binding = FragmentEmailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        textEmail= root.findViewById(R.id.text_email);
-        textMobile= root.findViewById(R.id.text_mobile);
-        textName=root.findViewById(R.id.text_name);
-        add= root.findViewById(R.id.email_next);
-        back=root.findViewById(R.id.email_back);
-        nameL=root.findViewById(R.id.nameLayout);
-        emailL=root.findViewById(R.id.emailLayout);
-        mobileL=root.findViewById(R.id.mobileLayout);
+        textEmail = root.findViewById(R.id.text_email);
+        textMobile = root.findViewById(R.id.text_mobile);
+        textName = root.findViewById(R.id.text_name);
+        next = root.findViewById(R.id.email_next);
+        back = root.findViewById(R.id.email_back);
+        nameL = root.findViewById(R.id.nameLayout);
+        emailL = root.findViewById(R.id.emailLayout);
+        mobileL = root.findViewById(R.id.mobileLayout);
 
-
+        // to get data and set the texts when came from passwordFragment
+        String passwd = "", active = "light";
+        boolean selectedMale = false;
+        boolean selectedFemale = false;
+        int weight = 50, age = 18, height = 180;
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String name = bundle.getString("name", "");
+            String email = bundle.getString("email", "");
+            String mobileNo = bundle.getString("mobile", "");
+            passwd = bundle.getString("pass", "");
+            selectedMale = bundle.getBoolean("selectedMale", false);
+            selectedFemale = bundle.getBoolean("selectedFemale", false);
+            weight = bundle.getInt("weight", 50);
+            age = bundle.getInt("age", 18);
+            height = bundle.getInt("height", 180);
+            active = bundle.getString("active", "light");
+            textName.setText(name);
+            textEmail.setText(email);
+            textMobile.setText(mobileNo);
+        }
         registerMain = (RegisterMain) getActivity();
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(textEmail.getText().toString()!=null & textMobile.getText().toString()!= null) {
-                    registerMain.myEdit.putString("email", textEmail.getText().toString());
-                    registerMain.myEdit.putString("mobile", textMobile.getText().toString());
-                    registerMain.myEdit.commit();
-                }
+        String finalPasswd = passwd;
+        boolean finalSelectedFemale = selectedFemale;
+        boolean finalSelectedMale = selectedMale;
+        int finalWeight = weight;
+        int finalAge = age;
+        int finalHeight = height;
+        String finalActive = active;
+        next.setOnClickListener(view -> {
+            if (textEmail.getText().toString() != null & textMobile.getText().toString() != null) {
+                registerMain.myEdit.putString("email", textEmail.getText().toString());
+                registerMain.myEdit.putString("mobile", textMobile.getText().toString());
+                registerMain.myEdit.commit();
+            }
 
-                Boolean valid = true;
-                if ( !validateEmail()) {
-                    valid = false;
-                }
-//                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//                    Toast.makeText(getContext(), "Email not valid", Toast.LENGTH_LONG).show();
-//                }
+            boolean valid = true;
+            if (!validateEmail()) {
+                valid = false;
+            }
 
-                if (textMobile.length() == 0||textMobile.length()<10||textMobile.length()>10) {
-                    mobileL.setError("Please Enter a Valid Mobile Number");
-                    textMobile.setError(null);
-                    valid = false;
-
-                }
-                if(textName.length()==0)
-                {
-//            Toast.makeText(getContext(), "F", Toast.LENGTH_SHORT).show();
-                    nameL.setError("Name is required");
-                    textName.setError(null);
-                    valid=false;
-                }
-                if(valid) {
-                    FragmentTransaction fr = getParentFragmentManager().beginTransaction();
-                    fr.replace(R.id.register_container, new FragmentPassword());
-//                fr.addToBackStack(null);
-                    fr.commit();
-                    registerMain.myEdit.putString("name", textName.getText().toString());
-                    registerMain.myEdit.commit();
-                }
+            if (textMobile.length() == 0 || textMobile.length() < 10 || textMobile.length() > 10) {
+                mobileL.setError("Please Enter a Valid Mobile Number");
+                textMobile.setError(null);
+                valid = false;
 
             }
+            if (textName.length() == 0) {
+                nameL.setError("Name is required");
+                textName.setError(null);
+                valid = false;
+            }
+            if (valid) {
+                FragmentPassword fragmentPassword = new FragmentPassword();
+                sendInfo(fragmentPassword, finalPasswd, finalSelectedMale, finalSelectedFemale, finalAge, finalWeight, finalHeight, finalActive);
+
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.register_container, fragmentPassword)
+                        .commit();
+                registerMain.myEdit.putString("name", textName.getText().toString());
+                registerMain.myEdit.commit();
+            }
+
         });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        back.setOnClickListener(view -> {
 
-                Intent intent = new Intent(getActivity(), Login.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
         });
         textName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -127,6 +146,8 @@ public class FragmentEmail extends Fragment {
             }
         });
         textEmail.addTextChangedListener(new TextWatcher() {
+            String email = textEmail.getText().toString();
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -144,20 +165,56 @@ public class FragmentEmail extends Fragment {
         return root;
 
     }
+
     private boolean validateEmail() {
         String email = textEmail.getText().toString().trim();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         if (email.isEmpty()) {
             emailL.setError("Email is required");
             textEmail.setError(null);
             return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailL.setError("Please Enter a Valid Email Address");
-            textEmail.setError(null);
-            return false;
-        } else {
-            emailL.setError(null);
-            return true;
         }
+        if (email.matches(EMAIL_PATTERN)) {
+            //check email already exist or not.
+            final boolean[] isNewUser = new boolean[1];
+            firebaseAuth.fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()){
+                            isNewUser[0] =task.getResult().getSignInMethods().isEmpty();
+                            if (isNewUser[0]) {
+                                isNewUser[0] = false;
+                                Log.e("TAG", "Is New User!");
+                            }
+                            else {
+                                Log.e("TAG", "Is Old User!");
+                                emailL.setError("Email already exists");
+                            }
+                        }
+                    });
+            return !isNewUser[0];
+        }
+        else {
+            emailL.setError("Please Enter a valid Email-ID");
+            return false;
+        }
+    }
+    private void sendInfo(Fragment fragment, String passwd, boolean selectedMale, boolean selectedFemale, int age, int weight, int height, String active){
+
+        // get data from SharedPreferences if next/back is pressed
+        /** data  only gets stored in shared preferences if next is clicked
+         * other wise take data from editText
+         * */
+        // add data to bundle
+        Bundle bundle = new Bundle();
+        bundle.putString("pass", passwd);
+
+        bundle.putBoolean("selectedMale", selectedMale);
+        bundle.putBoolean("selectedFemale", selectedFemale);
+        bundle.putInt("age", age);
+        bundle.putInt("weight", weight);
+        bundle.putInt("height", height);
+        bundle.putString("active", active);
+        fragment.setArguments(bundle);
     }
 }

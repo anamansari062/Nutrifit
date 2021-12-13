@@ -2,6 +2,7 @@ package com.example.nutritionapp.ui.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,6 +35,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,11 +91,15 @@ public class SearchActivity extends AppCompatActivity {
         nutritionInfoCholesterolCalories = findViewById(R.id.dashboard_cholesterol_intake);
         nutritionInfoFatSaturatedCalories = findViewById(R.id.dashboard_fat_saturated_intake);
 
+
+
         Intent intent= getIntent();
         title= intent.getStringExtra("title");
         setTitle("Add " + title);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            // set primary color to the action bar
+            Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primaryColor)));
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -219,15 +225,15 @@ public class SearchActivity extends AppCompatActivity {
      private void showNutritionInfo(FoodEntity item){
             nutritionInfoServingSize.setText(String.format("Serving Size: %s", Float.parseFloat(textServe.getText().toString())));
                 nutritionInfoCalories.setText(("Calories " + round(calculateGrams(item.getCalories()), 2) + " Cal"));
-            nutritionInfoProteinCalories.setText(String.valueOf(round(calculateGrams(item.getProtein_g()),2)));
-            nutritionInfoFatsCalories.setText(String.valueOf(round(calculateGrams(item.getFat_total_g()), 2)));
-            nutritionInfoCarbsCalories.setText(String.valueOf(round(calculateGrams(item.getCarbohydrates_total_g()), 2)));
-            nutritionInfoFibreCalories.setText(String.valueOf(round(calculateGrams(item.getFiber_g()), 2)));
-            nutritionInfoFatSaturatedCalories.setText(String.valueOf(round(calculateGrams(item.getFat_saturated_g()), 2)));
-            nutritionInfoSodiumCalories.setText(String.valueOf(round(calculateGrams(item.getSodium_mg()), 2)));
-            nutritionInfoPotassiumCalories.setText(String.valueOf(round(calculateGrams(item.getPotassium_mg()), 2)));
-            nutritionInfoSugarCalories.setText(String.valueOf(round(calculateGrams(item.getSugar_g()), 2)));
-            nutritionInfoCholesterolCalories.setText(String.valueOf(round(calculateGrams(item.getCholesterol_mg()), 2)));
+            nutritionInfoProteinCalories.setText(round(calculateGrams(item.getProtein_g()), 2) + "gm");
+            nutritionInfoFatsCalories.setText(round(calculateGrams(item.getFat_total_g()), 2) + "gm");
+            nutritionInfoCarbsCalories.setText(round(calculateGrams(item.getCarbohydrates_total_g()), 2) + "gm");
+            nutritionInfoFibreCalories.setText(round(calculateGrams(item.getFiber_g()), 2) + "gm");
+            nutritionInfoFatSaturatedCalories.setText(round(calculateGrams(item.getFat_saturated_g()), 2) + "gm");
+            nutritionInfoSodiumCalories.setText(round(calculateGrams(item.getSodium_mg()), 2) + "mg");
+            nutritionInfoPotassiumCalories.setText(round(calculateGrams(item.getPotassium_mg()), 2) + "mg");
+            nutritionInfoSugarCalories.setText(round(calculateGrams(item.getSugar_g()), 2) + "gm");
+            nutritionInfoCholesterolCalories.setText(round(calculateGrams(item.getCholesterol_mg()), 2) + "mg");
      }
 
     private static double round (double value, int precision) {

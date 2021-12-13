@@ -79,7 +79,7 @@
     <string name="age">Age</string>
     <string name="mobile">Mobile No:</string>
     <string name="weight">Weight</string>
-    <string name="passwordMessage">Password should contain minimum 8 characters and should have atleast One Uppercase letter [A-Z],One Lowercase letter [a-z],One Special Character and One Digit [0-9].</string>
+    <string name="passwordMessage">Password should contain minimum 8 characters and should have atleast: \n One Uppercase letter [A-Z] \n One Lowercase letter [a-z] \n One Special Character and One Digit [0-9].</string>
     <string name="search_no_food_found">sorry we couldn\'t find any \n food with that name</string>
     <string name="no_food_logs_found">You have not added any food today \n click on this button to start tracking your food for today</string>
     <string name="Blog1">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>

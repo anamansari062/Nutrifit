@@ -50,7 +50,6 @@ public class UpdateFragment extends Fragment {
     Double a;
     String name;
     DatabaseReference databaseReference;
-//    AutoCompleteTextView auto_activity;
     ArrayList<String> arrayList_activity;
     ArrayAdapter<String> arrayAdapter_activity;
 
@@ -119,8 +118,8 @@ public class UpdateFragment extends Fragment {
 
 
         arrayAdapter_activity = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,arrayList_activity);
+        arrayAdapter_activity.setDropDownViewResource(R.layout.custom_selected_spinner_layout);
         spinner.setAdapter(arrayAdapter_activity);
-//        auto_activity.setThreshold(1);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -132,7 +131,6 @@ public class UpdateFragment extends Fragment {
                 else
                 {
                     ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
-//                    ((TextView) adapterView.getChildAt(0)).setTextSize(5);
                      value = adapterView.getItemAtPosition(i).toString();
                 }
             }
@@ -144,22 +142,16 @@ public class UpdateFragment extends Fragment {
         });
 
 
-        mmale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
-                typeOfUser="Male";
-            }
+        mmale.setOnClickListener(view -> {
+            mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
+            mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
+            typeOfUser="Male";
         });
 
-        mfemale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
-                mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
-                typeOfUser="Female";
-            }
+        mfemale.setOnClickListener(view -> {
+            mfemale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalefocus));
+            mmale.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.registermalefemalenotfocus));
+            typeOfUser="Female";
         });
 
         mheightbar.setMax(300);
@@ -183,94 +175,71 @@ public class UpdateFragment extends Fragment {
             }
         });
 
-        mincrementage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                age+=1;
-                age2=String.valueOf(age);
+        mincrementage.setOnClickListener(view -> {
+            age+=1;
+            age2=String.valueOf(age);
+            mcurrentage.setText(age2);
+        });
+        mincrementweight.setOnClickListener(view -> {
+            weight+=1;
+            weight2=String.valueOf(weight);
+            mcurrentweight.setText(weight2);
+        });
+        mdecrementage.setOnClickListener(view -> {
+            if(age>0) {
+                age -= 1;
+                age2 = String.valueOf(age);
                 mcurrentage.setText(age2);
             }
         });
-        mincrementweight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                weight+=1;
-                weight2=String.valueOf(weight);
+        mdecrementweight.setOnClickListener(view -> {
+            if(weight>0) {
+                weight -= 1;
+                weight2 = String.valueOf(weight);
                 mcurrentweight.setText(weight2);
             }
         });
-        mdecrementage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(age>0) {
-                    age -= 1;
-                    age2 = String.valueOf(age);
-                    mcurrentage.setText(age2);
-                }
+
+
+
+
+        mcalculate.setOnClickListener(view -> {
+            if(typeOfUser.equals("0"))
+            {
+                Toast.makeText(getContext(), "Select Your Gender", Toast.LENGTH_SHORT).show();
             }
-        });
-        mdecrementweight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(weight>0) {
-                    weight -= 1;
-                    weight2 = String.valueOf(weight);
-                    mcurrentweight.setText(weight2);
-                }
+            else if(mintProgress.equals("0"))
+            {
+                Toast.makeText(getContext(), "Select Your Height", Toast.LENGTH_SHORT).show();
             }
-        });
-
-
-
-
-        mcalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(typeOfUser.equals("0"))
-                {
-                    Toast.makeText(getContext(), "Select Your Gender", Toast.LENGTH_SHORT).show();
-                }
-                else if(mintProgress.equals("0"))
-                {
-                    Toast.makeText(getContext(), "Select Your Height", Toast.LENGTH_SHORT).show();
-                }
-                else if(age==0 || age<0)
-                {
-                    Toast.makeText(getContext(), "Age is incorrect", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-//                    Intent intent = new Intent(UpdateFragment.this.getActivity(), Calculate.class);
-//                    intent.putExtra("Gender",typeOfUser);
-//                    intent.putExtra("Height",mintProgress);
-//                    intent.putExtra("Weight",weight2);
-//                    intent.putExtra("Age",age2);
-//                    startActivity(intent);
-                    calorie= calculate(Integer.parseInt(mcurrentheight.getText().toString()), Integer.parseInt(mcurrentweight.getText().toString()),Integer.parseInt(mcurrentage.getText().toString()), typeOfUser, value);
-                    databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            snapshot.getRef().child("age").setValue(age2);
-                            snapshot.getRef().child("activity").setValue(value);
-                            String Calories=Double.toString(calorie);
-                            snapshot.getRef().child("name").setValue(editName.getText().toString());
-
-                            snapshot.getRef().child("calories").setValue(Calories);
-                            snapshot.getRef().child("gender").setValue(typeOfUser);
-                            snapshot.getRef().child("height").setValue(mintProgress);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-//                    Toast.makeText(getContext(), "Your details have been updated successfully"+mcalorie, Toast.LENGTH_SHORT).show();
-                   alertDialog();
-                }
-
+            else if(age==0 || age<0)
+            {
+                Toast.makeText(getContext(), "Age is incorrect", Toast.LENGTH_SHORT).show();
             }
+            else
+            {
+                calorie= calculate(Integer.parseInt(mcurrentheight.getText().toString()), Integer.parseInt(mcurrentweight.getText().toString()),Integer.parseInt(mcurrentage.getText().toString()), typeOfUser, value);
+                databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        snapshot.getRef().child("age").setValue(age2);
+                        snapshot.getRef().child("activity").setValue(value);
+                        String Calories=Double.toString(calorie);
+                        snapshot.getRef().child("name").setValue(editName.getText().toString());
+
+                        snapshot.getRef().child("calories").setValue(Calories);
+                        snapshot.getRef().child("gender").setValue(typeOfUser);
+                        snapshot.getRef().child("height").setValue(mintProgress);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                alertDialog();
+            }
+
         });
 
 
@@ -300,29 +269,9 @@ public class UpdateFragment extends Fragment {
 
         dialog.setTitle("Successful");
         dialog.setPositiveButton("Ok",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog,
-                                        int which) {
-//                        Toast.makeText(getContext(),"Yes is clicked",Toast.LENGTH_LONG).show();
-                    }
+                (dialog1, which) -> {
                 });
-//        dialog.setNegativeButton("cancel",new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-////                Toast.makeText(getContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
-//            }
-//        });
-
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
                     }
                 }
-
-
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        binding = null;
-//    }
-//}

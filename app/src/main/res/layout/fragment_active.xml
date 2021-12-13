@@ -3,27 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".Register.ActiveFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <!--    <ImageView-->
-    <!--        android:layout_width="40dp"-->
-    <!--        android:layout_height="40dp"-->
-    <!--        android:src="@drawable/ic_lowactive"/>-->
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginBottom="505dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:text="How Active are you?"
         android:textColor="#100F0F"
         android:textSize="20sp"
@@ -33,29 +24,24 @@
         android:id="@+id/fragment_active_light"
         android:layout_width="340dp"
         android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="431dp"
+        android:layout_below="@id/textView6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/ic_lowactive" />
 
         <TextView
             android:id="@+id/low_active_text"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="108dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="Lightly Active"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -65,27 +51,24 @@
         android:id="@+id/fragment_active_moderate"
         android:layout_width="340dp"
         android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="345dp"
+        android:layout_below="@id/fragment_active_light"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
             android:src="@drawable/ic_moderate" />
 
         <TextView
             android:id="@+id/moderate_active_text"
-            android:layout_width="160dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="115dp"
-            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="Moderately Active"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -95,12 +78,9 @@
         android:id="@+id/fragment_active_high"
         android:layout_width="340dp"
         android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="243dp"
+        android:layout_below="@id/fragment_active_moderate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/registermalefemalenotfocus">
 
         <ImageView
@@ -112,10 +92,10 @@
 
         <TextView
             android:id="@+id/high_active_text"
-            android:layout_width="160dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="125dp"
-            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
             android:text="Highly Active"
             android:textColor="@color/black"
             android:textSize="16sp" />

@@ -128,22 +128,22 @@ public class HomeFragment extends Fragment {
 
         //To display all food list & calories
         totalCalories = root.findViewById(R.id.total_calories);
-        foodViewModel.getTotalTodayCalories(dateOnly).observe(getViewLifecycleOwner(), Float -> setTotalCalories(Float));
+        foodViewModel.getTotalTodayCalories(dateOnly).observe(getViewLifecycleOwner(), this::setTotalCalories);
 
         breakfastCalories = root.findViewById(R.id.home_breakfast_calories);
-        foodViewModel.getTotalBreakfastCalories(dateOnly).observe(getViewLifecycleOwner(), Float -> setBreakfastCalories(Float));
+        foodViewModel.getTotalBreakfastCalories(dateOnly).observe(getViewLifecycleOwner(), this::setBreakfastCalories);
 
         lunchCalories = root.findViewById(R.id.home_lunch_calories);
-        foodViewModel.getTotalLunchCalories(dateOnly).observe(getViewLifecycleOwner(), Float -> setLunchCalories(Float));
+        foodViewModel.getTotalLunchCalories(dateOnly).observe(getViewLifecycleOwner(), this::setLunchCalories);
 
         snacksCalories = root.findViewById(R.id.home_snacks_calories);
-        foodViewModel.getTotalSnacksCalories(dateOnly).observe(getViewLifecycleOwner(), Float -> setSnacksCalories(Float));
+        foodViewModel.getTotalSnacksCalories(dateOnly).observe(getViewLifecycleOwner(), this::setSnacksCalories);
 
         dinnerCalories = root.findViewById(R.id.home_dinner_calories);
-        foodViewModel.getTotalDinnerCalories(dateOnly).observe(getViewLifecycleOwner(), Float -> setDinnerCalories(Float));
+        foodViewModel.getTotalDinnerCalories(dateOnly).observe(getViewLifecycleOwner(), this::setDinnerCalories);
 
         progressBar = (ProgressBar) root.findViewById(R.id.progress_bar);
-        foodViewModel.getTotalTodayCalories(dateOnly).observe(getViewLifecycleOwner(), Float -> updateProgressBar(Float));
+        foodViewModel.getTotalTodayCalories(dateOnly).observe(getViewLifecycleOwner(), this::updateProgressBar);
 
         cardToday= root.findViewById(R.id.card_today_home);
         cardToday.setOnClickListener(view -> {
@@ -168,7 +168,7 @@ public class HomeFragment extends Fragment {
         recyclerBreakfast.setAdapter(adapterBreakfast);
         foodViewModel.getAllBreakfast(dateOnly).observe(getViewLifecycleOwner(), adapterBreakfast::setFoods);
         fixedBreakfast.setOnClickListener(view -> {
-            if(breakfastCalories.getText().toString()=="")
+            if(breakfastCalories.getText().toString().equals(""))
                 Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenBreakfast.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardBreakfast,
@@ -199,7 +199,7 @@ public class HomeFragment extends Fragment {
         recyclerLunch.setAdapter(adapterLunch);
         foodViewModel.getAllLunch(dateOnly).observe(getViewLifecycleOwner(), adapterLunch::setFoods);
         fixedLunch.setOnClickListener(view -> {
-            if(breakfastCalories.getText().toString()=="")
+            if(breakfastCalories.getText().toString().equals(""))
                 Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenLunch.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardLunch,
@@ -229,7 +229,7 @@ public class HomeFragment extends Fragment {
         recyclerSnacks.setAdapter(adapterSnacks);
         foodViewModel.getAllSnacks(dateOnly).observe(getViewLifecycleOwner(), adapterSnacks::setFoods);
         fixedSnacks.setOnClickListener(view -> {
-            if(breakfastCalories.getText().toString()=="")
+            if(breakfastCalories.getText().toString().equals(""))
                 Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenSnacks.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardSnacks,
@@ -259,7 +259,7 @@ public class HomeFragment extends Fragment {
         recyclerDinner.setAdapter(adapterDinner);
         foodViewModel.getAllDinner(dateOnly).observe(getViewLifecycleOwner(), adapterDinner::setFoods);
         fixedDinner.setOnClickListener(view -> {
-            if(breakfastCalories.getText().toString()=="")
+            if(breakfastCalories.getText().toString().equals(""))
                 Toast.makeText(getContext(), "No food added yet", Toast.LENGTH_SHORT).show();
             if (hiddenDinner.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(cardDinner,
@@ -396,5 +396,9 @@ public class HomeFragment extends Fragment {
             progressBar.setProgress(0);
             totalCalories.setText("0Cal");
         }
+    }
+    private static double round (double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
     }
 }

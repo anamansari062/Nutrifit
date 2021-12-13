@@ -2,52 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".ui.update.UpdateFragment">
 
-    >
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:id="@+id/centerhorizontalline" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/centerverticalline" />
-
-    <RelativeLayout
-        android:id="@+id/namelayout"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp">
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <RelativeLayout
+            android:id="@+id/centerhorizontalline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Enter Your Name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:text=""
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
-    </RelativeLayout>
+            android:layout_centerVertical="true" />
+
+        <RelativeLayout
+            android:id="@+id/centerverticalline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/NameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Name"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            android:layout_marginTop="05dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:hintTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
         android:id="@+id/fragment_update_maleLogo"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_above="@+id/heightLayout"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginEnd="58dp"
         android:layout_marginBottom="20dp"
         android:layout_toStartOf="@id/centerverticalline"
         android:background="@drawable/registermalefemalenotfocus">
@@ -57,7 +58,7 @@
             android:layout_height="150px"
             android:layout_above="@+id/textmale"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/maleicon">
 
         </ImageView>
@@ -79,12 +80,10 @@
 
     <RelativeLayout
         android:id="@+id/fragment_update_femaleLogo"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_above="@+id/heightLayout"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="58dp"
         android:layout_marginBottom="21dp"
         android:layout_toEndOf="@id/centerverticalline"
         android:background="@drawable/registermalefemalenotfocus">
@@ -93,8 +92,8 @@
             android:layout_width="150px"
             android:layout_height="150px"
             android:layout_above="@+id/textfemale"
+            android:layout_marginTop="10dp"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
             android:src="@drawable/femaleicon">
 
         </ImageView>
@@ -116,13 +115,12 @@
 
     <RelativeLayout
         android:id="@+id/weightLayout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_below="@id/heightLayout"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="45dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginRight="58dp"
         android:layout_toStartOf="@id/centerverticalline"
         android:background="@drawable/registermalefemalenotfocus">
 
@@ -157,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp">
 
             <ImageView
@@ -175,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp">
 
             <ImageView
@@ -194,12 +192,11 @@
 
     <RelativeLayout
         android:id="@+id/ageLayout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_below="@id/heightLayout"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="58dp"
         android:layout_marginTop="45dp"
-        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_toEndOf="@id/centerverticalline"
         android:background="@drawable/registermalefemalenotfocus">
@@ -235,7 +232,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp">
 
             <ImageView
@@ -253,7 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp">
 
             <ImageView
@@ -281,11 +278,12 @@
         android:background="@drawable/registermalefemalenotfocus">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:text="Height"
+            android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -328,47 +326,20 @@
 
     </RelativeLayout>
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="340dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:layout_above="@+id/button"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginBottom="10dp">-->
-
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/textLayout"-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
-<!--            android:layout_width="340dp"-->
-<!--            android:layout_height="70dp"-->
-<!--            android:layout_above="@id/button"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginBottom="10dp">-->
-
-<!--            <AutoCompleteTextView-->
-<!--                android:id="@+id/autoComplete"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--               android:hint="XD"-->
-<!--                android:textColorHint="@color/purple_200">-->
-
-<!--            </AutoCompleteTextView>-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--    </RelativeLayout>-->
     <LinearLayout
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@id/fragment_update_UpdateBtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <Spinner
             android:id="@+id/fragment_update_spinner1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/registermalefemalenotfocus">
 
         </Spinner>
@@ -377,17 +348,14 @@
     <Button
         android:id="@+id/fragment_update_UpdateBtn"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
-        android:backgroundTint="@color/primaryColor"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/primaryColor"
         android:text="Update"
         android:textSize="15sp">
 
     </Button>
-
-
-
 </RelativeLayout>
