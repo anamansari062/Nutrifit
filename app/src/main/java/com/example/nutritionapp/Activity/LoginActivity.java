@@ -14,14 +14,18 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.Register.RegisterMain;
 import com.example.nutritionapp.Reset;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -35,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     int autoSave;
     TextInputLayout passwordLayout, emailLayout ;
+    FirebaseUser user;
     ConstraintLayout parentLayout ;
     final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
@@ -50,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         reset=findViewById(R.id.reset);
         passwordLayout = findViewById(R.id.etPasswordLayout);
         emailLayout = findViewById(R.id.etEmailLayout);
+        user=FirebaseAuth.getInstance().getCurrentUser();
 
         // hide toolbar
         try
@@ -144,13 +150,30 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.d(TAG, "onComplete: " + e.getMessage());
                             }
                         } else {
-                            autoSave = 1;
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putInt("key", autoSave);
-                            editor.apply();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+
+                            if(user.isEmailVerified()){
+                                autoSave = 1;
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putInt("key", autoSave);
+                                editor.apply();
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(getApplicationContext(),"Verification link sent",Toast.LENGTH_SHORT).show();
+                                        emailLayout.setError("Verify your email");
+                                        emailID.requestFocus();
+                                        return;
+                                    }
+                                });
+
+
+                            }
+
                         }
                     });
     });
