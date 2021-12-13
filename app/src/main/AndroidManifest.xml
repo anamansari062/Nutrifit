@@ -28,11 +28,7 @@
             android:name=".Activity.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Register1"
-            android:screenOrientation="portrait"
 
-            android:exported="true" />
         <activity
             android:name=".Otp"
             android:screenOrientation="portrait"

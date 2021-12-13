@@ -23,6 +23,11 @@ public class Reset extends AppCompatActivity {
         setContentView(R.layout.activity_reset);
         email=findViewById(R.id.em);
         sent=findViewById(R.id.sent);
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
 
         sent.setOnClickListener(v -> {
             String Email=email.getText().toString().trim();
@@ -32,7 +37,7 @@ public class Reset extends AppCompatActivity {
                 return;
             }
             FirebaseAuth.getInstance().sendPasswordResetEmail(Email)
-                    .addOnCompleteListener(task -> Toast.makeText(Reset.this,"reset password link sent",Toast.LENGTH_SHORT).show());
+                    .addOnCompleteListener(task -> Toast.makeText(Reset.this,"Reset Password Link Sent",Toast.LENGTH_SHORT).show());
 
 
         });

@@ -118,7 +118,13 @@ public class AgeFragment extends Fragment {
         String age = sh.getString("age", "");
         String gender = sh.getString("gender", "");
 
-        int intAge = Integer.parseInt(age);
+        int intAge=0;
+
+        try {
+             intAge = Integer.parseInt(age);
+        }catch (NumberFormatException e){
+            System.out.println("not a number");
+        }
 
         if(gender.equals("Male"))
             selectedMale = true;
