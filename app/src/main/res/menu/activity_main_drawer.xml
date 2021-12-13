@@ -17,10 +17,7 @@
             android:id="@+id/nav_calculate"
             android:icon="@drawable/ic_menu_calculate"
             android:title="@string/menu_update" />
-        <item
-            android:id="@+id/nav_blog"
-            android:icon="@drawable/ic_menu_blog"
-            android:title="@string/menu_blog" />
+
         <item
             android:id="@+id/nav_share"
             android:title="@string/share"
