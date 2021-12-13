@@ -24,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         // the below lines of code was causing the app to not go beyond the splash screen when the user
         // installs and opens the app for the first time
         // issue #51- Splash Bug
+
 //        if (!pref.isSplashIn()) {
 //            //Splash Screen Load
 //            pref.setSplashIn(true);
