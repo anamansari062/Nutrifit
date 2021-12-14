@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.example.nutritionapp.Activity.LoginActivity;
 import com.example.nutritionapp.R;
@@ -29,6 +30,7 @@ public class FragmentEmail extends Fragment {
     EditText textEmail, textMobile, textName;
     ExtendedFloatingActionButton next, back;
     TextInputLayout nameL, emailL, mobileL;
+    ProgressBar progressBar;
     final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Nullable
@@ -47,6 +49,8 @@ public class FragmentEmail extends Fragment {
         emailL = root.findViewById(R.id.emailLayout);
         mobileL = root.findViewById(R.id.mobileLayout);
 
+
+        progressBar = root.findViewById(R.id.next_progress_bar);
         // to get data and set the texts when came from passwordFragment
         String passwd = "", active = "light";
         boolean selectedMale = false;
@@ -78,7 +82,7 @@ public class FragmentEmail extends Fragment {
         int finalHeight = height;
         String finalActive = active;
         next.setOnClickListener(view -> {
-            if (textEmail.getText().toString() != null & textMobile.getText().toString() != null) {
+            if(textEmail.getText().toString() != null & textMobile.getText().toString() != null) {
                 registerMain.myEdit.putString("email", textEmail.getText().toString());
                 registerMain.myEdit.putString("mobile", textMobile.getText().toString());
                 registerMain.myEdit.commit();
@@ -103,7 +107,6 @@ public class FragmentEmail extends Fragment {
             if (valid) {
                 FragmentPassword fragmentPassword = new FragmentPassword();
                 sendInfo(fragmentPassword, finalPasswd, finalSelectedMale, finalSelectedFemale, finalAge, finalWeight, finalHeight, finalActive);
-
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.register_container, fragmentPassword)
                         .commit();
@@ -146,8 +149,6 @@ public class FragmentEmail extends Fragment {
             }
         });
         textEmail.addTextChangedListener(new TextWatcher() {
-            String email = textEmail.getText().toString();
-
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -171,8 +172,8 @@ public class FragmentEmail extends Fragment {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         if (email.isEmpty()) {
-            emailL.setError("Email is required");
-            textEmail.setError(null);
+            emailL.setError("Please Enter an Email-ID");
+            textEmail.requestFocus();
             return false;
         }
         if (email.matches(EMAIL_PATTERN)) {
@@ -188,7 +189,8 @@ public class FragmentEmail extends Fragment {
                             }
                             else {
                                 Log.e("TAG", "Is Old User!");
-                                emailL.setError("Email already exists");
+                                emailL.setError("User already exists");
+                                textEmail.requestFocus();
                             }
                         }
                     });
@@ -196,6 +198,7 @@ public class FragmentEmail extends Fragment {
         }
         else {
             emailL.setError("Please Enter a valid Email-ID");
+            textEmail.requestFocus();
             return false;
         }
     }
