@@ -7,6 +7,14 @@
     android:background="@color/white"
     tools:context=".Register.FragmentEmail">
 
+    <ProgressBar
+        android:id="@+id/next_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+    </ProgressBar>
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"

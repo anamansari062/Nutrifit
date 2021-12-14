@@ -92,5 +92,8 @@
     <string name="Blog8">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
     <string name="Blog9">https://www.verywellfit.com/top-healthy-food-blogs-4570841"</string>
     <string name="Blog10">https://www.verywellfit.com/top-healthy-food-blogs-4570841</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="register_text">New here? Register</string>
 </resources>
 

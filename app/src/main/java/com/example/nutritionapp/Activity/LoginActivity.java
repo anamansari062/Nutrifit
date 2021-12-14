@@ -1,7 +1,6 @@
 package com.example.nutritionapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,9 @@ import android.text.Editable;
 
 import android.text.TextWatcher;
 import android.util.Log;
-import android.widget.Button;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,12 +21,11 @@ import com.example.nutritionapp.R;
 import com.example.nutritionapp.Register.RegisterMain;
 import com.example.nutritionapp.Reset;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.royrodriguez.transitionbutton.TransitionButton;
 
 import java.util.Objects;
 
@@ -33,14 +33,13 @@ import java.util.Objects;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "SignInActivity";
     TextView register,reset;
-    Button login;
     EditText Passwd, emailID;
     FirebaseAuth mAuth;
     SharedPreferences sharedPreferences;
     int autoSave;
     TextInputLayout passwordLayout, emailLayout ;
     FirebaseUser user;
-    ConstraintLayout parentLayout ;
+    private TransitionButton login;
     final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
@@ -62,7 +61,9 @@ public class LoginActivity extends AppCompatActivity {
         {
             this.getSupportActionBar().hide();
         }
-        catch (NullPointerException e){}
+        catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         mAuth = FirebaseAuth.getInstance();
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
@@ -111,12 +112,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         login.setOnClickListener(v -> {
+            //close keyboard
+            closeKeyboard();
+
+            // Start the loading animation when the user tap the button
+            login.startAnimation();
             if (!validateEmail()) {
+                login.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null);
                 return;
             } else if (Passwd.getText().toString().contentEquals("")) {
                 passwordLayout.setError("Please Enter Password");
                 Passwd.setError(null);
                 Passwd.requestFocus();
+                login.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null);
                 return;
             }
 
@@ -131,20 +139,15 @@ public class LoginActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             try
                             {
+                                login.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null);
                                 throw Objects.requireNonNull(task.getException());
-                            }
-                            // if user enters wrong email or if email doesn't exist or disabled.
-                            catch (FirebaseAuthInvalidUserException invalidEmail)
-                            {
-                                Log.d(TAG, "onComplete: invalid_email");
-                                emailLayout.setError("Invalid Email");
-                                emailID.requestFocus();
                             }
                             // if user enters wrong password.
                             catch (FirebaseAuthInvalidCredentialsException wrongPassword)
                             {
                                 Log.d(TAG, "onComplete: wrong_password");
-                                passwordLayout.setError("Entered password is wrong");
+                                login.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null);
+                                passwordLayout.setError("Password is incorrect");
                                 Passwd.requestFocus();
                             }catch (Exception e) {
                                 Log.d(TAG, "onComplete: " + e.getMessage());
@@ -156,19 +159,16 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putInt("key", autoSave);
                                 editor.apply();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                login.stopAnimation(TransitionButton.StopAnimationStyle.EXPAND, () -> {
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                });
                             }
                             else{
-                                user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(getApplicationContext(),"Verification link sent",Toast.LENGTH_SHORT).show();
-                                        emailLayout.setError("Verify your email");
-                                        emailID.requestFocus();
-                                        return;
-                                    }
+                                user.sendEmailVerification().addOnSuccessListener(unused -> {
+                                    Toast.makeText(getApplicationContext(),"Verification link sent",Toast.LENGTH_SHORT).show();
+                                    emailLayout.setError("Verify your email");
+                                    emailID.requestFocus();
                                 });
 
 
@@ -198,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (isNewUser[0]) {
                                 isNewUser[0] = false;
                                 Log.e("TAG", "Is New User!");
-                                emailLayout.setError("Email does not exists");
+                                emailLayout.setError("User does not exists");
                                 emailID.requestFocus();
                             }
                             else {
@@ -212,6 +212,13 @@ public class LoginActivity extends AppCompatActivity {
             emailLayout.setError("Please Enter a valid Email-ID");
             emailID.requestFocus();
             return false;
+        }
+    }
+    private void closeKeyboard(){
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }
