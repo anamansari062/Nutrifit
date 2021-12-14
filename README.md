@@ -14,7 +14,8 @@ Talking about the usability of the app, you can try out beta version for now by 
 ## About
 
 NutriFit has been made for you to comfortably track your food and have no worry about those calories.
-Apart from following those methods, you can also download NutriFit from this [link] (https://drive.google.com/file/d/1EBTqvHceNQQAwT2ZfZ-IWwAIHtH5FIz2/view?usp=sharing) and follow the below instructions use it.
+Apart from following those methods, you can also download NutriFit from this 
+[link](https://drive.google.com/file/d/1EBTqvHceNQQAwT2ZfZ-IWwAIHtH5FIz2/view?usp=sharing) and follow the below instructions use it.
 
 This android application allows you to add your food in given meal types likes BreakFast, Lunch, Snacks and Dinner
 
