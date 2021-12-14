@@ -11,11 +11,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.Register.RegisterMain;
@@ -154,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } else {
 
-                            if(user.isEmailVerified()){
+//                            if(user.isEmailVerified()){
                                 autoSave = 1;
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putInt("key", autoSave);
@@ -164,17 +162,18 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
                                 });
                             }
-                            else{
-                                user.sendEmailVerification().addOnSuccessListener(unused -> {
-                                    Toast.makeText(getApplicationContext(),"Verification link sent",Toast.LENGTH_SHORT).show();
-                                    emailLayout.setError("Verify your email");
-                                    emailID.requestFocus();
-                                });
-
-
-                            }
-
-                        }
+                        /** check why its causing error
+                         *
+                         */
+//                            else{
+//                                user.sendEmailVerification().addOnSuccessListener(unused -> {
+//                                    login.stopAnimation(TransitionButton.StopAnimationStyle.SHAKE, null);
+//                                    Toast.makeText(getApplicationContext(),"Verification link sent",Toast.LENGTH_SHORT).show();
+//                                    emailLayout.setError("Verify your email");
+//                                    emailID.requestFocus();
+//                                });
+//                            }
+//                        }
                     });
     });
     }
