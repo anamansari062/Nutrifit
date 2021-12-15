@@ -128,25 +128,21 @@
             android:id="@+id/textWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="5dp"
             android:text="Weight"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:textStyle="bold">
-
-        </TextView>
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/fragment_update_currentWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="30dp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold">
 
         </TextView>
@@ -154,9 +150,9 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/fragment_update_currentWeight"
             android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_alignParentBottom="true">
 
             <ImageView
                 android:id="@+id/fragment_update_decrementWeight"
@@ -174,7 +170,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_below="@id/fragment_update_currentWeight"
+>
 
             <ImageView
                 android:id="@+id/fragment_update_incrementWeight"
@@ -205,8 +202,7 @@
             android:id="@+id/textAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="5dp"
             android:text="Age"
             android:textAlignment="center"
             android:textColor="@color/black"
@@ -220,10 +216,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="30dp"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold">
 
         </TextView>
@@ -232,8 +227,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_below="@+id/fragment_update_currentAge"
+            android:layout_marginStart="10dp">
 
             <ImageView
                 android:id="@+id/fragment_update_decrementAge"
@@ -249,9 +244,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_below="@+id/fragment_update_currentAge"
+            android:layout_marginEnd="10dp">
 
             <ImageView
                 android:id="@+id/fragment_update_incrementAge"
@@ -280,10 +274,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:text="Height"
-            android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"

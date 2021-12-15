@@ -10,19 +10,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/relative_no_meal_dashboard"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:visibility="gone">
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/noMealTracked"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="90dp"
                 android:lineSpacingExtra="1sp"
                 android:text="@string/dashboard_no_food_added"
                 android:textColor="@color/black"
@@ -34,12 +34,11 @@
                 android:id="@+id/no_meal_tracked_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_marginTop="30dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="60dp"
                 android:lineSpacingExtra="1sp"
-                android:textColor="@color/black"
                 android:text="@string/dashboard_track_insights"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
                 android:translationY="-0.52sp" />
@@ -48,23 +47,25 @@
                 android:id="@+id/start_tracking_meal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_marginTop="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
                 android:lineSpacingExtra="1sp"
                 android:text="@string/dashboard_start_tracking"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 android:translationY="-0.52sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/start_tracking_meal_button"
                 android:layout_width="63dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 app:icon="@drawable/ic_baseline_arrow_forward_24"
                 app:iconGravity="end"
@@ -75,7 +76,8 @@
         <RelativeLayout
             android:id="@+id/dashboard_food_analysis_layout"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="80dp"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/dashboard_food_analysis"
