@@ -1,34 +1,26 @@
-package com.example.nutritionapp.Register;
+package com.example.nutritionapp.Register
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.widget.ViewPager2;
+import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.example.nutritionapp.R
+import com.google.android.material.tabs.TabLayout
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
-
-import com.example.nutritionapp.R;
-import com.google.android.material.tabs.TabLayout;
-
-public class RegisterMain extends AppCompatActivity {
-    TabLayout tabLayout;
-    ViewPager2 pager2;
-
-    SharedPreferences.Editor myEdit;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_main);
-        Intent i = getIntent();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.register_container,new FragmentEmail());
-        fragmentTransaction.commit();
-        SharedPreferences sharedPreferences = this.getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        myEdit = sharedPreferences.edit();
+class RegisterMain : AppCompatActivity() {
+    var tabLayout: TabLayout? = null
+    var pager2: ViewPager2? = null
+    var myEdit: SharedPreferences.Editor? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_register_main)
+        val i = intent
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.register_container, FragmentEmail())
+        fragmentTransaction.commit()
+        val sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        myEdit = sharedPreferences.edit()
 
 //        tabLayout = findViewById(R.id.tab_layout);
 //        pager2 = findViewById(R.id.view_pager2);

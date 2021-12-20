@@ -17,8 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.nutritionapp.Food.FoodViewModel;
+
 import com.example.nutritionapp.Activity.MainActivity;
+import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -24,13 +24,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.Food.FoodEntity;
 import com.example.nutritionapp.Food.FoodViewModel;
 import com.example.nutritionapp.Json.JsonObject;
-import com.example.nutritionapp.Activity.MainActivity;
 import com.example.nutritionapp.R;
 import com.example.nutritionapp.interfaces.JsonPlaceHolderApi;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
