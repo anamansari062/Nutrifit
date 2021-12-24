@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -182,16 +183,27 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuAddItem :
-            if(noFoodFound)
-            {
-                Toast.makeText(this, "Sorry No Food Found, Food didn't get save", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SearchActivity.this, MainActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();
+            if(noFoodFound) {
+
+
+                if (textSearch != null || textSearch.length() == 0) {
+                    Toast.makeText(this, "Sorry No Food Found, Food didn't get save", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    finish();
+                }
+
+            } else if(saveItem(food) && !noFoodFound) {
+
+
+                    Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    finish();
+                    return true;
 
             }
-            else if(saveItem(food) && !noFoodFound) {
-                Intent intent = new Intent(SearchActivity.this, MainActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); finish();
-                return true;
-            }
+            break;
             case android.R.id.home:
                 this.finish();
                 return true;
@@ -211,7 +223,8 @@ public class SearchActivity extends AppCompatActivity {
         }
             foodViewModel.insert(food);
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
-        return true;
+            return true;
+
     }
      private void hideKeyboard() {
          View view = this.getCurrentFocus();
